@@ -11,14 +11,14 @@ public class MainArkanoidLent {
     public static void main(String[] args) {
         int width = 800;
         int height = 600;
-        int pFPS = 20;
+        int pFPS = 10;
 
         // creation des objets
         ArkanoidJeu jeuArk = new ArkanoidJeu();
         ArkanoidDessin dessinArk = new ArkanoidDessin();
 
         // parametrage du moteur de jeu
-        MoteurJeu.setTaille(width,height);
+        MoteurJeu.setTaille(width, height);
         MoteurJeu.setFPS(pFPS);
 
         // lancement du jeu
