@@ -7,15 +7,14 @@ import java.io.IOException;
 public class MainLaby {
     public static void main(String[] args) throws IOException {
 
-        MoteurJeu mj = new MoteurJeu();
-        mj.setFPS(30);
-        mj.setTaille(500,500);
+        MoteurJeu.setFPS(30);
+        MoteurJeu.setTaille(500,500);
 
         // charge le labyrinthe
-        LabyJeu laby = new LabyJeu("data/laby/laby1.txt");
+        LabyJeu laby = new LabyJeu();
         LabyDessin ld = new LabyDessin();
 
-        mj.launch(laby,ld);
+        MoteurJeu.launch(laby,ld);
 
 
     }

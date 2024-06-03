@@ -2,12 +2,9 @@ import moteurJeu.*;
 
 import java.io.IOException;
 
-public class LabyJeu extends Labyrinthe implements Jeu {
+public class LabyJeu implements Jeu {
 
-    public LabyJeu(String path) throws IOException {
-        super(path);
 
-    }
     @Override
     public void update(double secondes, Clavier clavier) {
 
