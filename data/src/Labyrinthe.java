@@ -1,5 +1,3 @@
-package gameLaby.laby;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -65,8 +63,7 @@ public class Labyrinthe {
             default:
                 throw new Error("action inconnue");
         }
-        int[] res = {x, y};
-        return res;
+        return new int[]{x, y};
     }
 
     /**

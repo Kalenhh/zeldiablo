@@ -1,7 +1,7 @@
 @startuml
 hide footbox
 
-participant "main:Main" as main
+participant "main:MainLaby" as main
 participant "moteur:MoteurJeu" as GameEngine
 participant "dessin:DessinJeu" as r #FF8888
 participant "jeu:Jeu" as game #FF8888
