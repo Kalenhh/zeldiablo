@@ -1,4 +1,4 @@
-Repo pour le TP Zeldiablo
+Repo pour la SAE Zeldiablo
 
 BAUDOIN Mathieu
 BENA Hugo
