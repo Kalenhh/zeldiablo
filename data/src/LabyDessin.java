@@ -5,6 +5,13 @@ import moteurJeu.DessinJeu;
 import moteurJeu.Jeu;
 
 public class LabyDessin implements DessinJeu {
+
+    /**
+     * Dessine l'etat du jeu sur le canvas mis en parametres
+     * Est appellé à toute les frames
+     * @param jeu    jeu a afficher
+     * @param canvas canvas dans lequel dessiner l'etat du jeu
+     */
     @Override
     public void dessinerJeu(Jeu jeu, Canvas canvas) {
         LabyJeu laby = (LabyJeu) jeu;
@@ -21,13 +28,12 @@ public class LabyDessin implements DessinJeu {
 
         for (int y = 0; y < laby.getLaby().getLengthY(); y++) {
             // affiche la ligne
-            for (int x = 0; x < laby.getLaby().getLength(); x++) {
+            for (int x = 0; x < laby.getLaby().getLengthX(); x++) {
                 if (laby.getLaby().getMur(x, y)) {
                     gc.setFill(Color.BLACK);
                     gc.fillRect(x*40, y * 40, 40, 40);
                 }
             }
-
         }
     }
 }

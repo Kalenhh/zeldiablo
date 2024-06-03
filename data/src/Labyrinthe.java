@@ -70,7 +70,6 @@ public class Labyrinthe {
      * charge le labyrinthe
      *
      * @param nom nom du fichier de labyrinthe
-     * @return labyrinthe cree
      * @throws IOException probleme a la lecture / ouverture
      */
     public Labyrinthe(String nom) throws IOException {
@@ -165,35 +164,40 @@ public class Labyrinthe {
     // ##################################
 
     /**
-     * return taille selon Y
+     * Getter taille selon Y
      *
-     * @return
+     * @return la taille y
      */
     public int getLengthY() {
         return murs[0].length;
     }
 
     /**
-     * return taille selon X
+     * Getter taille selon X
      *
-     * @return
+     * @return la taille X
      */
-    public int getLength() {
+    public int getLengthX() {
         return murs.length;
     }
 
     /**
      * return mur en (i,j)
      *
-     * @param x
-     * @param y
-     * @return
+     * @param x position en x
+     * @param y position en y
+     * @return booleen
      */
     public boolean getMur(int x, int y) {
         // utilise le tableau de boolean
         return this.murs[x][y];
     }
 
+    /**
+     * Getter de l'attribut pj de type Perso
+     *
+     * @return pj
+     */
     public Perso getPerso(){
         return this.pj;
     }
