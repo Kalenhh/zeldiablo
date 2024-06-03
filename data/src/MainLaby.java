@@ -10,11 +10,13 @@ public class MainLaby {
         MoteurJeu.setFPS(30);
         MoteurJeu.setTaille(500,500);
 
+        Labyrinthe laby = new Labyrinthe("data/laby/laby0.txt");
+
         // charge le labyrinthe
-        LabyJeu laby = new LabyJeu();
+        LabyJeu labyjeu = new LabyJeu(laby);
         LabyDessin ld = new LabyDessin();
 
-        MoteurJeu.launch(laby,ld);
+        MoteurJeu.launch(labyjeu,ld);
 
 
     }
