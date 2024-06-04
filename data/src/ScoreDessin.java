@@ -24,6 +24,7 @@ public class ScoreDessin implements DessinJeu {
         gc.setFill(Color.LIGHTGRAY);
         gc.fillRect(0,0,canvas.getWidth(),canvas.getHeight());
 
-        gc.fillText("SCORE: ", laby.getScore());
+        gc.setFill(Color.BLACK);
+        gc.fillText("SCORE: " + laby.getScore(), 0, 0);
     }
 }
