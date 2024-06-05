@@ -198,7 +198,7 @@ public class Labyrinthe {
      *
      * @return pj
      */
-    public Perso getPerso(){
+    public Perso getPerso() {
         return this.pj;
     }
 }
