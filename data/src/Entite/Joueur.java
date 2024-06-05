@@ -1,5 +1,7 @@
+package Entite;
+
 /**
- * Classe représentant un joueur, qui hérite de Perso
+ * Classe représentant un joueur, qui hérite de Entite.Perso
  */
 public class Joueur extends Perso {
 
@@ -13,7 +15,7 @@ public class Joueur extends Perso {
      * @param degats
      */
     public Joueur(String nom, int x, int y,  int pv, int degats) {
-        // constructeur de la classe parente Perso
+        // constructeur de la classe parente Entite.Perso
         super(x, y,pv, degats);
     }
 

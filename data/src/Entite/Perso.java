@@ -1,4 +1,4 @@
-
+package Entite;
 
 /**
  * gere un personnage situe en x,y

@@ -1,3 +1,5 @@
+package Entite;
+
 public class Monstre extends Perso{
 
     /**
@@ -13,7 +15,7 @@ public class Monstre extends Perso{
     }
 
     /**
-     * Classe représentant un Monstre, qui hérite de Perso
+     * Classe représentant un Entite.Monstre, qui hérite de Entite.Perso
      */
 
         public void attaquer(Entite e){

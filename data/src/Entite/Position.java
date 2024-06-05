@@ -1,3 +1,5 @@
+package Entite;
+
 public abstract class Position {
 
     //Coordonnees x et y

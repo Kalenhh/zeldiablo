@@ -1,3 +1,5 @@
+package Entite;
+
 public abstract class Entite extends Position{
 
     public Entite(int dx, int dy){
@@ -10,13 +12,13 @@ public abstract class Entite extends Position{
         setY(getY()+dy);
     }
 
-    //Permet d'attaquer une autre Entite victime
+    //Permet d'attaquer une autre Entite.Entite victime
     public abstract void attaquer(Entite victime);
 
     //Subir les dégats, retourne le contrecoup
     public abstract void subirDegat(int degat);
 
-    //Renvoie si l'Entite est morte (pv = 0)
+    //Renvoie si l'Entite.Entite est morte (pv = 0)
     public abstract boolean etreMort();
 
 }

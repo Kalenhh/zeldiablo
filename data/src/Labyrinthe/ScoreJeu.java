@@ -1,3 +1,5 @@
+package Labyrinthe;
+
 import java.io.*;
 
 public class ScoreJeu {

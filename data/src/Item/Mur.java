@@ -1,9 +1,11 @@
+package Item;
+
 /**
  * Obstacle mur pouvant etre casse
  */
 public class Mur extends Item{
     /**
-     * Construit une Mur
+     * Construit une Item.Mur
      * @param resistance solidite
      * @param durabilite vie
      * @param x position abscisse

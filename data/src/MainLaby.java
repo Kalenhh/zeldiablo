@@ -1,3 +1,5 @@
+import Labyrinthe.LabyJeu;
+import Labyrinthe.Labyrinthe;
 import moteurJeu.MoteurJeu;
 
 import java.io.IOException;

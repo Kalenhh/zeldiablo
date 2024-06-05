@@ -1,3 +1,5 @@
+package Labyrinthe;
+
 import moteurJeu.*;
 
 
@@ -10,7 +12,7 @@ public class LabyJeu implements Jeu {
     }
 
     /**
-     * Met a jour l'objet Labyrinthe selon l'entrée de l'utilisateur
+     * Met a jour l'objet Labyrinthe.Labyrinthe selon l'entrée de l'utilisateur
      * Est appelé à toute les frames de l'execution
      *
      * @param secondes temps ecoule depuis la derniere mise a jour
@@ -49,7 +51,7 @@ public class LabyJeu implements Jeu {
     }
 
     /**
-     * Getter de l'attribut laby de type Labyrinthe
+     * Getter de l'attribut laby de type Labyrinthe.Labyrinthe
      *
      * @return laby
      */

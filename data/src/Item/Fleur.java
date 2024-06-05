@@ -1,9 +1,11 @@
+package Item;
+
 /**
  * gere un personnage situe en x,y
  */
 public class Fleur extends Item{
     /**
-     * Construit une Fleur
+     * Construit une Item.Fleur
      * @param resistance solidite
      * @param durabilite vie
      * @param x position abscisse

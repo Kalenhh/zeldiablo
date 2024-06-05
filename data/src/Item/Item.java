@@ -1,3 +1,5 @@
+package Item;
+
 /**
  * Classe abstraite definissant les obstacles
  */
@@ -8,7 +10,7 @@ public abstract class Item extends Position {
     private int durabilite;
 
     /**
-     * Construit une Item
+     * Construit une Item.Item
      * @param resistance solidite
      * @param durabilite vie
      * @param x position abscisse

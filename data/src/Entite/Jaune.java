@@ -1,3 +1,5 @@
+package Entite;
+
 public class Jaune extends Monstre {
 
     private String nom;
@@ -17,7 +19,7 @@ public class Jaune extends Monstre {
     }
 
     /**
-     * Classe représentant un Monstre, qui hérite de Perso
+     * Classe représentant un Entite.Monstre, qui hérite de Entite.Perso
      */
 
 

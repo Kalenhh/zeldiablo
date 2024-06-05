@@ -1,9 +1,11 @@
+package Item;
+
 /**
  * Obstacle piege empechant le joueur d'avancer
  */
 public class Piege extends Item{
     /**
-     * Construit un Piege
+     * Construit un Item.Piege
      * @param resistance solidite
      * @param durabilite vie
      * @param x position abscisse

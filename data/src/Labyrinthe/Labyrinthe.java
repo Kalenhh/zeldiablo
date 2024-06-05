@@ -1,3 +1,9 @@
+package Labyrinthe;
+
+import Entite.Perso;
+import Entite.Position;
+import Item.Mur;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -38,7 +44,7 @@ public class Labyrinthe {
 
     /**
      * les elements du labyrinthe
-     * Chaque éléments est défini par une Position
+     * Chaque éléments est défini par une Entite.Position
      */
     public Position[][] laby;
 
@@ -199,7 +205,7 @@ public class Labyrinthe {
     }
 
     /**
-     * Getter de l'attribut pj de type Perso
+     * Getter de l'attribut pj de type Entite.Perso
      *
      * @return pj
      */
