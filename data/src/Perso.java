@@ -8,7 +8,8 @@ public class Perso {
     /**
      * position du personnage
      */
-    int x, y;
+    int x, y, pv, degats;
+
 
     /**
      * constructeur
@@ -16,9 +17,11 @@ public class Perso {
      * @param dx position selon x
      * @param dy position selon y
      */
-    public Perso(int dx, int dy) {
+    public Perso(int dx, int dy, int pv, int degats) {
         this.x = dx;
         this.y = dy;
+        this.pv = pv;
+        this.degats = degats;
     }
 
     /**
