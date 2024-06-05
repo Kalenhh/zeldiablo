@@ -5,7 +5,7 @@ public class LabyJeu implements Jeu {
 
     private Labyrinthe laby;
 
-    public LabyJeu(Labyrinthe laby){
+    public LabyJeu(Labyrinthe laby) {
         this.laby = laby;
     }
 
@@ -40,6 +40,7 @@ public class LabyJeu implements Jeu {
 
     /**
      * Indique si le jeu est fini ou non
+     *
      * @return booleen
      */
     @Override
@@ -52,7 +53,7 @@ public class LabyJeu implements Jeu {
      *
      * @return laby
      */
-    public Labyrinthe getLaby(){
+    public Labyrinthe getLaby() {
         return this.laby;
     }
 }
