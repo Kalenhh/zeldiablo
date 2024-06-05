@@ -12,7 +12,6 @@ import Labyrinthe.LabyDessin;
 public class MainLaby {
     public static void main(String[] args) throws IOException {
         MoteurJeu.setFPS(30);
-        MoteurJeu.setTaille(800, 600);
 
         Labyrinthe laby = new Labyrinthe("data/laby/laby1.txt");
 
