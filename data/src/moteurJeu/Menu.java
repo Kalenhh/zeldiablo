@@ -17,7 +17,13 @@ public class Menu extends StackPane {
     private final Button boutonQuitter;
     private final ImageView fondMenu;
     private final Text texte;
-
+    /**
+     * 
+     * @param largueur_image
+     * @param hauteur_image
+     * 
+     * Methode qui permet d'afficher le menu au début du jeu
+     */
     public Menu(double largueur_image, double hauteur_image) {
 
         // Texte du menu

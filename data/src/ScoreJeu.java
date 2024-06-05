@@ -4,20 +4,44 @@ public class ScoreJeu {
     private String nomFichier;
 
     FileWriter fw;
-
+    /**
+     * 
+     * @param nomFichier
+     * @throws IOException
+     * 
+     * Constructeur du score du jeu, sauvegarder sur un fichier 
+     */
     public ScoreJeu(String nomFichier) throws IOException {
         this.nomFichier = nomFichier;
         this.fw = new FileWriter(nomFichier);
     }
-
+    /**
+     * 
+     * @param pseudo
+     * @param score
+     * @throws IOException
+     * 
+     * Methode qui permet de metre à jour le score contenue sur un fichier
+     */
     public void ajouterScore(String pseudo, int score) throws IOException {
         this.fw.write(pseudo + ";" + score + ";\r");
     }
-
+    /**
+     * 
+     * @throws IOException
+     * 
+     * Methode qui permet de fermer un de sauvegarde fichier 
+     */
     public void fermerFichier() throws IOException {
         this.fw.close();
     }
-
+    /**
+     * 
+     * @return
+     * @throws IOException
+     * 
+     * Methode qui permet de renvoyer le meilleur score contenue sur un fichier 
+     */
     public String getMeilleurScore() throws IOException{
         BufferedReader br = new BufferedReader(new FileReader(this.nomFichier));
         int meilleurScore = 0;
