@@ -1,5 +1,5 @@
 package Item;
-
+import Entite.Position;
 /**
  * Classe abstraite definissant les obstacles
  */
