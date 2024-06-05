@@ -39,5 +39,9 @@ public class ScoreJeu {
         return scoreMax;
     }
 
+    public int getScore(){
+        return 0;
+    }
+
 
 }

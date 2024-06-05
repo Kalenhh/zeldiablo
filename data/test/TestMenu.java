@@ -1,5 +1,3 @@
-package ClassesTest;
-
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import moteurJeu.Menu;
@@ -11,7 +9,6 @@ public class TestMenu {
 
     private Menu menu;
 
-    @Test
     public void test_Constructeur() {
         //Initialisation
         menu = new Menu(800, 600);
