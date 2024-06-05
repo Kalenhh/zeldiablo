@@ -1,6 +1,8 @@
 package Labyrinthe;
 
 import Entite.Perso;
+import Entite.Position;
+import Item.Fleur;
 import Item.Mur;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -37,14 +39,14 @@ public class LabyDessin implements DessinJeu {
         double py = p.getY();
         gc.fillOval(px*40+20-sc/2, py*40+20-sc/2, sc+5, sc+5);
 
-
-        for (int y = 0; y < laby.getLaby().getLengthY(); y++) {
-            // affiche la ligne
-            for (int x = 0; x < laby.getLaby().getLengthX(); x++) {
-                if (laby.getLaby().getMur(x, y) instanceof Mur) {
-                    gc.setFill(Color.BLACK);
-                    gc.fillRect(x * 40, y * 40, 40, 40);
-                }
+        for(Position pos : laby.getLaby().getGrid()){
+            if(pos instanceof Mur){
+                gc.setFill(Color.BLACK);
+                gc.fillRect(pos.getX() * 40, pos.getY() * 40, 40, 40);
+            }
+            if(pos instanceof Fleur){
+                gc.setFill(Color.GREEN);
+                gc.fillOval(pos.getX() * 40, pos.getY() * 40,40,40);
             }
         }
     }

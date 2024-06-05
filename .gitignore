@@ -8,9 +8,13 @@ target/
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
+.idea
 *.iws
 *.iml
 *.ipr
+pom.xml
+mvnw
+mvnw.cmd
 
 ### Eclipse ###
 .apt_generated
