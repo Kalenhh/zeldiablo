@@ -3,10 +3,6 @@
  */
 public class Joueur extends Perso {
 
-    /**
-     * Nom du joueur
-     */
-    private String nom;
 
     /**
      *
@@ -19,29 +15,6 @@ public class Joueur extends Perso {
     public Joueur(String nom, int x, int y,  int pv, int degats) {
         // constructeur de la classe parente Perso
         super(x, y,pv, degats);
-
-        // Initialise le nom du joueur
-        this.nom = nom;
-
-
-    }
-
-    /**
-     * @return le nom du joueur
-     */
-    public String getNom() {
-        return this.nom;
-    }
-
-    /**
-     * Définit le nom du joueur
-     *
-     * @param nom le nouveau nom du joueur
-     */
-
-
-    public void setNom(String nom) {
-        this.nom = nom;
     }
 
     public void attaquer(Entite e){
@@ -53,7 +26,7 @@ public class Joueur extends Perso {
     }
 
     public void subirDegat(int degats){
-        this.pv = this.pv-degats;
+        super.pv = super.pv-degats;
     }
 
     public boolean etrePresent(){
@@ -61,6 +34,6 @@ public class Joueur extends Perso {
     }
 
     public boolean etreMort(){
-        return this.pv ==0;
+        return super.pv ==0;
     }
 }
