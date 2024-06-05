@@ -5,12 +5,12 @@ public class Fleur extends Item{
     /**
      * Construit une Fleur
      * @param resistance solidite
-     * @param pointVie durabilite
+     * @param durabilite vie
      * @param x position abscisse
      * @param y position ordonnee
      */
-    public Fleur(int resistance, int pointVie, int x, int y) {
-        super(resistance, pointVie, x, y);
+    public Fleur(int resistance, int durabilite, int x, int y) {
+        super(resistance, durabilite, x, y);
     }
 
     /**

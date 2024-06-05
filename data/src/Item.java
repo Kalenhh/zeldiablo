@@ -5,25 +5,25 @@ public abstract class Item implements Position {
     //resistance qui correspond a la solidite de l'item
     private int resistance;
     //pointVie nombre de points de vie restant
-    private int pointVie;
+    private int durabilite;
 
     /**
-     * Construit un Item
+     * Construit une Item
      * @param resistance solidite
-     * @param pointVie durabilite
+     * @param durabilite vie
      * @param x position abscisse
      * @param y position ordonnee
      */
-    public Item(int resistance, int pointVie, int x, int y) {
+    public Item(int resistance, int durabilite, int x, int y) {
         //Verification du parametre de resistance
         if(resistance > 1){
             this.resistance = resistance;
         }else this.resistance = 1;
 
         //Verification du parametre de pv
-        if(pointVie > 0){
-            this.pointVie = pointVie;
-        }else this.pointVie = 1;
+        if(durabilite > 0){
+            this.durabilite = durabilite;
+        }else this.durabilite = 1;
         super(x,y);
     }
 
