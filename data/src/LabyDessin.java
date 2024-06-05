@@ -20,10 +20,22 @@ public class LabyDessin implements DessinJeu {
         gc.setFill(Color.LIGHTGRAY);
         gc.fillRect(0,0,canvas.getWidth(),canvas.getHeight());
 
+
+        int sc = laby.getLaby().getScore() ;
+        if(sc>40){
+            sc = 40 ;
+        }
+
         gc.setFill(Color.RED);
         Perso p = laby.getLaby().getPerso();
         double px = p.getX();
         double py = p.getY();
+        gc.fillOval(px*40+20-sc/2, py*40+20-sc/2, sc+5, sc+5);
+
+        gc.setFill(Color.GREEN);
+        Fleur f = laby.getLaby().getFleur();
+        px = f.getX();
+        py = f.getY();
         gc.fillOval(px*40, py*40, 40, 40);
 
         for (int y = 0; y < laby.getLaby().getLengthY(); y++) {
