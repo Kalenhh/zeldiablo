@@ -15,14 +15,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
-<<<<<<< HEAD
+
 import java.io.IOException;
 
 // copied from: https://gist.github.com/james-d/8327842
 // and modified to use canvas drawing instead of shapes
 
-=======
->>>>>>> 22c07fc6846d6413efa22a40985030f1f368f59d
 public class MoteurJeu extends Application {
 
     private static double FPS = 100;
@@ -94,7 +92,11 @@ public class MoteurJeu extends Application {
 
                 if (dureeEnMilliSecondes > dureeFPS) {
                     jeu.update(dureeEnMilliSecondes / 1_000., controle);
-                    dessin.dessinerJeu(jeu, canvas);
+                    try {
+                        dessin.dessinerJeu(jeu, canvas);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                     frameStats.addFrame(elapsedTime);
                     lastUpdateTime.set(timestamp);
                 }
@@ -103,7 +105,7 @@ public class MoteurJeu extends Application {
         timer.start();
     }
 
-    public void lancerJeu(){
+    public void lancerJeu() {
         Pane canvasContainer = new Pane();
         Canvas canvas = new Canvas();
         canvas.widthProperty().bind(canvasContainer.widthProperty());
@@ -142,59 +144,7 @@ public class MoteurJeu extends Application {
 
         startAnimation(canvas);
     }
-<<<<<<< HEAD
-
-    /**
-     * gestion de l'animation (boucle de jeu)
-     *
-     * @param canvas le canvas sur lequel on est synchronise
-     */
-    private void startAnimation(final Canvas canvas) {
-        // stocke la derniere mise e jour
-        final LongProperty lastUpdateTime = new SimpleLongProperty(0);
-
-        // timer pour boucle de jeu
-        final AnimationTimer timer = new AnimationTimer() {
-            @Override
-            public void handle(long timestamp) {
-
-                // si jamais passe dans la boucle, initialise le temps
-                if (lastUpdateTime.get() == 0) {
-                    lastUpdateTime.set(timestamp);
-                }
-
-                // mesure le temps ecoule depuis la derniere mise a jour
-                long elapsedTime = timestamp - lastUpdateTime.get();
-                double dureeEnMilliSecondes = elapsedTime / 1_000_000.0;
-
-
-                // si le temps ecoule depasse le necessaire pour FPS souhaite
-                if (dureeEnMilliSecondes > dureeFPS) {
-                    // met a jour le jeu en passant les touches appuyees
-                    jeu.update(dureeEnMilliSecondes / 1_000., controle);
-
-                    // dessine le jeu
-                    try {
-                        dessin.dessinerJeu(jeu, canvas);
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-
-                    // ajoute la duree dans les statistiques
-                    frameStats.addFrame(elapsedTime);
-
-                    // met a jour la date de derniere mise a jour
-                    lastUpdateTime.set(timestamp);
-                }
-
-            }
-        };
-
-        // lance l'animation
-        timer.start();
-=======
-    public void quitterJeu(){
+    public void quitterJeu () {
         System.exit(0);
->>>>>>> 22c07fc6846d6413efa22a40985030f1f368f59d
     }
 }

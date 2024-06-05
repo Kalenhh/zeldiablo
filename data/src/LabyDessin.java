@@ -31,7 +31,6 @@ public class LabyDessin implements DessinJeu {
         Perso p = laby.getLaby().getPerso();
         double px = p.getX();
         double py = p.getY();
-<<<<<<< HEAD
         gc.fillOval(px*40+20-sc/2, py*40+20-sc/2, sc+5, sc+5);
 
         gc.setFill(Color.GREEN);
@@ -39,9 +38,6 @@ public class LabyDessin implements DessinJeu {
         px = f.getX();
         py = f.getY();
         gc.fillOval(px*40, py*40, 40, 40);
-=======
-        gc.fillOval(px * 40, py * 40, 40, 40);
->>>>>>> 22c07fc6846d6413efa22a40985030f1f368f59d
 
         for (int y = 0; y < laby.getLaby().getLengthY(); y++) {
             // affiche la ligne
