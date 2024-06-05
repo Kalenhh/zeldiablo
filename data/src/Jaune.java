@@ -21,18 +21,6 @@ public class Jaune extends Monstre {
      */
 
 
-    /**
-     * @return le nom du Monstre
-     */
-    public String getNom() {
-        return super.getNom();
-    }
-
-    /**
-     * Définit le nom du joueur
-     *
-     * @param nom le nouveau nom du Monstre
-     */
 
 
     public void setNom(String nom) {
