@@ -118,7 +118,7 @@ public class Labyrinthe {
                         // pas de mur
                         this.murs[colonne][numeroLigne] = false;
                         // ajoute PJ
-                        this.pj = new Perso(colonne, numeroLigne);
+                        this.pj = new Perso(colonne, numeroLigne,(int)Math.random()*100, (int)Math.random()*100);
                         break;
 
                     default:
