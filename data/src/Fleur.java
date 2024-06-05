@@ -1,24 +1,16 @@
-
-
 /**
  * gere un personnage situe en x,y
  */
-public class Fleur {
-
+public class Fleur extends Item{
     /**
-     * position du personnage
+     * Construit une Fleur
+     * @param resistance solidite
+     * @param pointVie durabilite
+     * @param x position abscisse
+     * @param y position ordonnee
      */
-    int x, y;
-
-    /**
-     * constructeur
-     *
-     * @param dx position selon x
-     * @param dy position selon y
-     */
-    public Fleur(int dx, int dy) {
-        this.x = dx;
-        this.y = dy;
+    public Fleur(int resistance, int pointVie, int x, int y) {
+        super(resistance, pointVie, x, y);
     }
 
     /**
@@ -30,33 +22,6 @@ public class Fleur {
      */
     public boolean etrePresent(int dx, int dy) {
 
-        return (this.x == dx && this.y == dy);
-    }
-
-    // ############################################
-    // GETTER
-    // ############################################
-
-    /**
-     * @return position x du personnage
-     */
-    public int getX() {
-        // getter
-        return this.x;
-    }
-
-    /**
-     * @return position y du personnage
-     */
-    public int getY() {
-        //getter
-        return this.y;
-    }
-
-    public void setX(int px){
-        this.x = px ;
-    }
-    public void setY(int py){
-        this.y = py ;
+        return (this.getX() == dx && this.getY() == dy);
     }
 }
