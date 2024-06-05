@@ -3,10 +3,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Random;
 
+
 /**
- * classe labyrinthe. represente un labyrinthe avec
- * <ul> des murs </ul>
- * <ul> un personnage (x,y) </ul>
+ * classe labyrinthe. represente un labyrinthe
  */
 public class Labyrinthe {
 
@@ -14,8 +13,10 @@ public class Labyrinthe {
      * Constantes char
      */
     public static final char MUR = 'X';
-    public static final char PJ = 'P';
+    public static final char JOUEUR = 'P';
     public static final char VIDE = '.';
+    public static final char PLANTE = 'P';
+
 
     /**
      * constantes actions possibles
@@ -25,21 +26,80 @@ public class Labyrinthe {
     public static final String GAUCHE = "Gauche";
     public static final String DROITE = "Droite";
 
-    /**
-     * attribut du personnage
-     */
-    public Perso pj;
-
-    public Fleur fl;
-
-    public int score;
-
-    public Random rand = new Random();
+    public int NBR_LIGNE ;
+    public int NBR_COLONNE ;
 
     /**
-     * les murs du labyrinthe
+     * variable utilisé
      */
-    public boolean[][] murs;
+    private Perso pj;
+    private int score;
+    private Random rand;
+
+    /**
+     * les elements du labyrinthe
+     * Chaque éléments est défini par une Position
+     */
+    public Position[][] laby;
+
+
+    /**
+     * Constructeur
+     * charge le labyrinthe
+     *
+     * @param nom nom du fichier de labyrinthe
+     * @throws IOException probleme a la lecture / ouverture
+     */
+    public Labyrinthe(String nom) throws IOException {
+        // ouvrir fichier
+        FileReader fichier = new FileReader(nom);
+        BufferedReader bfRead = new BufferedReader(fichier);
+
+        int nbLignes, nbColonnes;
+        // lecture nblignes
+        NBR_LIGNE = Integer.parseInt(bfRead.readLine());
+        // lecture nbcolonnes
+        NBR_COLONNE = Integer.parseInt(bfRead.readLine());
+
+        // creation labyrinthe vide
+        this.laby = new Position[NBR_COLONNE][NBR_LIGNE];
+        this.pj = null;
+
+        // lecture des cases
+        String ligne = bfRead.readLine();
+
+        // stocke les indices courants
+        int numeroLigne = 0;
+
+        // parcours le fichier
+        while (ligne != null) {
+
+            // parcours de la ligne
+            for (int colonne = 0; colonne < ligne.length(); colonne++) {
+                char c = ligne.charAt(colonne);
+                switch (c) {
+                    case MUR:
+                        this.laby[colonne][numeroLigne] = new Mur(colonne,numeroLigne,10,10);
+                        break;
+                    case VIDE:
+                        this.laby[colonne][numeroLigne] = null;
+                        break;
+                    case JOUEUR:
+                        this.pj = new Perso(colonne, numeroLigne,0,0);
+                        this.laby[colonne][numeroLigne] = this.pj;
+                        break;
+                    default:
+                        throw new Error("caractere inconnu :" + c);
+                }
+            }
+
+            // lecture
+            ligne = bfRead.readLine();
+            numeroLigne++;
+        }
+        // ferme fichier
+        bfRead.close();
+    }
 
     /**
      * retourne la case suivante selon une actions
@@ -49,7 +109,7 @@ public class Labyrinthe {
      * @param action action effectuee
      * @return case suivante
      */
-    static int[] getSuivant(int x, int y, String action) {
+    static int[] getSuivant(int x, int y, String action){
         switch (action) {
             case HAUT:
                 // on monte une ligne
@@ -74,69 +134,6 @@ public class Labyrinthe {
     }
 
     /**
-     * charge le labyrinthe
-     *
-     * @param nom nom du fichier de labyrinthe
-     * @throws IOException probleme a la lecture / ouverture
-     */
-    public Labyrinthe(String nom) throws IOException {
-        // ouvrir fichier
-        FileReader fichier = new FileReader(nom);
-        BufferedReader bfRead = new BufferedReader(fichier);
-
-        int nbLignes, nbColonnes;
-        // lecture nblignes
-        nbLignes = Integer.parseInt(bfRead.readLine());
-        // lecture nbcolonnes
-        nbColonnes = Integer.parseInt(bfRead.readLine());
-
-        // creation labyrinthe vide
-        this.murs = new boolean[nbColonnes][nbLignes];
-        this.pj = null;
-        this.fl = new Fleur(1,1);
-
-        // lecture des cases
-        String ligne = bfRead.readLine();
-
-        // stocke les indices courants
-        int numeroLigne = 0;
-
-        // parcours le fichier
-        while (ligne != null) {
-
-            // parcours de la ligne
-            for (int colonne = 0; colonne < ligne.length(); colonne++) {
-                char c = ligne.charAt(colonne);
-                switch (c) {
-                    case MUR:
-                        this.murs[colonne][numeroLigne] = true;
-                        break;
-                    case VIDE:
-                        this.murs[colonne][numeroLigne] = false;
-                        break;
-                    case PJ:
-                        // pas de mur
-                        this.murs[colonne][numeroLigne] = false;
-                        // ajoute PJ
-                        this.pj = new Perso(colonne, numeroLigne,(int)Math.random()*100, (int)Math.random()*100);
-                        break;
-
-                    default:
-                        throw new Error("caractere inconnu " + c);
-                }
-            }
-
-            // lecture
-            ligne = bfRead.readLine();
-            numeroLigne++;
-        }
-
-        // ferme fichier
-        bfRead.close();
-    }
-
-
-    /**
      * deplace le personnage en fonction de l'action.
      * gere la collision avec les murs
      *
@@ -144,28 +141,16 @@ public class Labyrinthe {
      */
     public void deplacerPerso(String action) {
         // case courante
-        int[] courante = {this.pj.x, this.pj.y};
+        int[] courante = {this.pj.getX(), this.pj.getY()};
 
         // calcule case suivante
         int[] suivante = getSuivant(courante[0], courante[1], action);
 
         // si c'est pas un mur, on effectue le deplacement
-        if (!this.murs[suivante[0]][suivante[1]]) {
+        if (!(this.laby[suivante[0]][suivante[1]] instanceof Mur)) {
             // on met a jour personnage
-            this.pj.x = suivante[0];
-            this.pj.y = suivante[1];
-        }
-
-        if(this.pj.etrePresent(this.fl.getX(),this.fl.getY())){
-            score ++ ;
-            int x = this.rand.nextInt(5);
-            int y = this.rand.nextInt(5);
-            while(this.murs[x][y]==true){
-                x = this.rand.nextInt(5);
-                y = this.rand.nextInt(5);
-            }
-            this.fl.setX(x);
-            this.fl.setY(y);
+            this.pj.setX(suivante[0]);
+            this.pj.setY(suivante[1]);
         }
     }
 
@@ -189,7 +174,7 @@ public class Labyrinthe {
      * @return la taille y
      */
     public int getLengthY() {
-        return murs[0].length;
+        return laby[0].length;
     }
 
     /**
@@ -198,7 +183,7 @@ public class Labyrinthe {
      * @return la taille X
      */
     public int getLengthX() {
-        return murs.length;
+        return laby.length;
     }
 
     /**
@@ -208,9 +193,9 @@ public class Labyrinthe {
      * @param y position en y
      * @return booleen
      */
-    public boolean getMur(int x, int y) {
+    public Position getMur(int x, int y) {
         // utilise le tableau de boolean
-        return this.murs[x][y];
+        return this.laby[x][y];
     }
 
     /**
@@ -221,8 +206,6 @@ public class Labyrinthe {
     public Perso getPerso() {
         return this.pj;
     }
-
-    public Fleur getFleur(){return this.fl;}
 
     public int getScore(){return this.score;}
 }

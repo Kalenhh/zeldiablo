@@ -1,7 +1,7 @@
 /**
  * Classe abstraite definissant les obstacles
  */
-public abstract class Item implements Position {
+public abstract class Item extends Position {
     //resistance qui correspond a la solidite de l'item
     private int resistance;
     //pointVie nombre de points de vie restant
@@ -15,6 +15,7 @@ public abstract class Item implements Position {
      * @param y position ordonnee
      */
     public Item(int resistance, int durabilite, int x, int y) {
+        super(x,y);
         //Verification du parametre de resistance
         if(resistance > 1){
             this.resistance = resistance;
@@ -24,7 +25,6 @@ public abstract class Item implements Position {
         if(durabilite > 0){
             this.durabilite = durabilite;
         }else this.durabilite = 1;
-        super(x,y);
     }
 
 
@@ -51,7 +51,7 @@ public abstract class Item implements Position {
      * @return pv de l'item
      */
     public int getPointVie() {
-        return pointVie;
+        return durabilite;
     }
 
     /**
@@ -59,6 +59,6 @@ public abstract class Item implements Position {
      * @param pointVie nombre de pv
      */
     public void attaquer(int pointVie) {
-        this.pointVie -= pointVie;
+        this.durabilite -= pointVie;
     }
 }

@@ -33,17 +33,11 @@ public class LabyDessin implements DessinJeu {
         double py = p.getY();
         gc.fillOval(px*40+20-sc/2, py*40+20-sc/2, sc+5, sc+5);
 
-        gc.setFill(Color.GREEN);
-        Fleur f = laby.getLaby().getFleur();
-        px = f.getX();
-        py = f.getY();
-        gc.fillOval(px*40, py*40, 40, 40);
-        gc.fillOval(px * 40, py * 40, 40, 40);
 
         for (int y = 0; y < laby.getLaby().getLengthY(); y++) {
             // affiche la ligne
             for (int x = 0; x < laby.getLaby().getLengthX(); x++) {
-                if (laby.getLaby().getMur(x, y)) {
+                if (laby.getLaby().getMur(x, y) instanceof Mur) {
                     gc.setFill(Color.BLACK);
                     gc.fillRect(x * 40, y * 40, 40, 40);
                 }
