@@ -9,7 +9,6 @@ public class LabyDessin implements DessinJeu {
     /**
      * Dessine l'etat du jeu sur le canvas mis en parametres
      * Est appellé à toute les frames
-     *
      * @param jeu    jeu a afficher
      * @param canvas canvas dans lequel dessiner l'etat du jeu
      */
@@ -19,24 +18,12 @@ public class LabyDessin implements DessinJeu {
 
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.setFill(Color.LIGHTGRAY);
-        gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
-
-
-        int sc = laby.getLaby().getScore() ;
-        if(sc>40){
-            sc = 40 ;
-        }
+        gc.fillRect(0,0,canvas.getWidth(),canvas.getHeight());
 
         gc.setFill(Color.RED);
         Perso p = laby.getLaby().getPerso();
         double px = p.getX();
         double py = p.getY();
-        gc.fillOval(px*40+20-sc/2, py*40+20-sc/2, sc+5, sc+5);
-
-        gc.setFill(Color.GREEN);
-        Fleur f = laby.getLaby().getFleur();
-        px = f.getX();
-        py = f.getY();
         gc.fillOval(px*40, py*40, 40, 40);
 
         for (int y = 0; y < laby.getLaby().getLengthY(); y++) {
@@ -44,7 +31,7 @@ public class LabyDessin implements DessinJeu {
             for (int x = 0; x < laby.getLaby().getLengthX(); x++) {
                 if (laby.getLaby().getMur(x, y)) {
                     gc.setFill(Color.BLACK);
-                    gc.fillRect(x * 40, y * 40, 40, 40);
+                    gc.fillRect(x*40, y * 40, 40, 40);
                 }
             }
         }

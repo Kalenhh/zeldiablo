@@ -2,8 +2,6 @@ package moteurJeu;
 
 import javafx.scene.canvas.Canvas;
 
-import java.io.IOException;
-
 
 /**
  * interface pour afficher le jeu
@@ -16,6 +14,6 @@ public interface DessinJeu {
      * @param jeu    jeu a afficher
      * @param canvas canvas dans lequel dessiner l'etat du jeu
      */
-    void dessinerJeu(Jeu jeu, Canvas canvas) throws IOException;
+    void dessinerJeu(Jeu jeu, Canvas canvas);
 
 }

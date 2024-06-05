@@ -3,7 +3,7 @@
 /**
  * gere un personnage situe en x,y
  */
-public class Fleur {
+public class Perso {
 
     /**
      * position du personnage
@@ -16,13 +16,13 @@ public class Fleur {
      * @param dx position selon x
      * @param dy position selon y
      */
-    public Fleur(int dx, int dy) {
+    public Perso(int dx, int dy) {
         this.x = dx;
         this.y = dy;
     }
 
     /**
-     * permet de savoir si le Fleurnnage est en x,y
+     * permet de savoir si le personnage est en x,y
      *
      * @param dx position testee
      * @param dy position testee
@@ -51,13 +51,5 @@ public class Fleur {
     public int getY() {
         //getter
         return this.y;
-    }
-
-    public void setX(int px){
-        this.x = px ;
-    }
-
-    public void setY(int py){
-        this.y = py ;
     }
 }

@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Random;
 
 /**
  * classe labyrinthe. represente un labyrinthe avec
@@ -29,12 +28,6 @@ public class Labyrinthe {
      * attribut du personnage
      */
     public Perso pj;
-
-    public Fleur fl ;
-
-    private int score ;
-
-    private Random rand = new Random();
 
     /**
      * les murs du labyrinthe
@@ -93,8 +86,6 @@ public class Labyrinthe {
         // creation labyrinthe vide
         this.murs = new boolean[nbColonnes][nbLignes];
         this.pj = null;
-        this.fl = new Fleur(1,1);
-        this.score = 0 ;
 
         // lecture des cases
         String ligne = bfRead.readLine();
@@ -156,19 +147,6 @@ public class Labyrinthe {
             this.pj.x = suivante[0];
             this.pj.y = suivante[1];
         }
-
-        if(this.pj.etrePresent(fl.getX(),fl.getY())){
-            score++;
-            System.out.println(score);
-            int x = rand.nextInt(0,5);
-            int y = rand.nextInt(0,5);
-            while(this.murs[x][y]==true){
-                x = rand.nextInt(0,5);
-                y = rand.nextInt(0,5);
-            }
-            this.fl.setX(x);
-            this.fl.setY(y);
-        }
     }
 
 
@@ -220,15 +198,7 @@ public class Labyrinthe {
      *
      * @return pj
      */
-    public Perso getPerso() {
+    public Perso getPerso(){
         return this.pj;
-    }
-
-    public Fleur getFleur(){
-        return this.fl ;
-    }
-
-    public int getScore(){
-        return this.score;
     }
 }
