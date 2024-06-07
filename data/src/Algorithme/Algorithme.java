@@ -1,3 +1,5 @@
+package Algorithme;
+
 public interface Algorithme {
     /**
      * Interface permettant de resoudre un graphe
