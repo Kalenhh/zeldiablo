@@ -11,7 +11,7 @@ public class Rouge extends Monstre{
          * @param degats
          */
         public Rouge(int dx, int dy, int pv, int degats) {
-            super(dx, dy, pv, degats);
+            super(dx, dy, pv, degats,null);
         }
 
         /**

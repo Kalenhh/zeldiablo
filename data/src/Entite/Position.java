@@ -1,5 +1,7 @@
 package Entite;
 
+import Interaction.Interaction;
+
 public abstract class Position {
 
     //Coordonnees x et y
@@ -26,6 +28,8 @@ public abstract class Position {
     public int getY() {
         return y;
     }
+
+
 
     //Retourne si l'objet se trouve aux positions x et y en paramètre
     public boolean etrePresent(int x,int y){

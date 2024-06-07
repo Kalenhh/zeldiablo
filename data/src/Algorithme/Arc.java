@@ -1,5 +1,4 @@
 package Algorithme;
-
 public class Arc {
     /**
      * chaine correspondant au nom du noeud de destination de l'arc

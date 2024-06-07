@@ -1,5 +1,6 @@
 package Entite;
 
+import Interaction.InteractionJaune;
 import Labyrinthe.Labyrinthe;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class Jaune extends Monstre {
      * @param degats
      */
     public Jaune(int dx, int dy, int pv, int degats) {
-        super(dx, dy, pv, degats);
+        super(dx, dy, pv, degats,new InteractionJaune());
     }
 
     /**
@@ -42,6 +43,8 @@ public class Jaune extends Monstre {
 
     public void seDeplacer() {
 
+        setAncienX(getX());
+        setAncienY(getY());
 
         for (int[] direction : directions) {
             int newX = this.getX() + direction[0];
@@ -55,6 +58,10 @@ public class Jaune extends Monstre {
             this.setX(nouvellePosition[0]);
             this.setY(nouvellePosition[1]);
         }
+    }
+
+    public void interagir(Position cible){
+        getInteraction().interagirAvec(this,cible);
     }
     public void subirDegat(int degats) {
         super.subirDegat(degats);

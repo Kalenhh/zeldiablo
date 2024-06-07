@@ -1,5 +1,7 @@
 package Entite;
 
+import Interaction.Interaction;
+
 /**
  * gere un personnage situe en x,y
  */
@@ -17,8 +19,8 @@ public class Perso extends Entite{
      * @param dx position selon x
      * @param dy position selon y
      */
-    public Perso(int dx, int dy, int pv, int degats) {
-        super(dx,dy);
+    public Perso(int dx, int dy, int pv, int degats, Interaction inter) {
+        super(dx,dy,inter);
         this.pv = pv;
         this.degats = degats;
     }
@@ -59,6 +61,15 @@ public class Perso extends Entite{
     }
 
     public void seDeplacer() {
+    }
+
+    @Override
+    public void interagir(Position cible) {
+        return;
+    }
+
+    public void interagir(){
+
     }
 
 }

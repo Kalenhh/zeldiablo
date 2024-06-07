@@ -1,5 +1,7 @@
 package Entite;
 
+import Interaction.Interaction;
+
 public class Monstre extends Perso{
 
     /**
@@ -10,8 +12,8 @@ public class Monstre extends Perso{
      * @param pv
      * @param degats
      */
-    public Monstre(int dx, int dy, int pv, int degats) {
-        super(dx, dy,pv, degats);
+    public Monstre(int dx, int dy, int pv, int degats, Interaction inter) {
+        super(dx, dy,pv, degats,inter);
     }
 
     /**
@@ -19,7 +21,7 @@ public class Monstre extends Perso{
      */
 
         public void attaquer(Entite e){
-            e.subirDegat(super.degats);
+            e.subirDegat(degats);
         }
 
         public void seDeplacer(){
@@ -27,7 +29,7 @@ public class Monstre extends Perso{
         }
 
         public void subirDegat(int degats){
-            super.pv = super.pv-degats;
+            pv = pv-degats;
         }
 
         public boolean etrePresent(){
@@ -35,7 +37,7 @@ public class Monstre extends Perso{
         }
 
         public boolean etreMort(){
-            return super.pv ==0;
+            return pv ==0;
         }
 }
 

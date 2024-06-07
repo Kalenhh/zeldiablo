@@ -1,5 +1,7 @@
 package Item;
 import Entite.Position;
+import Interaction.Interaction;
+
 /**
  * Classe abstraite definissant les obstacles
  */

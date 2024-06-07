@@ -14,7 +14,7 @@ public class Joueur extends Perso {
      */
     public Joueur(int x, int y,  int pv, int degats) {
         // constructeur de la classe parente Entite.Perso
-        super(x, y,pv, degats);
+        super(x, y,pv, degats, null);
     }
 
     public void attaquer(Entite e){

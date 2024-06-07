@@ -83,6 +83,8 @@ public class Labyrinthe {
         this.pj = null;
         this.rand = new Random();
 
+        this.listeNoeud = new ArrayList<>();
+
         // lecture des cases
         String ligne = bfRead.readLine();
 
@@ -182,9 +184,23 @@ public class Labyrinthe {
     }
 
     public void deplacementEntite(){
+        for( Position p : grid){
+            if ( p instanceof Entite){
+                ((Entite) p).seDeplacer();
+            }
+        }
     }
 
     public void gererInteraction(){
+        for( Position p : grid){
+            if ( p instanceof Entite){
+                for(Position cible : grid){
+                    if(p.etrePresent(cible.getX(),cible.getY())){
+                        ((Entite) p).interagir(cible);
+                    }
+                }
+            }
+        }
     }
 
     /**
