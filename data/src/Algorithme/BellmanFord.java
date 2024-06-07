@@ -1,3 +1,5 @@
+package Algorithme;
+
 import java.util.ArrayList;
 
 public class BellmanFord implements Algorithme{
