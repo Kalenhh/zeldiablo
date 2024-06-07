@@ -10,7 +10,7 @@ public class Monstre extends Perso{
      * @param pv
      * @param degats
      */
-    public Monstre(int dx, int dy, int pv, int degats, String nom) {
+    public Monstre(int dx, int dy, int pv, int degats) {
         super(dx, dy,pv, degats);
     }
 

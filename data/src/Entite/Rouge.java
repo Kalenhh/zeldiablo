@@ -1,6 +1,6 @@
 package Entite;
 
-public class Rouge extends Perso{
+public class Rouge extends Monstre{
 
         /**
          * constructeur
@@ -10,7 +10,7 @@ public class Rouge extends Perso{
          * @param pv
          * @param degats
          */
-        public Rouge(int dx, int dy, int pv, int degats, String nom) {
+        public Rouge(int dx, int dy, int pv, int degats) {
             super(dx, dy, pv, degats);
         }
 
