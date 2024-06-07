@@ -1,5 +1,6 @@
 package Labyrinthe;
 
+import Algorithme.Arc;
 import Entite.*;
 import Item.Fleur;
 import Item.Mur;
@@ -44,13 +45,13 @@ public class Labyrinthe {
      */
     private Joueur pj;
     private int score;
-    private Random rand;
+    private final Random rand;
 
     /**
      * les elements du labyrinthe
      * Chaque éléments est défini par une Position
      */
-    private ArrayList<Position> grid;
+    private final ArrayList<Position> grid;
 
     /**
      * Sers au calcul des chemins par les entité
@@ -181,11 +182,9 @@ public class Labyrinthe {
     }
 
     public void deplacementEntite(){
-        return ;
     }
 
     public void gererInteraction(){
-        return;
     }
 
     /**
@@ -226,14 +225,19 @@ public class Labyrinthe {
      * @param d noeuds de depart
      * @return
      */
-    public ArrayList<String> getSuivants(String d){
-        ArrayList<String> ret = new ArrayList<>();
+    public ArrayList<Arc> getSuivants(String d){
+        ArrayList<Arc> ret = new ArrayList<>();
         int x = Integer.parseInt(d.split(":")[0]);
         int y = Integer.parseInt(d.split(":")[1]);
-        ret.add((x+1)+":"+y);
-        ret.add((x-1)+":"+y);
-        ret.add(x+":"+(y+1));
-        ret.add(x+":"+(y-1));
+        if(x+1 < NBR_COLONNE && this.listeNoeud.contains(x+1 + ":" + y))
+            ret.add(new Arc(x + 1 +":"+ y,1));
+        if(x-1 >= 0 && this.listeNoeud.contains(x-1 + ":" + y))
+            ret.add(new Arc(x-1 + ":" + y, 1));
+        if(y+1 < NBR_LIGNE && this.listeNoeud.contains(x + ":" + y+1))
+            ret.add(new Arc(x + ":" + y+1,1));
+        if(y-1 >= 0 && this.listeNoeud.contains(x + ":" + (y-1)))
+            ret.add(new Arc(x + ":" + (y-1),1));
+
         return ret;
     }
 

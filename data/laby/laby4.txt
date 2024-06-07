@@ -1,0 +1,12 @@
+10
+10
+XXXXXXXXXX
+X..X..R.XX
+X.Y..X.JXX
+XX.X...X.X
+XX..XX...X
+X....Y..XX
+XX.P..X..X
+X...X.X..X
+X.X..R..XX
+XXXXXXXXXX
