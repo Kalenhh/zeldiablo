@@ -40,3 +40,9 @@ build/
 
 ### Mac OS ###
 .DS_Store
+<<<<<<< HEAD
+=======
+
+*.class
+*.xml
+>>>>>>> 1cb7901 (gitignore)
