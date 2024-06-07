@@ -1,7 +1,6 @@
 package Labyrinthe;
 
-import Entite.Perso;
-import Entite.Position;
+import Entite.*;
 import Item.Fleur;
 import Item.Mur;
 
@@ -24,6 +23,9 @@ public class Labyrinthe {
     public static final char JOUEUR = 'J';
     public static final char VIDE = '.';
     public static final char PLANTE = 'P';
+    public static final char JAUNE = 'Y';
+    public static final char ROUGE = 'R';
+
 
 
     /**
@@ -40,7 +42,7 @@ public class Labyrinthe {
     /**
      * variable utilisé
      */
-    private Perso pj;
+    private Joueur pj;
     private int score;
     private Random rand;
 
@@ -85,16 +87,24 @@ public class Labyrinthe {
             for (int colonne = 0; colonne < ligne.length(); colonne++) {
                 char c = ligne.charAt(colonne);
                 switch (c) {
+                    //Si c'est un mur
                     case MUR:
                         this.grid.add(new Mur(0,0,colonne,numeroLigne));
                         break;
+                    //Si c'est une case vide
                     case VIDE:
                         break;
+                    //Si c'est une plante
                     case PLANTE:
                         this.grid.add(new Fleur(0,0,colonne,numeroLigne));
                         break;
+                    //Si c'est un monstre jaune
+                    case JAUNE:
+                        this.grid.add(new Jaune(0,0,colonne,numeroLigne));
+                        break;
+                    //Si c'est le joueur
                     case JOUEUR:
-                        this.pj = new Perso(colonne, numeroLigne,0,0);
+                        this.pj = new Joueur(colonne, numeroLigne,0,0);
                         this.grid.add(this.pj);
                         break;
                     default:

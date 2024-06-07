@@ -2,8 +2,6 @@ package Entite;
 
 public class Jaune extends Monstre {
 
-    private String nom;
-
     /**
      * constructeur
      *
@@ -14,8 +12,6 @@ public class Jaune extends Monstre {
      */
     public Jaune(int dx, int dy, int pv, int degats) {
         super(dx, dy, pv, degats);
-        this.nom = nom;
-
     }
 
     /**
@@ -24,11 +20,6 @@ public class Jaune extends Monstre {
 
 
 
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
     public void attaquer(Entite e) {
         e.subirDegat(this.degats);
     }
@@ -36,7 +27,6 @@ public class Jaune extends Monstre {
     public void sedeplacer() {
         //se déplace aleatoirement sur le terrain
     }
-
     public void subirDegat(int degats) {
         super.subirDegat(degats);
     }

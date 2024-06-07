@@ -8,6 +8,12 @@ Critère de validation :
 • Le menu s'ache dans la même JFrame que le rendu du jeu.
 • Pendant le menu, le jeu n'est pas créé et ne tourne pas
 
+
+
+
+
+
+
 2nd fonctionnalité :
 	Ajout d'une fleur, cette fleur peut être "manger" par le joueur. Lorsque le joueur mange la fleur, il grossit.
 Cela sera utile pour les futurs mécaniques de jeux car plus le joueur sera gros, plus il aura de force et de PV. 
@@ -17,6 +23,9 @@ Critère de validation
 • La fleur n'apparait jamais dans un mur
 • Le joueur peut avaler la fleur, dans ce cas elle disparait et réaparait a un autre endroit
 • Le joueur grossit a chaque fois que la fleur est avalé
+
+
+
 
 
 3eme fonctionnalité : 
