@@ -1,3 +1,5 @@
+package Algorithme;
+
 public class Arc {
     /**
      * chaine correspondant au nom du noeud de destination de l'arc
@@ -14,12 +16,9 @@ public class Arc {
      * @param d est une chaine
      * @param c est un reel
      */
-    public Arc(String d, double c) throws Exception {
+    public Arc(String d, double c){
         this.dest =  d;
-        if(c >= 0)
         this.cout = c;
-        else
-            throw new Exception("Un arc négatif est impossible");
     }
 
     /**
