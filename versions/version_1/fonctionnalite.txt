@@ -8,24 +8,17 @@ Critères de validation :
 • Le menu s'affiche dans la même JFrame que le rendu du jeu.
 • Pendant le menu, le jeu n'est pas créé et ne tourne pas
 
-Difficultés rencontrées : 
-
-j'ai rencontré quelques difficultés avec la gestion des boutons dans le menu principal.
-
+Difficultés rencontrées :
+--> j'ai rencontré quelques difficultés avec la gestion des boutons dans le menu principal.
 La première difficulté était dans la mise en place des actions associées à chaque bouton.
 J'ai passé du temps à comprendre comment démarrer le jeu seulement une fois que le bouton associé avait été utilisé.
 Ensuite, il y avait le fait de gérer la transition entre le menu principal et le jeu lui-même,
 tout en maintenant une seule racine de scène pour afficher les deux.
 C'était important pour éviter de géngerer plusieurs fenêtres.
-j'ai du coup réussi à mettre en place un système où le contenu du menu(représenté par une classe qui hérite d'un objet panneau)
-et du jeu était affiché dans la même scène, mais avec des racines différentes, selon l'état de l'application.
+j'ai du coup réussi à mettre en place un système où le contenu du menu
+(représenté par une classe qui hérite d'un objet panneau)
+et du jeu étaient affichés dans la même scène, mais avec des racines différentes, selon l'état de l'application.
 
-
-
-
-2nd fonctionnalité :
-	Ajout d'une fleur, cette fleur peut être "manger" par le joueur. Lorsque le joueur mange la fleur, il grossit.
-Cela sera utile pour les futurs mécaniques de jeux car plus le joueur sera gros, plus il aura de force et de PV.
 
 2nd fonctionnalité : MATHIEU
 --> Ajout d'une fleur, cette fleur peut être "mangée" par le joueur.
@@ -52,3 +45,6 @@ Critère de validation :
 • Le meilleur score est actualisé à chaque lecture du fichier csv
 
 Difficultés rencontrées :
+--> La plus grande difficulté au début de ce projet était de s'imprégner du programme
+pour savoir quelle classe ajouter, d'où l'utilité des diagrammes de classe. Une des difficultés intitiales
+était aussi de bien résoudre les conflits de git.
