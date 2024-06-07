@@ -52,6 +52,13 @@ public class Labyrinthe {
      */
     private ArrayList<Position> grid;
 
+    /**
+     * Sers au calcul des chemins par les entité
+     * les noeuds sont les coordonné entiere sous forme "x:y"
+     */
+    private ArrayList<String> listeNoeud;
+
+
 
     /**
      * Constructeur
@@ -93,6 +100,7 @@ public class Labyrinthe {
                         break;
                     //Si c'est une case vide
                     case VIDE:
+                        this.listeNoeud.add(numeroLigne+":"+colonne);
                         break;
                     //Si c'est une plante
                     case PLANTE:
@@ -158,7 +166,7 @@ public class Labyrinthe {
      *
      * @param action une des actions possibles
      */
-    public void deplacerPerso(String action) {
+    public void deplacerPerso(String action){
         // case courante
         int[] courante = {this.pj.getX(), this.pj.getY()};
 
@@ -212,6 +220,30 @@ public class Labyrinthe {
      */
     public boolean etreFini() {
         return false;
+    }
+
+    /**
+     * renvoie la liste des noeuds sous forme "x:y"
+     * @return
+     */
+    public ArrayList<String> getListeNoeud(){
+        return this.listeNoeud;
+    }
+
+    /**
+     * Renvoie la liste des noeuds adjacents
+     * @param d noeuds de depart
+     * @return
+     */
+    public ArrayList<String> getSuivants(String d){
+        ArrayList<String> ret = new ArrayList<>();
+        int x = Integer.parseInt(d.split(":")[0]);
+        int y = Integer.parseInt(d.split(":")[1]);
+        ret.add((x+1)+":"+y);
+        ret.add((x-1)+":"+y);
+        ret.add(x+":"+(y+1));
+        ret.add(x+":"+(y-1));
+        return ret;
     }
 
     // ##################################
