@@ -1,0 +1,10 @@
+1) Intégration du système de score
+    Affichage du score dans LabyDessin avec la methode getScore() de LabyJeu
+    Ecriture du score dans un fichier lorsque le jeu est fini   ; Nathan, Lucas
+
+2) Implémentation d'un système d'interaction (paradigme Strategie)
+    Les interactions sont géré par des classes différentes.     ; Mathieu
+
+3) Déplacements des monstres
+    Monstre Jaune : déplacement aléatoire   ; Hugo
+    Monstre Rouge : algo de Dijkstra        ; Melodie
