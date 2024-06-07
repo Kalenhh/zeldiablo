@@ -5,10 +5,15 @@ import moteurJeu.*;
 
 public class LabyJeu implements Jeu {
 
+    public static Double VITESSE_ENNEMIE = 0.5 ;
+
     private Labyrinthe laby;
+
+    private double tempsDerniereFrame ;
 
     public LabyJeu(Labyrinthe laby) {
         this.laby = laby;
+        this.tempsDerniereFrame = 0 ;
     }
 
     /**
@@ -30,6 +35,13 @@ public class LabyJeu implements Jeu {
         } else if (clavier.bas) {
             this.laby.deplacerPerso("Bas");
         }
+
+        if(tempsDerniereFrame>VITESSE_ENNEMIE){
+            tempsDerniereFrame = 0 ;
+            this.laby.deplacementEntite();
+            this.laby.gererInteraction();
+        }
+
     }
 
     /**

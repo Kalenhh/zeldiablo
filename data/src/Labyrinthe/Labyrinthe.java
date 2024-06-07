@@ -93,14 +93,15 @@ public class Labyrinthe {
             // parcours de la ligne
             for (int colonne = 0; colonne < ligne.length(); colonne++) {
                 char c = ligne.charAt(colonne);
+                this.listeNoeud.add(numeroLigne+":"+colonne);
                 switch (c) {
                     //Si c'est un mur
                     case MUR:
                         this.grid.add(new Mur(0,0,colonne,numeroLigne));
+                        this.listeNoeud.remove(numeroLigne+":"+colonne);
                         break;
                     //Si c'est une case vide
                     case VIDE:
-                        this.listeNoeud.add(numeroLigne+":"+colonne);
                         break;
                     //Si c'est une plante
                     case PLANTE:
@@ -175,26 +176,16 @@ public class Labyrinthe {
         this.pj.setX(suivante[0]);
         this.pj.setY(suivante[1]);
 
-        // si le deplacement fini sur un mur, on inverse le deplacement
-        for (Position p : this.grid){
-            if(p.etrePresent(suivante[0],suivante[1])) {
-                if (p instanceof Mur) {
-                    this.pj.setX(courante[0]);
-                    this.pj.setY(courante[1]);
-                }
-                if (p instanceof Fleur){
-                    score++;
-                    int x = rand.nextInt(NBR_COLONNE) ;
-                    int y = rand.nextInt(NBR_LIGNE) ;
-                    while(!estVide(x,y)){
-                        x = rand.nextInt(NBR_COLONNE) ;
-                        y = rand.nextInt(NBR_LIGNE) ;
-                    }
-                    p.setX(x);
-                    p.setY(y);
-                }
-            }
-        }
+        this.pj.setAncienX(courante[0]);
+        this.pj.setAncienY(courante[1]);
+    }
+
+    public void deplacementEntite(){
+        return ;
+    }
+
+    public void gererInteraction(){
+        return;
     }
 
     /**
