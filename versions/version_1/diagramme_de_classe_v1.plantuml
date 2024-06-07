@@ -1,0 +1,119 @@
+@startuml
+skinparam linetype ortho
+title Diagramme de classe première itération
+class Clavier {
+  + haut: boolean
+  + gauche: boolean
+  + droite: boolean
+  + bas: boolean
+  + appuyerTouche(KeyEvent): void
+  + relacherTouche(KeyEvent): void
+}
+interface DessinJeu << interface >> {
+  + dessinerJeu(Jeu, Canvas): void
+}
+class Fleur {
+  + etrePresent(int, int): boolean
+}
+class FrameStats {
+  - frameCount: long
+  - text: ReadOnlyStringWrapper
+  - meanFrameInterval: double
+  + getMeanFrameInterval(): double
+  + getText(): String
+  + textProperty(): ReadOnlyStringProperty
+  + toString(): String
+  + addFrame(long): void
+  + getFrameCount(): long
+}
+interface Jeu << interface >> {
+  + update(double, Clavier): void
+  + init(): void
+  + etreFini(): boolean
+}
+class LabyDessin {
+  + dessinerJeu(Jeu, Canvas): void
+}
+class LabyJeu {
+  - laby: Labyrinthe
+  + init(): void
+  + getLaby(): Labyrinthe
+  + update(double, Clavier): void
+  + etreFini(): boolean
+}
+class Labyrinthe {
+  + NBR_COLONNE: int
+  + VIDE: char
+  + BAS: String
+  + GAUCHE: String
+  - grid: ArrayList<Position>
+  + MUR: char
+  + JOUEUR: char
+  + NBR_LIGNE: int
+  - score: int
+  + HAUT: String
+  + DROITE: String
+  - pj: Perso
+  + PLANTE: char
+  - rand: Random
+  + getPerso(): Perso
+  ~ getSuivant(int, int, String): int[]
+  + estVide(int, int): boolean
+  + getScore(): int
+  + getGrid(): ArrayList<Position>
+  + deplacerPerso(String): void
+  + etreFini(): boolean
+}
+class MainLaby {
+  + main(String[]): void
+}
+class Menu {
+  - fondMenu: ImageView
+  - boutonJouer: Button
+  - boutonQuitter: Button
+  - texte: Text
+  + getBoutonJouer(): Button
+  + getFondMenu(): ImageView
+  + getBoutonQuitter(): Button
+  + getTexte(): Text
+}
+class MoteurJeu {
+  - HEIGHT: double
+  - jeu: Jeu
+  - dessin: DessinJeu
+  ~ controle: Clavier
+  - FPS: double
+  - primaryStage: Stage
+  - WIDTH: double
+  - frameStats: FrameStats
+  - dureeFPS: double
+  + setTaille(double, double): void
+  + start(Stage): void
+  + launch(Jeu, DessinJeu): void
+  - startAnimation(Canvas): void
+  + quitterJeu(): void
+  + setFPS(int): void
+  + lancerJeu(): void
+}
+
+
+class ScoreDessin {
+  + dessinerJeu(Jeu, Canvas): void
+}
+class ScoreJeu {
+  - nomFichier: String
+  ~ fw: FileWriter
+  + getMeilleurScore(): String
+  + ajouterScore(String, int): void
+  + fermerFichier(): void
+  + getScore(): int
+}
+class TestFleur
+class TestScore {
+  + test_scoreNegatif(): void
+}
+
+LabyDessin   -[#008200,dashed]-^  DessinJeu
+LabyJeu      -[#008200,dashed]-^  Jeu         
+ScoreDessin  -[#008200,dashed]-^  DessinJeu
+@enduml
