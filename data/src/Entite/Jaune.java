@@ -12,8 +12,8 @@ public class Jaune extends Monstre {
      * @param pv
      * @param degats
      */
-    public Jaune(int dx, int dy, int pv, int degats, String nom) {
-        super(dx, dy, pv, degats, nom);
+    public Jaune(int dx, int dy, int pv, int degats) {
+        super(dx, dy, pv, degats);
         this.nom = nom;
 
     }

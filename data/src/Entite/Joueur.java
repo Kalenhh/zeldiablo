@@ -8,13 +8,12 @@ public class Joueur extends Perso {
 
     /**
      *
-     * @param nom
      * @param x
      * @param y
      * @param pv
      * @param degats
      */
-    public Joueur(String nom, int x, int y,  int pv, int degats) {
+    public Joueur(int x, int y,  int pv, int degats) {
         // constructeur de la classe parente Entite.Perso
         super(x, y,pv, degats);
     }

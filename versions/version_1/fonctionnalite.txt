@@ -1,27 +1,34 @@
-1ere fonctionnalité : 
-	Plutot que de lancer directement le jeu, le joueur lance un menu qui lui permet de
+1ere fonctionnalité : HUGO
+--> Plutot que de lancer directement le jeu, le joueur lance un menu qui lui permet de
 lancer le jeu ou de quitter l'application. Ce menu ré-apparait lorsque le joueur gagne ou perd
 
-Critère de validation :
-• Le menu possède une image spécique.
+Critères de validation :
+• Le menu possède une image spécfique.
 • Le menu propose deux options jouer ou quitter.
-• Le menu s'ache dans la même JFrame que le rendu du jeu.
+• Le menu s'affiche dans la même JFrame que le rendu du jeu.
 • Pendant le menu, le jeu n'est pas créé et ne tourne pas
 
-2nd fonctionnalité :
-	Ajout d'une fleur, cette fleur peut être "manger" par le joueur. Lorsque le joueur mange la fleur, il grossit.
-Cela sera utile pour les futurs mécaniques de jeux car plus le joueur sera gros, plus il aura de force et de PV. 
 
-Critère de validation 
+
+2nd fonctionnalité : MATHIEU
+--> Ajout d'une fleur, cette fleur peut être "mangée" par le joueur.
+Lorsque le joueur mange la fleur, il grossit.
+Cela sera utile pour les futurs mécaniques de jeux car plus le joueur sera gros,
+plus il aura de force et de PV.
+
+Critères de validation
 • La fleur apparait dans le labyrinthe
 • La fleur n'apparait jamais dans un mur
 • Le joueur peut avaler la fleur, dans ce cas elle disparait et réaparait a un autre endroit
 • Le joueur grossit a chaque fois que la fleur est avalé
 
 
-3eme fonctionnalité : 
-	Ajout d'un score, le score n'était pas une fonctionnalitée proposé, mais nous l'avions trouvé intéressante. 
+
+3eme fonctionnalité : MELODY & NATHAN
+--> Ajout d'un score, le score n'était pas une fonctionnalitée proposé,
+mais nous l'avions trouvé intéressante.
+
 Critère de validation :
-• Creation d'un score avec un pseudo
-• Ecriture du score dans un fichier csv
-• Recherche du meilleur score dans le fichier, si pas de score retourne 0
+• Le score apparaît avec le pseudo du joueur concerné
+• Le score s'écrit dans un fichier csv
+• Le meilleur score est actualisé à chaque lecture du fichier csv
