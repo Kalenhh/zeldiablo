@@ -1,0 +1,14 @@
+Diagramme de séquence du menu:
+--> Création de l'interface menu
+    |-> Appel à start() dans MoteurJeu
+    |-> Création d'un objet Menu
+    |-> Lancement du jeu
+
+
+Diagramme de séquence du score
+--> Récupération du score
+    |-> Appel à getScore()
+
+
+Diagramme de classe du menu
+--> Gestion du menu du jeu
