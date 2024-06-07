@@ -5,7 +5,6 @@ package Entite;
  */
 public class Joueur extends Perso {
 
-
     /**
      *
      * @param x

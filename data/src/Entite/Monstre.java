@@ -22,7 +22,7 @@ public class Monstre extends Perso{
             e.subirDegat(super.degats);
         }
 
-        public void sedeplacer(){
+        public void seDeplacer(){
 
         }
 
