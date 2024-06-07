@@ -1,0 +1,191 @@
+@startuml
+
+top to bottom direction
+skinparam linetype ortho
+
+class Clavier {
+  + haut: boolean
+  + gauche: boolean
+  + droite: boolean
+  + bas: boolean
+  + appuyerTouche(KeyEvent): void
+  + relacherTouche(KeyEvent): void
+}
+interface DessinJeu << interface >> {
+  + dessinerJeu(Jeu, Canvas): void
+}
+class Entite {
+  + seDeplacer(int, int): void
+  + attaquer(Entite): void
+  + subirDegat(int): void
+  + etreMort(): boolean
+}
+class Fleur {
+  + etrePresent(int, int): boolean
+}
+class FrameStats {
+  - frameCount: long
+  - text: ReadOnlyStringWrapper
+  - meanFrameInterval: double
+  + getMeanFrameInterval(): double
+  + getText(): String
+  + textProperty(): ReadOnlyStringProperty
+  + toString(): String
+  + addFrame(long): void
+  + getFrameCount(): long
+}
+class Item {
+  - durabilite: int
+  - resistance: int
+  + briser(int): void
+  + attaquer(int): void
+  + getPointVie(): int
+  + getResistance(): int
+}
+class Jaune {
+  - nom: String
+  + attaquer(Entite): void
+  + etrePresent(): boolean
+  + setNom(String): void
+  + subirDegat(int): void
+  + etreMort(): boolean
+  + sedeplacer(): void
+}
+interface Jeu << interface >> {
+  + update(double, Clavier): void
+  + init(): void
+  + etreFini(): boolean
+}
+class Joueur {
+  + attaquer(Entite): void
+  + etrePresent(): boolean
+  + sedeplacer(): void
+  + etreMort(): boolean
+  + subirDegat(int): void
+}
+class LabyDessin {
+  + dessinerJeu(Jeu, Canvas): void
+}
+class LabyJeu {
+  - laby: Labyrinthe
+  + init(): void
+  + getLaby(): Labyrinthe
+  + update(double, Clavier): void
+  + etreFini(): boolean
+}
+class Labyrinthe {
+  + NBR_COLONNE: int
+  + VIDE: char
+  + BAS: String
+  + GAUCHE: String
+  - grid: ArrayList<Position>
+  + MUR: char
+  + JOUEUR: char
+  + NBR_LIGNE: int
+  - score: int
+  + HAUT: String
+  + DROITE: String
+  - pj: Perso
+  + PLANTE: char
+  - rand: Random
+  + getPerso(): Perso
+  ~ getSuivant(int, int, String): int[]
+  + estVide(int, int): boolean
+  + getScore(): int
+  + getGrid(): ArrayList<Position>
+  + deplacerPerso(String): void
+  + etreFini(): boolean
+}
+class MainLaby {
+  + main(String[]): void
+}
+class Menu {
+  - fondMenu: ImageView
+  - boutonJouer: Button
+  - boutonQuitter: Button
+  - texte: Text
+  + getBoutonJouer(): Button
+  + getFondMenu(): ImageView
+  + getBoutonQuitter(): Button
+  + getTexte(): Text
+}
+class Monstre {
+  + subirDegat(int): void
+  + sedeplacer(): void
+  + etrePresent(): boolean
+  + attaquer(Entite): void
+  + etreMort(): boolean
+}
+class MoteurJeu {
+  - HEIGHT: double
+  - jeu: Jeu
+  - dessin: DessinJeu
+  ~ controle: Clavier
+  - FPS: double
+  - primaryStage: Stage
+  - WIDTH: double
+  - frameStats: FrameStats
+  - dureeFPS: double
+  + setTaille(double, double): void
+  + start(Stage): void
+  + launch(Jeu, DessinJeu): void
+  - startAnimation(Canvas): void
+  + quitterJeu(): void
+  + setFPS(int): void
+  + lancerJeu(): void
+}
+class Mur
+class Perso {
+  ~ pv: int
+  ~ degats: int
+  + etrePresent(int, int): boolean
+  + subirDegat(int): void
+  + attaquer(Entite): void
+  + etreMort(): boolean
+}
+class Piege
+class Position {
+  - y: int
+  - x: int
+  + setX(int): void
+  + getX(): int
+  + etrePresent(int, int): boolean
+  + getY(): int
+  + setY(int): void
+}
+class Rouge {
+  + etrePresent(): boolean
+  + attaquer(Entite): void
+  + subirDegat(int): void
+  + sedeplacer(): void
+  + etreMort(): boolean
+}
+class ScoreDessin {
+  + dessinerJeu(Jeu, Canvas): void
+}
+class ScoreJeu {
+  - nomFichier: String
+  ~ fw: FileWriter
+  + getMeilleurScore(): String
+  + ajouterScore(String, int): void
+  + fermerFichier(): void
+  + getScore(): int
+}
+class TestFleur
+class TestScore {
+  + test_scoreNegatif(): void
+}
+
+Entite       -[#000082,plain]-^  Position
+Fleur        -[#000082,plain]-^  Item
+Jaune        -[#000082,plain]-^  Monstre     
+Joueur       -[#000082,plain]-^  Perso       
+LabyDessin   -[#008200,dashed]-^  DessinJeu   
+LabyJeu      -[#008200,dashed]-^  Jeu         
+Monstre      -[#000082,plain]-^  Perso       
+Mur          -[#000082,plain]-^  Item        
+Perso        -[#000082,plain]-^  Entite      
+Piege        -[#000082,plain]-^  Item        
+Rouge        -[#000082,plain]-^  Monstre     
+ScoreDessin  -[#008200,dashed]-^  DessinJeu   
+@enduml

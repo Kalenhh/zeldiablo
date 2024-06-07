@@ -22,7 +22,7 @@
   - le monstre et le personnage ne peuvent pas se trouver sur la même case.
   - le personnage ne peut pas traverser la case du monstre
 
-4. Déplacer le monstre (optionnel en fonction avancée)
+4. Déplacer le monstre (optionnel en fonction de notre avancée)
 - Descriptif :
   - lorsque le jeu évolue, le monstre choisit une case adjacente de manière aléatoire et tente de s'y déplacer.
 - Critères de validation :

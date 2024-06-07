@@ -2,7 +2,6 @@ import Labyrinthe.LabyJeu;
 import Labyrinthe.Labyrinthe;
 import moteurJeu.MoteurJeu;
 
-import java.awt.*;
 import java.io.IOException;
 import Labyrinthe.LabyDessin;
 

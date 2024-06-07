@@ -15,9 +15,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
-
-import java.io.IOException;
-
 // copied from: https://gist.github.com/james-d/8327842
 // and modified to use canvas drawing instead of shapes
 
