@@ -57,4 +57,8 @@ public class Perso extends Entite{
     public boolean etreMort() {
         return false;
     }
+
+    public void seDeplacer() {
+    }
+
 }

@@ -3,12 +3,18 @@ package Labyrinthe;
 import Entite.*;
 import Item.Fleur;
 import Item.Mur;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.util.Duration;
 import moteurJeu.DessinJeu;
 import moteurJeu.Jeu;
+
+import java.security.Key;
+import java.util.ArrayList;
 
 public class LabyDessin implements DessinJeu {
 
@@ -42,7 +48,7 @@ public class LabyDessin implements DessinJeu {
 
 
         //Monstres jaunes
-
+        ArrayList<Jaune> liste_montres_jaunes  = new ArrayList<>();
 
         //Monstres Rouges
 
@@ -62,11 +68,28 @@ public class LabyDessin implements DessinJeu {
             if (pos instanceof Jaune) {
                 gc.setFill(Color.YELLOW);
                 gc.fillOval(pos.getX() * 40, pos.getY() * 40, 40, 40);
+                liste_montres_jaunes.add((Jaune)pos);
             }
         }
 
         gc.setFill(Color.WHITE);
         gc.setFont(new Font("Arial", 30));
-        gc.fillText("Score: " +  sc, 10, 35);
+        gc.fillText("Score: " + sc, 10, 35);
+
+        Timeline deplacement_jaune = new Timeline(new KeyFrame(
+                // Intervalle de temps entre chaque déplacement
+                Duration.seconds(1), event -> {
+            for (Jaune jaune : liste_montres_jaunes) {
+                jaune.seDeplacer();
+            }
+        }
+        ));
+        // Répéter l'animation indéfiniment
+        deplacement_jaune.setCycleCount(Timeline.INDEFINITE);
+
+        // Démarrer le Timeline
+        deplacement_jaune.play();
+
     }
+
 }
