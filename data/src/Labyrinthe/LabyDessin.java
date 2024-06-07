@@ -6,6 +6,7 @@ import Item.Mur;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import moteurJeu.DessinJeu;
 import moteurJeu.Jeu;
 
@@ -63,5 +64,9 @@ public class LabyDessin implements DessinJeu {
                 gc.fillOval(pos.getX() * 40, pos.getY() * 40, 40, 40);
             }
         }
+
+        gc.setFill(Color.WHITE);
+        gc.setFont(new Font("Arial", 30));
+        gc.fillText("Score: " +  sc, 10, 35);
     }
 }
