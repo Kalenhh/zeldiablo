@@ -21,8 +21,8 @@ public class Joueur extends Perso {
         e.subirDegat(this.degats);
     }
 
-    public void sedeplacer(){
-
+    public void seDeplacer(){
+        return;
     }
 
     public void subirDegat(int degats){

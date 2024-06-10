@@ -47,10 +47,7 @@ public class LabyDessin implements DessinJeu {
         gc.fillOval(px * 40 + 20 - sc / 2, py * 40 + 20 - sc / 2, sc + 5, sc + 5);
 
 
-        //Monstres jaunes
-        ArrayList<Jaune> liste_montres_jaunes  = new ArrayList<>();
 
-        //Monstres Rouges
 
 
         for (Position pos : laby.getLaby().getGrid()) {
@@ -68,7 +65,6 @@ public class LabyDessin implements DessinJeu {
             if (pos instanceof Jaune) {
                 gc.setFill(Color.YELLOW);
                 gc.fillOval(pos.getX() * 40, pos.getY() * 40, 40, 40);
-                liste_montres_jaunes.add((Jaune)pos);
             }
         }
 
@@ -76,19 +72,7 @@ public class LabyDessin implements DessinJeu {
         gc.setFont(new Font("Arial", 30));
         gc.fillText("Score: " + sc, 10, 35);
 
-        Timeline deplacement_jaune = new Timeline(new KeyFrame(
-                // Intervalle de temps entre chaque déplacement
-                Duration.seconds(1), event -> {
-            for (Jaune jaune : liste_montres_jaunes) {
-                jaune.seDeplacer();
-            }
-        }
-        ));
-        // Répéter l'animation indéfiniment
-        deplacement_jaune.setCycleCount(Timeline.INDEFINITE);
 
-        // Démarrer le Timeline
-        deplacement_jaune.play();
 
     }
 

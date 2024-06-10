@@ -9,9 +9,12 @@ public class LabyJeu implements Jeu {
 
     private Labyrinthe laby;
 
+    private double temps ;
+
 
     public LabyJeu(Labyrinthe laby) {
         this.laby = laby;
+        this.temps = 0 ;
     }
 
     /**
@@ -34,7 +37,10 @@ public class LabyJeu implements Jeu {
             this.laby.deplacerPerso("Bas");
         }
 
-        if(secondes>VITESSE_ENNEMIE){
+        temps = temps + secondes ;
+        if(temps>VITESSE_ENNEMIE){
+            temps = 0 ;
+            System.out.println(temps);
             this.laby.deplacementEntite();
             this.laby.gererInteraction();
         }

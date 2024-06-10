@@ -11,8 +11,8 @@ public abstract class Entite extends Position{
 
     public Entite(int dx, int dy, Interaction inter){
         super(dx,dy);
-        this.ancienX = 0 ;
-        this.ancienY = 0 ;
+        this.ancienX = 1 ;
+        this.ancienY = 1 ;
         this.interaction = inter ;
     }
 

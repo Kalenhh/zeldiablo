@@ -112,7 +112,7 @@ public class Labyrinthe {
                         break;
                     //Si c'est un monstre jaune
                     case JAUNE:
-                        this.grid.add(new Jaune(0,0,colonne,numeroLigne));
+                        this.grid.add(new Jaune(colonne,numeroLigne,0,0));
                         break;
                     //Si c'est le joueur
                     case JOUEUR:

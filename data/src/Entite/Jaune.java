@@ -60,7 +60,8 @@ public class Jaune extends Monstre {
         }
     }
 
-    public void interagir(Position cible){
+    public void interagir(Position cible) {
+        System.out.println(this.getX()+" "+this.getY()+" "+ cible.getX()+" "+ cible.getY());
         getInteraction().interagirAvec(this,cible);
     }
     public void subirDegat(int degats) {
