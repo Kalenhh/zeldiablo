@@ -12,8 +12,8 @@ import moteurJeu.DessinJeu;
 import moteurJeu.Jeu;
 
 public class LabyDessin implements DessinJeu {
-    private GraphicsContext gc;
-    private LabyJeu laby;
+    public static GraphicsContext gc;
+    public static LabyJeu laby;
 
     @Override
     public void dessinerJeu(Jeu jeu, Canvas canvas) {
@@ -47,9 +47,16 @@ public class LabyDessin implements DessinJeu {
             }
         }
 
+        dessinerScore();
+    }
+
+    public static void dessinerScore(){
+        int sc = Score.score;
         // Affiche le score
-        gc.setFill(Color.WHITE);
-        gc.setFont(new Font("Arial", 30));
-        gc.fillText("Score: " + sc, 10, 35);
+        if(gc != null){
+            gc.setFill(Color.WHITE);
+            gc.setFont(new Font("Arial", 30));
+            gc.fillText("Score: " + sc, 10, 35);
+        }
     }
 }

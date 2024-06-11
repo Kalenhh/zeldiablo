@@ -80,7 +80,7 @@ public class LabyJeu implements Jeu {
             MoteurJeu.retournerAuMenu();
         };
 
-
+        LabyDessin.dessinerScore();
     }
 
 
