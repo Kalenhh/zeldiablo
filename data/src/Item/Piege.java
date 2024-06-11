@@ -1,5 +1,7 @@
 package Item;
 
+import Interaction.InteractionPiege;
+
 /**
  * Obstacle piege empechant le joueur d'avancer
  */
@@ -12,6 +14,6 @@ public class Piege extends Item{
      * @param y position ordonnee
      */
     public Piege(int resistance, int durabilite, int x, int y){
-        super(resistance, durabilite, x ,y);
+        super(resistance, durabilite, x ,y, new InteractionPiege());
     }
 }

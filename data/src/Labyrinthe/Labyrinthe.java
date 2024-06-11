@@ -30,8 +30,8 @@ public class Labyrinthe implements Graphe {
     public static final String GAUCHE = "Gauche";
     public static final String DROITE = "Droite";
 
-    private final int NBR_LIGNE;
-    private final int NBR_COLONNE;
+    public static int NBR_LIGNE = 0;
+    public static int NBR_COLONNE = 0;
 
     // Variables utilisées
     private Joueur pj;
