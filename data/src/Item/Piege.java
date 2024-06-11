@@ -14,6 +14,6 @@ public class Piege extends Item{
      * @param y position ordonnee
      */
     public Piege(int resistance, int durabilite, int x, int y){
-        super(resistance, durabilite, x ,y, new InteractionPiege());
+        super(resistance, durabilite, x ,y);
     }
 }
