@@ -32,7 +32,7 @@ public class Labyrinthe implements Graphe {
     public static final String GAUCHE = "Gauche";
     public static final String DROITE = "Droite";
 
-    public static String path = "data/laby/laby6.txt" ;
+    public static String path = "laby/laby6.txt" ;
 
     public static int NBR_LIGNE = 0;
     public static int NBR_COLONNE = 0;
