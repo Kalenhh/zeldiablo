@@ -1,0 +1,44 @@
+@startuml
+participant Actor
+Actor -> Jaune : seDeplacer
+activate Jaune
+Jaune -> Position : getX
+activate Position
+Position --> Jaune
+deactivate Position
+Jaune -> Entite : setAncienX
+activate Entite
+Entite --> Jaune
+deactivate Entite
+Jaune -> Position : getY
+activate Position
+Position --> Jaune
+deactivate Position
+Jaune -> Entite : setAncienY
+activate Entite
+Entite --> Jaune
+deactivate Entite
+loop directions
+Jaune -> Position : getX
+activate Position
+Position --> Jaune
+deactivate Position
+Jaune -> Position : getY
+activate Position
+Position --> Jaune
+deactivate Position
+alt Labyrinthe.listeNoeud.contains(newX+":"+newY)
+end
+end
+alt !positionsPossibles.isEmpty()
+Jaune -> Position : setX
+activate Position
+Position --> Jaune
+deactivate Position
+Jaune -> Position : setY
+activate Position
+Position --> Jaune
+deactivate Position
+end
+return
+@enduml
