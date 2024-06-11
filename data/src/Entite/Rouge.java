@@ -65,12 +65,11 @@ public class Rouge extends Monstre {
         this.setY(nouvellePosition[1]);
     }
 
-    @Override
+
     public void interagir(Position cible) {
+        System.out.println(this.getX() + " " + this.getY() + " " + cible.getX() + " " + cible.getY());
         getInteraction().interagirAvec(this, cible);
     }
-
-
 
     /**
      * Vérifie si le monstre est présent aux coordonnées (x, y).
