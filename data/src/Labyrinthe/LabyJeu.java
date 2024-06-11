@@ -86,14 +86,17 @@ public class LabyJeu implements Jeu {
 
 
     protected void verifierMonstresMorts(Labyrinthe laby) {
-        ArrayList<Position> al = laby.getGrid();
-        for (Position pos : al){
+        ArrayList<Position> al = new ArrayList<>();
+        for (Position pos : laby.getGrid()){
             if(pos instanceof Monstre){
                 if(((Monstre) pos).etreMort()){
-                    laby.getGrid().remove(pos);
+                    al.add(pos);
                     Score.score += 2;
                 }
             }
+        }
+        for (Position pos : al){
+            laby.getGrid().remove(pos);
         }
     }
 

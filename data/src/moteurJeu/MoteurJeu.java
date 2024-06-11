@@ -183,6 +183,7 @@ public class MoteurJeu extends Application {
         }
 
         public static void retournerAuMenu () throws IOException {
+            stopAnimation();
             if(Score.bestScore < Score.score){
                 Score.bestScore = Score.score;
             }
