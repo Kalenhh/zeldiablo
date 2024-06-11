@@ -12,12 +12,14 @@ import moteurJeu.DessinJeu;
 import moteurJeu.Jeu;
 
 public class LabyDessin implements DessinJeu {
+    private GraphicsContext gc;
+    private LabyJeu laby;
 
     @Override
     public void dessinerJeu(Jeu jeu, Canvas canvas) {
-        LabyJeu laby = (LabyJeu) jeu;
+        laby = (LabyJeu) jeu;
 
-        GraphicsContext gc = canvas.getGraphicsContext2D();
+        gc = canvas.getGraphicsContext2D();
         gc.setFill(Color.LIGHTGREEN);
         gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
@@ -25,13 +27,6 @@ public class LabyDessin implements DessinJeu {
         if (sc > 40) {
             sc = 40;
         }
-
-        // Dessine le personnage jouable
-//        gc.setFill(Color.RED);
-//        Joueur p = (Joueur)laby.getLaby().getPerso();
-//        double px = p.getX();
-//        double py = p.getY();
-//        gc.fillOval(px * 40 + 20 - (double) sc / 2, py * 40 + 20 - (double) sc / 2, sc + 5, sc + 5);
 
         // Dessine les autres éléments du labyrinthe
         for (Position pos : laby.getLaby().getGrid()) {
