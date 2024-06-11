@@ -1,0 +1,27 @@
+@startuml
+participant Actor
+Actor -> LabyJeu : verifierMonstresMorts
+activate LabyJeu
+
+loop laby.getGrid()
+alt pos instanceof Monstre
+LabyJeu -> Perso : etreMort
+activate Perso
+Perso --> LabyJeu
+deactivate Perso
+alt ((Monstre) pos).etreMort()
+LabyJeu -> ArrayList : add
+activate ArrayList
+ArrayList --> LabyJeu
+deactivate ArrayList
+end
+end
+end
+loop al
+LabyJeu -> ArrayList : remove
+activate ArrayList
+ArrayList --> LabyJeu
+deactivate ArrayList
+end
+return
+@enduml
