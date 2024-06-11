@@ -1,0 +1,82 @@
+@startuml
+participant Actor
+Actor -> InteractionRouge : interagirAvec
+activate InteractionRouge
+alt p instanceof Mur
+InteractionRouge -> Entite : getAncienX
+activate Entite
+Entite --> InteractionRouge
+deactivate Entite
+InteractionRouge -> Position : setX
+activate Position
+Position --> InteractionRouge
+deactivate Position
+InteractionRouge -> Entite : getAncienY
+activate Entite
+Entite --> InteractionRouge
+deactivate Entite
+InteractionRouge -> Position : setY
+activate Position
+Position --> InteractionRouge
+deactivate Position
+end
+alt p instanceof Joueur
+InteractionRouge -> Perso : etreMort
+activate Perso
+Perso --> InteractionRouge
+deactivate Perso
+alt !((Joueur) p).etreMort()
+InteractionRouge -> Entite : attaquer
+activate Entite
+Entite --> InteractionRouge
+deactivate Entite
+end
+InteractionRouge -> Entite : getAncienX
+activate Entite
+Entite --> InteractionRouge
+deactivate Entite
+InteractionRouge -> Position : setX
+activate Position
+Position --> InteractionRouge
+deactivate Position
+InteractionRouge -> Entite : getAncienY
+activate Entite
+Entite --> InteractionRouge
+deactivate Entite
+InteractionRouge -> Position : setY
+activate Position
+Position --> InteractionRouge
+deactivate Position
+end
+alt p instanceof Fleur
+alt e instanceof Perso
+InteractionRouge -> Perso : getPv
+activate Perso
+Perso --> InteractionRouge
+deactivate Perso
+InteractionRouge -> Perso : setPv
+activate Perso
+Perso --> InteractionRouge
+deactivate Perso
+end
+end
+alt p instanceof Monstre
+InteractionRouge -> Entite : getAncienX
+activate Entite
+Entite --> InteractionRouge
+deactivate Entite
+InteractionRouge -> Position : setX
+activate Position
+Position --> InteractionRouge
+deactivate Position
+InteractionRouge -> Entite : getAncienY
+activate Entite
+Entite --> InteractionRouge
+deactivate Entite
+InteractionRouge -> Position : setY
+activate Position
+Position --> InteractionRouge
+deactivate Position
+end
+return
+@enduml
