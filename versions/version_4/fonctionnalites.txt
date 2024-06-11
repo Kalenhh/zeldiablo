@@ -1,0 +1,19 @@
+1) Fin du jeu : mort du héros
+Lorsque le héros n'a plus de points de vie, le jeu s'arrête et la partie est perdue.
+Critères de validation
+• Le héros par défaut dispose de 5 points de vie.
+• Chaque monstre fait 1 point de dégât lorsque le héros se fait attaquer.
+• Quand le héros meurt, un message de fin est affiché sur la console et le jeu s'arrête.
+
+2) Monstres au comportement intelligent
+  A chaque fois que les monstres se déplacent, ils se rapprochent dans la direction du
+  héros en prenant en compte la présence des murs.
+  Critères de validation
+  • Avant son déplacement, le monstre détermine le meilleur chemin pour atteindre
+  le héros.
+  • Le monstre prend en compte les obstacles qui le concernent pour trouver le meilleur
+  chemin.
+  • lorsqu'il se déplace, le monstre suit effectivement le meilleur chemin et parvient
+  jusqu'au héros même s'il y a des obstacles.
+  • vous pourrez vous inspirer (a) des transparents "IA dans le jeu vidéo" (transparents 112-130) ou (b) (c) du site redblob (avec de nombreuses démonstrations
+  autour du jeu vidéo)
