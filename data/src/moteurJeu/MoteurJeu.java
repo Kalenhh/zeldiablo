@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
 
 import java.io.IOException;
 
@@ -161,6 +162,16 @@ public class MoteurJeu extends Application {
             vbox.setSpacing(20);
             vbox.setAlignment(Pos.CENTER);
             root.setCenter(vbox);
+
+//            // Ajouter une image en arrière-plan
+//            String imagePath = "img/blob_gameOver.jpg"; // Remplacez par le chemin d'accès à votre image
+//            BackgroundImage backgroundImage = new BackgroundImage(new Image(imagePath),
+//                    BackgroundRepeat.NO_REPEAT, // Ne pas répéter l'image
+//                    BackgroundRepeat.NO_REPEAT, // Ne pas répéter l'image
+//                    BackgroundPosition.DEFAULT, // Position par défaut
+//                    new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, true, true, true, true) // Taille de l'image
+//            );
+//            root.setBackground(new Background(backgroundImage));
 
             Scene gameOverScene = new Scene(root, WIDTH, HEIGHT);
             primaryStage.setScene(gameOverScene);
