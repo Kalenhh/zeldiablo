@@ -42,6 +42,10 @@ public class Rouge extends Monstre {
      * Implémentation à définir selon la logique de déplacement spécifique.
      */
     public void seDeplacer() {
+        this.setAncienX(this.getX());
+        this.setAncienY(this.getY());
+
+
         //se deplace de sorte a ce qu'il se déplace comstamment vers le joueur
         int x = this.getX();
         int y = this.getY();

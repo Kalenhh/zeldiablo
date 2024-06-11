@@ -1,5 +1,7 @@
 package Item;
 
+import Interaction.InteractionMur;
+
 /**
  * Obstacle mur pouvant etre casse
  */
@@ -12,6 +14,6 @@ public class Mur extends Item{
      * @param y position ordonnee
      */
     public Mur(int resistance, int durabilite, int x, int y){
-        super(resistance, durabilite, x, y);
+        super(resistance, durabilite, x, y, new InteractionMur());
     }
 }

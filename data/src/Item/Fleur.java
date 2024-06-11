@@ -1,5 +1,7 @@
 package Item;
 
+import Interaction.InteractionFleur;
+
 /**
  * gere un personnage situe en x,y
  */
@@ -12,7 +14,7 @@ public class Fleur extends Item{
      * @param y position ordonnee
      */
     public Fleur(int resistance, int durabilite, int x, int y) {
-        super(resistance, durabilite, x, y);
+        super(resistance, durabilite, x, y, new InteractionFleur());
     }
 
     /**
@@ -26,6 +28,4 @@ public class Fleur extends Item{
 
         return (this.getX() == dx && this.getY() == dy);
     }
-
-
 }
