@@ -50,27 +50,20 @@ public class Rouge extends Monstre {
         int x = this.getX();
         int y = this.getY();
         //On résout le labyrinthe avec comme coordonnée de départ celle du slime
-        System.out.println(x + " : " + y);
         Valeur v = this.dj.resoudre(this.l, x+":"+y);
-        System.out.println(this.dj.resoudre(this.l,x+":"+y));
         ArrayList<String> chemin = (ArrayList<String>) v.calculerChemin(l.getPerso().getX() + ":" + l.getPerso().getY());
-        System.out.println("size : " + chemin.size());
-        System.out.println(chemin);
         if(chemin.size() == 1){
             return;
         }
         String[] position = chemin.get(1).split(":");
 
         int[] nouvellePosition = {Integer.parseInt(position[0]), Integer.parseInt(position[1])};
-        System.out.println(nouvellePosition[0]);
-        System.out.println(nouvellePosition[1]);
         this.setX(nouvellePosition[0]);
         this.setY(nouvellePosition[1]);
     }
 
 
     public void interagir(Position cible) {
-        System.out.println(this.getX() + " " + this.getY() + " " + cible.getX() + " " + cible.getY());
         getInteraction().interagirAvec(this, cible);
     }
 

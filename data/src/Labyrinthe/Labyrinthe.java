@@ -228,7 +228,6 @@ public class Labyrinthe implements Graphe {
     public ArrayList<Arc> suivants(String d){
 
         if(!this.listeNoeuds().contains(d)){
-            System.out.println("D = " + d);
             return null;
         }
 
