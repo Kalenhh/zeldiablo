@@ -98,6 +98,11 @@ public class Score implements Jeu {
         return false;
     }
 
+    @Override
+    public boolean tousMonstresElimines() {
+        return false;
+    }
+
 
 }
 

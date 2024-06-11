@@ -48,5 +48,9 @@ public class Joueur extends Perso {
     public int getPv() {
         return pv;
     }
+
+    public void setPv(int i) {
+        this.pv = i;
+    }
 }
 

@@ -1,7 +1,5 @@
 package moteurJeu;
 
-import Entite.Joueur;
-import Labyrinthe.LabyJeu;
 import Labyrinthe.Score;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -12,8 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -22,8 +18,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MoteurJeu extends Application {
-
-    private static Joueur joueur;
 
     private static double FPS = 100;
     private static double dureeFPS = 1000 / (FPS + 1);
@@ -38,7 +32,7 @@ public class MoteurJeu extends Application {
 
     private static Stage primaryStage;
 
-    private static Clavier controle = new Clavier();
+    private static final Clavier controle = new Clavier();
 
     private static AnimationTimer timer;
 
@@ -61,7 +55,7 @@ public class MoteurJeu extends Application {
     }
 
     public void start (Stage primaryStage) throws IOException {
-        this.primaryStage = primaryStage;
+        MoteurJeu.primaryStage = primaryStage;
         Score score = new Score("score.csv");
         Menu menu = new Menu(WIDTH, HEIGHT, score);
 
@@ -125,7 +119,11 @@ public class MoteurJeu extends Application {
                     double dureeEnMilliSecondes = elapsedTime / 1_000_000.0;
 
                     if (dureeEnMilliSecondes > dureeFPS) {
-                        jeu.update(dureeEnMilliSecondes / 1_000., controle);
+                        try {
+                            jeu.update(dureeEnMilliSecondes / 1_000., controle);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                         dessin.dessinerJeu(jeu, canvas);
                         frameStats.addFrame(elapsedTime);
                         lastUpdateTime.set(timestamp);
@@ -170,7 +168,7 @@ public class MoteurJeu extends Application {
             System.exit(0);
         }
 
-        private static void retournerAuMenu () throws IOException {
+        public static void retournerAuMenu () throws IOException {
             Menu menu = new Menu(WIDTH, HEIGHT, new Score("score.csv"));
 
             menu.getBoutonJouer().setOnAction(e -> lancerJeu());

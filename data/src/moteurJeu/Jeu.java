@@ -14,7 +14,7 @@ public interface Jeu {
      * @param secondes temps ecoule depuis la derniere mise a jour
      * @param clavier  objet contenant l'état du clavier'
      */
-    void update(double secondes, Clavier clavier);
+    void update(double secondes, Clavier clavier) throws IOException;
 
     /**
      * initialisation du jeu
@@ -28,6 +28,6 @@ public interface Jeu {
      */
     boolean etreFini();
 
-    default void resetPV_joueur(){
-    }
+    public abstract boolean tousMonstresElimines();
+
 }

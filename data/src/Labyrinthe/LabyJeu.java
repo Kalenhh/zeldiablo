@@ -1,13 +1,11 @@
 package Labyrinthe;
 import Entite.Joueur;
 import Entite.Monstre;
-import Entite.Perso;
 import Entite.Position;
 import moteurJeu.*;
 
 import java.io.IOException;
 import java.util.Iterator;
-
 /**
  * Classe LabyJeu qui implémente l'interface Jeu.
  * Elle est responsable de la gestion du jeu, des mises à jour et des interactions.
@@ -41,7 +39,7 @@ public class LabyJeu implements Jeu {
      * @param clavier  objet contenant l'état du clavier
      */
     @Override
-    public void update(double secondes, Clavier clavier) {
+    public void update(double secondes, Clavier clavier) throws IOException {
         temps_joueur += secondes ;
 
         if (clavier.droite && temps_joueur > VITESSE_JOUEUR) {
@@ -78,6 +76,11 @@ public class LabyJeu implements Jeu {
 
         verifierMonstresMorts(laby);
 
+        if(tousMonstresElimines()){
+            MoteurJeu.retournerAuMenu();
+        };
+
+
     }
 
 
@@ -85,14 +88,23 @@ public class LabyJeu implements Jeu {
         Iterator<Position> iterator = laby.getGrid().iterator();
         while (iterator.hasNext()) {
             Position pos = iterator.next();
-            if (pos instanceof Monstre) {
-                Monstre monstre = (Monstre) pos;
+            if (pos instanceof Monstre monstre) {
                 if (monstre.etreMort()) {
                     iterator.remove();
                 }
             }
         }
     }
+
+    public boolean tousMonstresElimines() {
+        for (Position pos : laby.getGrid()) {
+            if (pos instanceof Monstre) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 
 
     /**
@@ -125,12 +137,4 @@ public class LabyJeu implements Jeu {
     public Labyrinthe getLaby() {
         return this.laby;
     }
-
-    public void reset() {
-        Joueur joueur = (Joueur)laby.getPerso();
-        joueur.setPv(2); // Réinitialiser les PV du joueur
-        // Réinitialiser le jeu à son état initial
-
-    }
-
 }
