@@ -30,6 +30,8 @@ public class Labyrinthe implements Graphe {
     public static final String GAUCHE = "Gauche";
     public static final String DROITE = "Droite";
 
+    public static String path = "data/laby/laby5.txt" ;
+
     public static int NBR_LIGNE = 0;
     public static int NBR_COLONNE = 0;
 
@@ -38,23 +40,20 @@ public class Labyrinthe implements Graphe {
     private int score;
 
     // Les éléments du labyrinthe
-    private final ArrayList<Position> grid;
+    public final ArrayList<Position> grid;
 
     // Liste des noeuds pour le calcul des chemins
-    private final ArrayList<String> listeNoeud;
-
-
+    public static ArrayList<String> listeNoeud = new ArrayList<>();
 
 
     /**
      * Constructeur. Charge le labyrinthe à partir d'un fichier.
      *
-     * @param chemin nom du fichier de labyrinthe
      * @throws IOException si une erreur survient lors de la lecture du fichier
      */
-    public Labyrinthe(String chemin) throws IOException {
+    public Labyrinthe() throws IOException {
         // ouvrir fichier
-        FileReader fichier = new FileReader(chemin);
+        FileReader fichier = new FileReader(path);
         BufferedReader bfRead = new BufferedReader(fichier);
 
         // lecture nblignes

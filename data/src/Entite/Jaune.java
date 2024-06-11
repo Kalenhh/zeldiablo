@@ -1,6 +1,7 @@
 package Entite;
 
 import Interaction.InteractionJaune;
+import Labyrinthe.Labyrinthe;
 
 
 import java.util.ArrayList;
@@ -55,7 +56,9 @@ public class Jaune extends Monstre {
             int newX = this.getX() + direction[0];
             int newY = this.getY() + direction[1];
 
-            positionsPossibles.add(new int[]{newX, newY});
+            if(Labyrinthe.listeNoeud.contains(newX+":"+newY)){
+                positionsPossibles.add(new int[]{newX, newY});
+            }
         }
 
         if (!positionsPossibles.isEmpty()) {

@@ -85,12 +85,10 @@ public class LabyJeu implements Jeu {
 
 
     protected void verifierMonstresMorts(Labyrinthe laby) {
-        Iterator<Position> iterator = laby.getGrid().iterator();
-        while (iterator.hasNext()) {
-            Position pos = iterator.next();
-            if (pos instanceof Monstre monstre) {
-                if (monstre.etreMort()) {
-                    iterator.remove();
+        for (Position pos : laby.getGrid()){
+            if(pos instanceof Monstre){
+                if(((Monstre) pos).etreMort()){
+                    laby.getGrid().remove(pos);
                 }
             }
         }
@@ -112,7 +110,7 @@ public class LabyJeu implements Jeu {
      */
     @Override
     public void init() throws IOException {
-        this.laby = new Labyrinthe("data/laby/laby1.txt");
+        this.laby = new Labyrinthe();
         this.temps = 0;
         this.temps_joueur = 0 ;
         Joueur joueur = (Joueur)laby.getPerso();
