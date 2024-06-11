@@ -60,12 +60,9 @@ public class LabyJeu implements Jeu {
         temps = temps + secondes;
         if (temps > VITESSE_ENNEMIE) {
             temps = 0;
-            System.out.println(temps);
             this.laby.deplacementEntite();
             this.laby.gererInteraction();
         }
-
-        System.out.println("Pv du joueur : " + laby.getPerso().getPv());
 
         Joueur joueur = (Joueur)laby.getPerso();
         if (joueur.etreMort()) {
@@ -85,7 +82,6 @@ public class LabyJeu implements Jeu {
         if(Score.bestScore < Score.score){
             Score.bestScore = Score.score;
         }
-        System.out.println("Score : " + Score.bestScore + Score.score);
     }
 
 
