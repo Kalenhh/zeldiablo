@@ -25,4 +25,7 @@ public interface Jeu {
      * @return booleen true si le jeu est fini
      */
     boolean etreFini();
+
+    default void resetPV_joueur(){
+    }
 }

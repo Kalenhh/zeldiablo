@@ -1,5 +1,12 @@
 package Labyrinthe;
+import Entite.Joueur;
+import Entite.Monstre;
+import Entite.Perso;
+import Entite.Position;
 import moteurJeu.*;
+
+import java.io.IOException;
+import java.util.Iterator;
 
 /**
  * Classe LabyJeu qui implémente l'interface Jeu.
@@ -58,7 +65,35 @@ public class LabyJeu implements Jeu {
             this.laby.deplacementEntite();
             this.laby.gererInteraction();
         }
+
+        System.out.println("Pv du joueur : " + laby.getPerso().getPv());
+
+        Joueur joueur = (Joueur)laby.getPerso();
+        if (joueur.etreMort()) {
+            laby.etreFini();
+            MoteurJeu.stopAnimation();
+            MoteurJeu.afficherEcranGameOver();
+
+        }
+
+        verifierMonstresMorts(laby);
+
     }
+
+
+    protected void verifierMonstresMorts(Labyrinthe laby) {
+        Iterator<Position> iterator = laby.getGrid().iterator();
+        while (iterator.hasNext()) {
+            Position pos = iterator.next();
+            if (pos instanceof Monstre) {
+                Monstre monstre = (Monstre) pos;
+                if (monstre.etreMort()) {
+                    iterator.remove();
+                }
+            }
+        }
+    }
+
 
     /**
      * Initialisation du jeu
@@ -86,4 +121,12 @@ public class LabyJeu implements Jeu {
     public Labyrinthe getLaby() {
         return this.laby;
     }
+
+    public void reset() {
+        Joueur joueur = (Joueur)laby.getPerso();
+        joueur.setPv(2); // Réinitialiser les PV du joueur
+        // Réinitialiser le jeu à son état initial
+
+    }
+
 }

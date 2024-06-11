@@ -22,6 +22,8 @@ import java.io.IOException;
 
 public class MoteurJeu extends Application {
 
+    private static Joueur joueur;
+
     private static double FPS = 100;
     private static double dureeFPS = 1000 / (FPS + 1);
 
@@ -38,8 +40,6 @@ public class MoteurJeu extends Application {
     private static Clavier controle = new Clavier();
 
     private static AnimationTimer timer;
-
-    private static Joueur joueur;
 
     public static void launch(Jeu jeu, DessinJeu dessin) {
         MoteurJeu.jeu = jeu;
@@ -64,7 +64,11 @@ public class MoteurJeu extends Application {
         Score score = new Score("score.csv");
         Menu menu = new Menu(WIDTH, HEIGHT, score);
 
-        menu.getBoutonJouer().setOnAction(e -> lancerJeu());
+        menu.getBoutonJouer().setOnAction(e -> {
+            jeu.resetPV_joueur(); // Réinitialise pv joueur
+            lancerJeu();
+        });
+
 
         menu.getBoutonQuitter().setOnAction(e -> quitterJeu());
 
