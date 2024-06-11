@@ -37,18 +37,18 @@ public class Menu extends StackPane {
         scores.setAlignment(Pos.CENTER);
 
         //Recuperation des scores
-        Label scoreLabel = new Label("SCORE: " + score.getScore());
+//        Label scoreLabel = new Label("SCORE: " + score.getScore());
         Label meilleurScoreLabel;
         meilleurScoreLabel = new Label("MEILLEUR SCORE: " + Score.bestScore);
 
         //Redesign des labels
-        scoreLabel.setFont(Font.font(25));
+//        scoreLabel.setFont(Font.font(25));
         meilleurScoreLabel.setFont(Font.font(25));
-        scoreLabel.setStyle("-fx-background-color: #CCCCCC;");
+//        scoreLabel.setStyle("-fx-background-color: #CCCCCC;");
         meilleurScoreLabel.setStyle("-fx-background-color: #CCCCCC;");
 
         //Ajout dans le pane
-        scores.getChildren().addAll(scoreLabel, meilleurScoreLabel);
+        scores.getChildren().addAll(meilleurScoreLabel);
 
         // Texte du menu
         Text texte = new Text("Bienvenue dans Blob Adventure\n l'objectif est simple : défendre votre labyrinthe contre les envahisseurs !");
