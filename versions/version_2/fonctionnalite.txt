@@ -1,32 +1,45 @@
-1. Donner une position initiale au monstre
+1. Afficher le monstre
 - Descriptif :
-  - le monstre débute sur une case décrite dans le fichier labyrinthe.
+- le jeu doit afficher le monstre à sa position.
 - Critères de validation :
-  - le monstre doit avoir une position initiale.
-  - le monstre se trouve sur la case indiquée dans le fichier labyrinthe.
-  - le monstre est représenté par le caractère 'M' dans le fichier labyrinthe.
-  - le monstre ne se trouve pas sur la même case que le personnage.
+- le monstre doit être affiché à la bonne position dans le labyrinthe.
+- le monstre sera représenté sous la forme d'un cercle violet de la taille du personnage.
+(Nous avons 2 types de monstres, l'un rouge et l'autre jaune)
 
-2. Afficher le monstre
-- Descriptif :
-  - le jeu doit afficher le monstre à sa position.
-- Critères de validation :
-  - le monstre doit être affiché à la bonne position dans le labyrinthe.
-  - le monstre sera représenté sous la forme d'un cercle violet de la taille du personnage.
 
-3. Considérer le monstre dans les déplacements du personnage
-- Descriptif :
-  - lorsque le jeu évolue, le personnage ne peut pas se déplacer sur la case du monstre.
-- Critères de validation :
-  - le monstre constitue un obstacle pour le personnage.
-  - le monstre et le personnage ne peuvent pas se trouver sur la même case.
-  - le personnage ne peut pas traverser la case du monstre
+2. Génération de monstres immobiles
 
-4. Déplacer le monstre (optionnel en fonction de notre avancée)
-- Descriptif :
-  - lorsque le jeu évolue, le monstre choisit une case adjacente de manière aléatoire et tente de s'y déplacer.
-- Critères de validation :
-  - le monstre doit se déplacer sur une case adjacente. Il considère les 4 directions de déplacement possibles.
-  - le monstre ne peut pas se déplacer sur mur. S'il tente de se déplacer sur cette case, il ne bouge pas.
-  - le monstre ne peut pas se trouver sur la même case que le personnage.
+Au lancement du jeu, le jeu ajoute différents monstres dans l'environnement. Les
+monstres restent immobiles.
 
+Critères de validation
+• Il est possible de construire un labyrinthe par défaut contenant quelques monstres
+(le labyrinthe par défaut est à dénir).
+• Les monstres sont créés sur des cases vides.
+• Il n'est pas possible de générer des monstres sur des cases non vides (position du
+joueur, d'autres monstres ou de murs)
+• Les monstres doivent apparaitre dans l'interface graphique sous la forme d'un
+cercle rouge.
+• Les monstres ne se déplacent pas (mais attaquent éventuellement le héros s'il passe
+à proximité - cf taches attaque dans les parties suivantes).
+
+
+
+3. Attaque des monstres
+Lorsqu'un monstre doit agir, si le monstre se trouve à coté du héros, alors il ne se
+déplace pas mais il attaque celui-ci.
+Critères de validation
+• Lorsque le monstre est à côté du joueur, il attaque et ne se déplace pas. Par défaut,
+le Héros perd 1 point de vie.
+• Lorsque le monstre est loin du joueur, il n'attaque pas mais se déplace.
+
+
+4. Mort des monstres
+
+Lorsqu'un monstre n'a plus de points de vie, il meurt et disparait du jeu.
+Critères de validation
+• Les monstres ont par défaut 2 points de vie et ne peuvent pas avoir de points de
+vie négatifs.
+• Lorsqu'un monstre par défaut est touché deux fois, il disparait.
+• Le héros attaque avant le monstre, si le monstre meurt, le monstre n'a pas le
+temps de répliquer et disparait avant.

@@ -1,45 +1,73 @@
 package Entite;
 
 import Interaction.Interaction;
+import Labyrinthe.Labyrinthe;
 
-public class Monstre extends Perso{
+/**
+ * Classe représentant un monstre, qui hérite de la classe Perso.
+ */
+public class Monstre extends Perso {
 
     /**
-     * constructeur
+     * Constructeur pour initialiser un monstre avec une position, des points de vie, des dégâts, et une interaction.
      *
-     * @param dx     position selon x
-     * @param dy     position selon y
-     * @param pv
-     * @param degats
+     * @param dx     Position X initiale
+     * @param dy     Position Y initiale
+     * @param pv     Points de vie initiaux
+     * @param degats Dégâts infligés par le monstre
+     * @param inter  Interaction spécifique du monstre
      */
     public Monstre(int dx, int dy, int pv, int degats, Interaction inter) {
-        super(dx, dy,pv, degats,inter);
+        super(dx, dy, pv, degats, inter);
     }
 
     /**
-     * Classe représentant un Entite.Monstre, qui hérite de Entite.Perso
+     * Attaque une entité cible en lui infligeant des dégâts.
+     *
+     * @param e L'entité cible de l'attaque
      */
+    public void attaquer(Entite e) {
+        e.subirDegat(degats);
+    }
 
-        public void attaquer(Entite e){
-            e.subirDegat(degats);
+    /**
+     * Déplace le monstre. Cette méthode doit être implémentée par les sous-classes pour définir des comportements spécifiques.
+     */
+    public void seDeplacer() {
+    }
+
+    /**
+     * Subit des dégâts infligés par une autre entité.
+     *
+     * @param degats Les dégâts subis
+     */
+    public void subirDegat(int degats) {
+        pv = pv - degats;
+        if (pv <= 0) {
+            pv = 0;
+            //retirer le monstre de la liste des positions
         }
+    }
 
-        public void seDeplacer(){
+    /**
+     * Vérifie si le monstre est présent à sa position actuelle.
+     *
+     * @return true si le monstre est présent, sinon false
+     */
+    public boolean etrePresent() {
+        return super.etrePresent(this.getX(), this.getY());
+    }
 
-        }
-
-        public void subirDegat(int degats){
-            pv = pv-degats;
-        }
-
-        public boolean etrePresent(){
-            return super.etrePresent(this.getX(), this.getY());
-        }
-
-        public boolean etreMort(){
-            return pv ==0;
-        }
+    /**
+     * Vérifie si le monstre est mort (points de vie = 0).
+     *
+     * @return true si le monstre est mort, sinon false
+     */
+    public boolean etreMort() {
+        return pv <= 0;
+    }
 }
+
 
 
 

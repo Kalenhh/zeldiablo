@@ -1,75 +1,127 @@
 package Entite;
 
 import Interaction.Interaction;
+import Labyrinthe.Labyrinthe;
 
 /**
- * gere un personnage situe en x,y
+ * Gère un personnage situé en (x, y).
  */
-public class Perso extends Entite{
+public class Perso extends Entite {
 
     /**
-     * position du personnage
+     * Points de vie du personnage.
      */
-    int pv, degats;
+    int pv;
+
+    /**
+     * Dégâts infligés par le personnage.
+     */
+    int degats;
+
+    private Labyrinthe laby;
 
 
     /**
-     * constructeur
+     * Constructeur pour initialiser un personnage avec une position, des points de vie, des dégâts, et une interaction.
      *
-     * @param dx position selon x
-     * @param dy position selon y
+     * @param dx     Position X initiale
+     * @param dy     Position Y initiale
+     * @param pv     Points de vie initiaux
+     * @param degats Dégâts infligés par le personnage
+     * @param inter  Interaction spécifique du personnage
      */
     public Perso(int dx, int dy, int pv, int degats, Interaction inter) {
-        super(dx,dy,inter);
+        super(dx, dy, inter);
         this.pv = pv;
         this.degats = degats;
     }
 
     /**
-     * permet de savoir si le personnage est en x,y
+     * Permet de savoir si le personnage est en (dx, dy).
      *
-     * @param dx position testee
-     * @param dy position testee
-     * @return true si le personnage est bien en (dx,dy)
+     * @param dx Position X testée
+     * @param dy Position Y testée
+     * @return true si le personnage est bien en (dx, dy), sinon false
      */
     public boolean etrePresent(int dx, int dy) {
-
         return (this.getX() == dx && this.getY() == dy);
     }
 
-    // ############################################
-    // GETTER
-    // ############################################
-
-
-
-
-
+    /**
+     * Méthode d'attaque. Implémentation vide à redéfinir par les sous-classes.
+     *
+     * @param victime L'entité victime de l'attaque
+     */
     @Override
     public void attaquer(Entite victime) {
-        return ;
-    }
+        victime.subirDegat(degats);
+        if (victime.etreMort()) {
+            laby.retirerElement(victime);
+        }
 
+        }
+
+    /**
+     * Méthode pour subir des dégâts. Implémentation vide à redéfinir par les sous-classes.
+     *
+     * @param degat Les dégâts subis
+     */
     @Override
     public void subirDegat(int degat) {
-        return ;
+        return;
     }
 
+    /**
+     * Vérifie si le personnage est mort. Implémentation vide à redéfinir par les sous-classes.
+     *
+     * @return false par défaut
+     */
     @Override
     public boolean etreMort() {
-        return false;
+        return pv<=0;
     }
 
+    /**
+     * Retourne les dégâts infligés par le personnage.
+     *
+     * @return Les dégâts infligés
+     */
+    public int getDegats() {
+        return degats;
+    }
+
+    /**
+     * Retourne les points de vie du personnage.
+     *
+     * @return Les points de vie
+     */
+    public int getPv() {
+        return pv;
+    }
+
+    /**
+     * Méthode de déplacement. Implémentation vide à redéfinir par les sous-classes.
+     */
     public void seDeplacer() {
     }
 
+    /**
+     * Méthode d'interaction avec une cible. Implémentation vide à redéfinir par les sous-classes.
+     *
+     * @param cible La position cible de l'interaction
+     */
     @Override
     public void interagir(Position cible) {
         return;
     }
 
-    public void interagir(){
-
+    /**
+     * Méthode d'interaction générique. Implémentation vide à redéfinir par les sous-classes.
+     */
+    public void interagir() {
     }
 
+    public void setPv(int i) {
+        this.pv = i;
+    }
 }

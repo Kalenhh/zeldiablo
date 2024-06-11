@@ -11,15 +11,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
-
 /**
- * classe labyrinthe. represente un labyrinthe
+ * Classe Labyrinthe. Représente un labyrinthe avec des entités et des éléments de jeu.
  */
 public class Labyrinthe {
 
-    /**
-     * Constantes char
-     */
+    // Constantes char
     public static final char MUR = 'X';
     public static final char JOUEUR = 'J';
     public static final char VIDE = '.';
@@ -27,48 +24,36 @@ public class Labyrinthe {
     public static final char JAUNE = 'Y';
     public static final char ROUGE = 'R';
 
-
-
-    /**
-     * constantes actions possibles
-     */
+    // Constantes actions possibles
     public static final String HAUT = "Haut";
     public static final String BAS = "Bas";
     public static final String GAUCHE = "Gauche";
     public static final String DROITE = "Droite";
 
-    public int NBR_LIGNE ;
-    public int NBR_COLONNE ;
+    private int NBR_LIGNE;
+    private int NBR_COLONNE;
 
-    /**
-     * variable utilisé
-     */
+    // Variables utilisées
     private Joueur pj;
     private int score;
     private final Random rand;
 
-    /**
-     * les elements du labyrinthe
-     * Chaque éléments est défini par une Position
-     */
+    // Les éléments du labyrinthe
     private final ArrayList<Position> grid;
 
-    /**
-     * Sers au calcul des chemins par les entité
-     * les noeuds sont les coordonné entiere sous forme "x:y"
-     */
+    // Liste des noeuds pour le calcul des chemins
     private ArrayList<String> listeNoeud;
 
 
 
+
     /**
-     * Constructeur
-     * charge le labyrinthe
+     * Constructeur. Charge le labyrinthe à partir d'un fichier.
      *
      * @param chemin nom du fichier de labyrinthe
+     * @throws IOException si une erreur survient lors de la lecture du fichier
      */
     public Labyrinthe(String chemin) throws IOException {
-
         // ouvrir fichier
         FileReader fichier = new FileReader(chemin);
         BufferedReader bfRead = new BufferedReader(fichier);
@@ -79,7 +64,7 @@ public class Labyrinthe {
         NBR_COLONNE = Integer.parseInt(bfRead.readLine());
 
         // creation labyrinthe vide
-        this.grid = new ArrayList<Position>();
+        this.grid = new ArrayList<>();
         this.pj = null;
         this.rand = new Random();
 
@@ -96,34 +81,31 @@ public class Labyrinthe {
             // parcours de la ligne
             for (int colonne = 0; colonne < ligne.length(); colonne++) {
                 char c = ligne.charAt(colonne);
-                this.listeNoeud.add(numeroLigne+":"+colonne);
+                this.listeNoeud.add(numeroLigne + ":" + colonne);
                 switch (c) {
-                    //Si c'est un mur
                     case MUR:
-                        this.grid.add(new Mur(0,0,colonne,numeroLigne));
-                        this.listeNoeud.remove(numeroLigne+":"+colonne);
+                        this.grid.add(new Mur(0, 0, colonne, numeroLigne));
+                        this.listeNoeud.remove(numeroLigne + ":" + colonne);
                         break;
-                    //Si c'est une case vide
                     case VIDE:
                         break;
-                    //Si c'est une plante
                     case PLANTE:
-                        this.grid.add(new Fleur(0,0,colonne,numeroLigne));
+                        this.grid.add(new Fleur(0, 0, colonne, numeroLigne));
                         break;
-                    //Si c'est un monstre jaune
                     case JAUNE:
-                        this.grid.add(new Jaune(colonne,numeroLigne,0,0));
+                        this.grid.add(new Jaune(colonne, numeroLigne, 2, 1));
                         break;
-                    //Si c'est le joueur
+                    case ROUGE:
+                        this.grid.add(new Rouge(colonne, numeroLigne, 2, 1));
+                        break;
                     case JOUEUR:
-                        this.pj = new Joueur(colonne, numeroLigne,0,0);
+                        this.pj = new Joueur(colonne, numeroLigne, 2, 1);
                         this.grid.add(this.pj);
                         break;
                     default:
-                        throw new Error("caractere inconnu :" + c);
+                        throw new Error("caractère inconnu :" + c);
                 }
             }
-
             // lecture
             ligne = bfRead.readLine();
             numeroLigne++;
@@ -133,29 +115,25 @@ public class Labyrinthe {
     }
 
     /**
-     * retourne la case suivante selon une actions
+     * Retourne la case suivante selon une action
      *
-     * @param x      case depart
-     * @param y      case depart
-     * @param action action effectuee
+     * @param x      case de départ
+     * @param y      case de départ
+     * @param action action effectuée
      * @return case suivante
      */
-    static int[] getSuivant(int x, int y, String action){
+    static int[] getSuivant(int x, int y, String action) {
         switch (action) {
             case HAUT:
-                // on monte une ligne
                 y--;
                 break;
             case BAS:
-                // on descend une ligne
                 y++;
                 break;
             case DROITE:
-                // on augmente colonne
                 x++;
                 break;
             case GAUCHE:
-                // on augmente colonne
                 x--;
                 break;
             default:
@@ -165,16 +143,12 @@ public class Labyrinthe {
     }
 
     /**
-     * deplace le personnage en fonction de l'action.
-     * gere la collision avec les murs
+     * Déplace le personnage en fonction de l'action. Gère la collision avec les murs.
      *
      * @param action une des actions possibles
      */
-    public void deplacerPerso(String action){
-        // case courante
+    public void deplacerPerso(String action) {
         int[] courante = {this.pj.getX(), this.pj.getY()};
-
-        // calcule case suivante
         int[] suivante = getSuivant(courante[0], courante[1], action);
         this.pj.setX(suivante[0]);
         this.pj.setY(suivante[1]);
@@ -183,19 +157,25 @@ public class Labyrinthe {
         this.pj.setAncienY(courante[1]);
     }
 
-    public void deplacementEntite(){
-        for( Position p : grid){
-            if ( p instanceof Entite){
+    /**
+     * Déplace toutes les entités du labyrinthe.
+     */
+    public void deplacementEntite() {
+        for (Position p : grid) {
+            if (p instanceof Entite) {
                 ((Entite) p).seDeplacer();
             }
         }
     }
 
-    public void gererInteraction(){
-        for( Position p : grid){
-            if ( p instanceof Entite){
-                for(Position cible : grid){
-                    if(p.etrePresent(cible.getX(),cible.getY())){
+    /**
+     * Gère les interactions entre les entités et les autres positions du labyrinthe.
+     */
+    public void gererInteraction() {
+        for (Position p : grid) {
+            if (p instanceof Entite) {
+                for (Position cible : grid) {
+                    if (p.etrePresent(cible.getX(), cible.getY())) {
                         ((Entite) p).interagir(cible);
                     }
                 }
@@ -204,62 +184,70 @@ public class Labyrinthe {
     }
 
     /**
-     * Verifie si l'emplacement est vide ou non
-     * @param px
-     * @param py
-     * @return
+     * Retire la position d'un element
+     * @param position La position de l'element.
      */
-    public boolean estVide(int px, int py){
-        for(Position p : this.grid){
-            if(p.etrePresent(px,py)){
-                return false ;
-            }
-        }
-        return true ;
+    public void retirerElement(Position position) {
+        grid.remove(position);
     }
 
+    /**
+     * Vérifie si l'emplacement est vide ou non.
+     *
+     * @param px position x
+     * @param py position y
+     * @return true si l'emplacement est vide, false sinon
+     */
+    public boolean estVide(int px, int py) {
+        for (Position p : this.grid) {
+            if (p.etrePresent(px, py)) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     /**
-     * jamais fini
+     * Indique si le jeu est terminé.
      *
-     * @return fin du jeu
+     * @return false (le jeu n'est jamais terminé)
      */
     public boolean etreFini() {
         return false;
     }
 
     /**
-     * renvoie la liste des noeuds sous forme "x:y"
-     * @return
+     * Renvoie la liste des noeuds sous forme "x:y".
+     *
+     * @return liste des noeuds
      */
-    public ArrayList<String> getListeNoeud(){
+    public ArrayList<String> getListeNoeud() {
         return this.listeNoeud;
     }
 
     /**
-     * Renvoie la liste des noeuds adjacents
-     * @param d noeuds de depart
-     * @return
+     * Renvoie la liste des noeuds adjacents.
+     *
+     * @param d noeud de départ
+     * @return liste des noeuds adjacents
      */
-    public ArrayList<Arc> getSuivants(String d){
+    public ArrayList<Arc> getSuivants(String d) {
         ArrayList<Arc> ret = new ArrayList<>();
         int x = Integer.parseInt(d.split(":")[0]);
         int y = Integer.parseInt(d.split(":")[1]);
-        if(x+1 < NBR_COLONNE && this.listeNoeud.contains(x+1 + ":" + y))
-            ret.add(new Arc(x + 1 +":"+ y,1));
-        if(x-1 >= 0 && this.listeNoeud.contains(x-1 + ":" + y))
-            ret.add(new Arc(x-1 + ":" + y, 1));
-        if(y+1 < NBR_LIGNE && this.listeNoeud.contains(x + ":" + y+1))
-            ret.add(new Arc(x + ":" + y+1,1));
-        if(y-1 >= 0 && this.listeNoeud.contains(x + ":" + (y-1)))
-            ret.add(new Arc(x + ":" + (y-1),1));
+        if (x + 1 < NBR_COLONNE && this.listeNoeud.contains(x + 1 + ":" + y))
+            ret.add(new Arc(x + 1 + ":" + y, 1));
+        if (x - 1 >= 0 && this.listeNoeud.contains(x - 1 + ":" + y))
+            ret.add(new Arc(x - 1 + ":" + y, 1));
+        if (y + 1 < NBR_LIGNE && this.listeNoeud.contains(x + ":" + (y + 1)))
+            ret.add(new Arc(x + ":" + (y + 1), 1));
+        if (y - 1 >= 0 && this.listeNoeud.contains(x + ":" + (y - 1)))
+            ret.add(new Arc(x + ":" + (y - 1), 1));
 
         return ret;
     }
 
-    // ##################################
-    // GETTER
-    // ##################################
+    // GETTERS
 
     /**
      * Getter de l'attribut pj de type Perso
@@ -270,9 +258,21 @@ public class Labyrinthe {
         return this.pj;
     }
 
-    public int getScore(){return this.score;}
+    /**
+     * Getter du score
+     *
+     * @return score
+     */
+    public int getScore() {
+        return this.score;
+    }
 
-    public ArrayList<Position> getGrid(){
-        return this.grid ;
+    /**
+     * Getter de la grille du labyrinthe
+     *
+     * @return grille du labyrinthe
+     */
+    public ArrayList<Position> getGrid() {
+        return this.grid;
     }
 }

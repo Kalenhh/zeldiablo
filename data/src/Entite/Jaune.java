@@ -1,15 +1,26 @@
 package Entite;
 
 import Interaction.InteractionJaune;
-import Labyrinthe.Labyrinthe;
+
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Classe représentant un monstre de type Jaune, héritant de la classe Monstre.
+ * Ce monstre a des comportements spécifiques pour l'attaque, le déplacement, et l'interaction.
+ */
 public class Jaune extends Monstre {
 
+    /**
+     * Liste des positions possibles pour le déplacement.
+     */
     List<int[]> positionsPossibles = new ArrayList<>();
+
+    /**
+     * Directions possibles pour le déplacement.
+     */
     int[][] directions = {
             {0, 1},  // bas
             {0, -1}, // haut
@@ -17,31 +28,32 @@ public class Jaune extends Monstre {
             {-1, 0}  // gauche
     };
 
-    private Labyrinthe labyrinthe;
-
     /**
-     * constructeur
+     * Constructeur pour initialiser un monstre de type Jaune avec une position, des points de vie, et des dégâts.
      *
-     * @param dx     position selon x
-     * @param dy     position selon y
-     * @param pv
-     * @param degats
+     * @param dx     Position X initiale
+     * @param dy     Position Y initiale
+     * @param pv     Points de vie initiaux
+     * @param degats Dégâts infligés par le monstre
      */
     public Jaune(int dx, int dy, int pv, int degats) {
-        super(dx, dy, pv, degats,new InteractionJaune());
+        super(dx, dy, pv, degats, new InteractionJaune());
     }
 
     /**
-     * Classe représentant un Entite.Monstre, qui hérite de Entite.Perso
+     * Attaque une entité cible en lui infligeant des dégâts.
+     *
+     * @param e L'entité cible de l'attaque
      */
-
-
-
     public void attaquer(Entite e) {
         e.subirDegat(this.degats);
     }
 
+    /**
+     * Déplace le monstre dans une direction aléatoire parmi les positions possibles.
+     */
     public void seDeplacer() {
+        positionsPossibles.clear();
 
         setAncienX(getX());
         setAncienY(getY());
@@ -60,18 +72,39 @@ public class Jaune extends Monstre {
         }
     }
 
+    /**
+     * Interagit avec une position cible en utilisant l'interaction définie pour ce type de monstre.
+     *
+     * @param cible La position cible de l'interaction
+     */
     public void interagir(Position cible) {
-        System.out.println(this.getX()+" "+this.getY()+" "+ cible.getX()+" "+ cible.getY());
-        getInteraction().interagirAvec(this,cible);
+        System.out.println(this.getX() + " " + this.getY() + " " + cible.getX() + " " + cible.getY());
+        getInteraction().interagirAvec(this, cible);
     }
+
+    /**
+     * Subit des dégâts infligés par une autre entité.
+     *
+     * @param degats Les dégâts subis
+     */
     public void subirDegat(int degats) {
         super.subirDegat(degats);
     }
 
+    /**
+     * Vérifie si le monstre est présent à sa position actuelle.
+     *
+     * @return true si le monstre est présent, sinon false
+     */
     public boolean etrePresent() {
         return super.etrePresent(this.getX(), this.getY());
     }
 
+    /**
+     * Vérifie si le monstre est mort (points de vie = 0).
+     *
+     * @return true si le monstre est mort, sinon false
+     */
     public boolean etreMort() {
         return super.etreMort();
     }

@@ -3,7 +3,7 @@
 lancer le jeu ou de quitter l'application. Ce menu ré-apparait lorsque le joueur gagne ou perd
 
 Critères de validation :
-• Le menu possède une image spécfique.
+• Le menu possède une image spécifique.
 • Le menu propose deux options jouer ou quitter.
 • Le menu s'affiche dans la même JFrame que le rendu du jeu.
 • Pendant le menu, le jeu n'est pas créé et ne tourne pas
@@ -14,10 +14,10 @@ La première difficulté était dans la mise en place des actions associées à 
 J'ai passé du temps à comprendre comment démarrer le jeu seulement une fois que le bouton associé avait été utilisé.
 Ensuite, il y avait le fait de gérer la transition entre le menu principal et le jeu lui-même,
 tout en maintenant une seule racine de scène pour afficher les deux.
-C'était important pour éviter de géngerer plusieurs fenêtres.
-j'ai du coup réussi à mettre en place un système où le contenu du menu
+C'était important pour éviter de génerer plusieurs fenêtres.
+j'ai du coup réussi à mettre en place un système où le contenu du jeu et le contenu du menu
 (représenté par une classe qui hérite d'un objet panneau)
-et du jeu étaient affichés dans la même scène, mais avec des racines différentes, selon l'état de l'application.
+étaient affichés dans la même scène, mais avec des racines différentes, selon l'état de l'application.
 
 
 2nd fonctionnalité : MATHIEU
@@ -30,14 +30,14 @@ Critères de validation
 • La fleur apparait dans le labyrinthe
 • La fleur n'apparait jamais dans un mur
 • Le joueur peut avaler la fleur, dans ce cas elle disparait et réaparait a un autre endroit
-• Le joueur grossit a chaque fois que la fleur est avalé
+• Le joueur grossit a chaque fois que la fleur est avalé et ses pv augmentes
 
 Difficultés rencontrées :
 
 
 
 3eme fonctionnalité : MELODY & NATHAN
-	Ajout d'un score, le score n'était pas une fonctionnalitée proposé, mais nous l'avions trouvé intéressante.
+Ajout d'un score, le score n'était pas une fonctionnalitée proposée, mais nous l'avions trouvé intéressante.
 
 Critère de validation :
 • Le score apparaît avec le pseudo du joueur concerné

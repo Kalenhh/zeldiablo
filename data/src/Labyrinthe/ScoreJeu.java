@@ -2,72 +2,83 @@ package Labyrinthe;
 
 import java.io.*;
 
+/**
+ * Classe ScoreJeu. Gère la sauvegarde et la récupération des scores de jeu dans un fichier.
+ */
 public class ScoreJeu {
-    private String nomFichier;
+    private final String nomFichier;
+    private final FileWriter fw;
 
-    FileWriter fw;
     /**
-     * 
-     * @param nomFichier
-     * @throws IOException
-     * 
-     * Constructeur du score du jeu, sauvegarder sur un fichier 
+     * Constructeur du score du jeu, sauvegardé sur un fichier.
+     *
+     * @param nomFichier Nom du fichier de sauvegarde des scores.
+     * @throws IOException Si une erreur survient lors de l'ouverture du fichier.
      */
     public ScoreJeu(String nomFichier) throws IOException {
         this.nomFichier = nomFichier;
         this.fw = new FileWriter(nomFichier);
     }
+
     /**
-     * 
-     * @param pseudo
-     * @param score
-     * @throws IOException
-     * 
-     * Methode qui permet de metre à jour le score contenue sur un fichier
+     * Met à jour le score contenu dans un fichier.
+     *
+     * @param pseudo Nom du joueur.
+     * @param score  Score du joueur.
+     * @throws IOException Si une erreur survient lors de l'écriture dans le fichier.
      */
     public void ajouterScore(String pseudo, int score) throws IOException {
         this.fw.write(pseudo + ";" + score + ";\r");
     }
+
     /**
-     * 
-     * @throws IOException
-     * 
-     * Methode qui permet de fermer un de sauvegarde fichier 
+     * Ferme le fichier de sauvegarde.
+     *
+     * @throws IOException Si une erreur survient lors de la fermeture du fichier.
      */
     public void fermerFichier() throws IOException {
         this.fw.close();
     }
+
     /**
-     * 
-     * @return
-     * @throws IOException
-     * 
-     * Methode qui permet de renvoyer le meilleur score contenue sur un fichier 
+     * Récupère le meilleur score contenu dans le fichier.
+     *
+     * @return Le meilleur score sous forme de chaîne de caractères.
+     * @throws IOException Si une erreur survient lors de la lecture du fichier.
      */
-    public String getMeilleurScore() throws IOException{
+    public String getMeilleurScore() throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(this.nomFichier));
         int meilleurScore = 0;
         String ligne;
-        while(true){
-            try{
+
+        while (true) {
+            try {
                 ligne = br.readLine();
+                if (ligne == null) {
+                    break;
+                }
                 String[] ligneSepare = ligne.split(";");
                 int scoreCourant = Integer.parseInt(ligneSepare[1]);
-                if(scoreCourant > meilleurScore)
+                if (scoreCourant > meilleurScore) {
                     meilleurScore = scoreCourant;
-            }catch (EOFException e){
+                }
+            } catch (EOFException e) {
                 break;
-            }catch (IOException e){
+            } catch (IOException e) {
                 break;
             }
         }
-        String scoreMax = String.valueOf(meilleurScore);
-        return scoreMax;
+        br.close();
+        return String.valueOf(meilleurScore);
     }
 
-    public int getScore(){
+    /**
+     * Méthode placeholder pour obtenir le score.
+     *
+     * @return 0 (cette méthode n'est pas implémentée).
+     */
+    public int getScore() {
         return 0;
     }
-
-
 }
+

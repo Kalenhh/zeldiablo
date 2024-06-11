@@ -1,32 +1,36 @@
 package Labyrinthe;
-
 import moteurJeu.*;
 
-
+/**
+ * Classe LabyJeu qui implémente l'interface Jeu.
+ * Elle est responsable de la gestion du jeu, des mises à jour et des interactions.
+ */
 public class LabyJeu implements Jeu {
 
-    public static Double VITESSE_ENNEMIE = 2.0 ;
+    public static final Double VITESSE_ENNEMIE = 2.0;
 
-    private Labyrinthe laby;
+    private final Labyrinthe laby;
+    private double temps;
 
-    private double temps ;
-
-
+    /**
+     * Constructeur de la classe LabyJeu
+     *
+     * @param laby Labyrinthe utilisé pour initialiser le jeu
+     */
     public LabyJeu(Labyrinthe laby) {
         this.laby = laby;
-        this.temps = 0 ;
+        this.temps = 0;
     }
 
     /**
-     * Met a jour l'objet Labyrinthe.Labyrinthe selon l'entrée de l'utilisateur
-     * Est appelé à toute les frames de l'execution
+     * Met à jour l'objet Labyrinthe selon l'entrée de l'utilisateur.
+     * Est appelée à chaque frame de l'exécution.
      *
-     * @param secondes temps ecoule depuis la derniere mise a jour
-     * @param clavier  objet contenant l'état du clavier'
+     * @param secondes temps écoulé depuis la dernière mise à jour
+     * @param clavier  objet contenant l'état du clavier
      */
     @Override
     public void update(double secondes, Clavier clavier) {
-
         if (clavier.droite) {
             this.laby.deplacerPerso("Droite");
         } else if (clavier.gauche) {
@@ -37,18 +41,17 @@ public class LabyJeu implements Jeu {
             this.laby.deplacerPerso("Bas");
         }
 
-        temps = temps + secondes ;
-        if(temps>VITESSE_ENNEMIE){
-            temps = 0 ;
+        temps = temps + secondes;
+        if (temps > VITESSE_ENNEMIE) {
+            temps = 0;
             System.out.println(temps);
             this.laby.deplacementEntite();
             this.laby.gererInteraction();
         }
-
     }
 
     /**
-     * Initialisation
+     * Initialisation du jeu
      */
     @Override
     public void init() {
@@ -58,7 +61,7 @@ public class LabyJeu implements Jeu {
     /**
      * Indique si le jeu est fini ou non
      *
-     * @return booleen
+     * @return boolean true si le jeu est fini, false sinon
      */
     @Override
     public boolean etreFini() {
@@ -66,9 +69,9 @@ public class LabyJeu implements Jeu {
     }
 
     /**
-     * Getter de l'attribut laby de type Labyrinthe.Labyrinthe
+     * Getter de l'attribut laby de type Labyrinthe
      *
-     * @return laby
+     * @return laby le labyrinthe du jeu
      */
     public Labyrinthe getLaby() {
         return this.laby;
