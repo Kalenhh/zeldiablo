@@ -5,6 +5,7 @@ import Entite.Position;
 import moteurJeu.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 /**
  * Classe LabyJeu qui implémente l'interface Jeu.
@@ -59,12 +60,9 @@ public class LabyJeu implements Jeu {
         temps = temps + secondes;
         if (temps > VITESSE_ENNEMIE) {
             temps = 0;
-            System.out.println(temps);
             this.laby.deplacementEntite();
             this.laby.gererInteraction();
         }
-
-        System.out.println("Pv du joueur : " + laby.getPerso().getPv());
 
         Joueur joueur = (Joueur)laby.getPerso();
         if (joueur.etreMort()) {
@@ -84,12 +82,12 @@ public class LabyJeu implements Jeu {
         if(Score.bestScore < Score.score){
             Score.bestScore = Score.score;
         }
-        System.out.println("Score : " + Score.bestScore + Score.score);
     }
 
 
     protected void verifierMonstresMorts(Labyrinthe laby) {
-        for (Position pos : laby.getGrid()){
+        ArrayList<Position> al = laby.getGrid();
+        for (Position pos : al){
             if(pos instanceof Monstre){
                 if(((Monstre) pos).etreMort()){
                     laby.getGrid().remove(pos);
