@@ -1,5 +1,7 @@
 package Entite;
 
+import Interaction.InteractionJoueur;
+
 /**
  * Classe représentant un joueur, qui hérite de Entite.Perso.
  */
@@ -15,7 +17,7 @@ public class Joueur extends Perso {
      */
     public Joueur(int x, int y, int pv, int degats) {
         // constructeur de la classe parente Entite.Perso
-        super(x, y, pv, degats, null);
+        super(x, y, pv, degats, new InteractionJoueur());
     }
 
     /**
@@ -60,6 +62,11 @@ public class Joueur extends Perso {
     public boolean etreMort() {
         return super.pv == 0;
 
+    }
+
+    public void interagir(Position cible) {
+        System.out.println(this.getX() + " " + this.getY() + " " + cible.getX() + " " + cible.getY());
+        getInteraction().interagirAvec(this, cible);
     }
 }
 

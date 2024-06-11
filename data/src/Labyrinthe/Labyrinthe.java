@@ -155,6 +155,12 @@ public class Labyrinthe {
 
         this.pj.setAncienX(courante[0]);
         this.pj.setAncienY(courante[1]);
+
+        for (Position cible : grid) {
+            if (pj.etrePresent(cible.getX(), cible.getY())) {
+                ((Entite) pj).interagir(cible);
+            }
+        }
     }
 
     /**
