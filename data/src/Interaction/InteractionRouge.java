@@ -34,14 +34,6 @@ public class InteractionRouge implements Interaction {
             Score.score += 1;
         }
 
-        if (p instanceof Fleur) {
-            // Si la position cible est une Fleur, le personnage gagne un point de vie
-            if (e instanceof Perso) {
-                int pv = ((Perso) e).getPv();
-                ((Perso) e).setPv(pv + 1);
-            }
-        }
-
         if(p instanceof Monstre){
             e.setX(e.getAncienX());
             e.setY(e.getAncienY());

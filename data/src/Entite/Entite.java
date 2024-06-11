@@ -45,9 +45,11 @@ public abstract class Entite extends Position {
     /**
      * Interagit avec une cible donnée.
      *
-     * @param cible La position cible avec laquelle interagir
+     * @param cible La Position cible avec laquelle interagir
      */
-    public abstract void interagir(Position cible);
+    public void interagir(Position cible){
+        this.interaction.interagirAvec(this, cible);
+    }
 
     /**
      * Attaque une autre entité.
@@ -57,18 +59,12 @@ public abstract class Entite extends Position {
     public abstract void attaquer(Entite victime);
 
     /**
-     * L'entité subit des dégâts et retourne le contrecoup.
+     * L'entité subit des dégâts .
      *
      * @param degat Les dégâts subis
      */
     public abstract void subirDegat(int degat);
 
-    /**
-     * Vérifie si l'entité est morte (points de vie = 0).
-     *
-     * @return true si l'entité est morte, sinon false
-     */
-    public abstract boolean etreMort();
 
     // GETTERS
 

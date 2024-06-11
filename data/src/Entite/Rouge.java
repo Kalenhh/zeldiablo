@@ -8,7 +8,8 @@ import Labyrinthe.Labyrinthe;
 import java.util.ArrayList;
 
 /**
- * Classe représentant un monstre Rouge, qui hérite de Entite.Monstre.
+ * Classe représentant un monstre Rouge, qui hérite de Monstre.
+ * Ce monstre se deplace en utilisant l'algorithme de Dijkstra
  */
 public class Rouge extends Monstre {
 
@@ -26,15 +27,6 @@ public class Rouge extends Monstre {
     public Rouge(int dx, int dy, int pv, int degats, Labyrinthe l) {
         super(dx, dy, pv, degats, new InteractionRouge());
         this.l = l;
-    }
-
-    /**
-     * Attaque une entité en lui infligeant des dégâts.
-     *
-     * @param e L'entité victime de l'attaque
-     */
-    public void attaquer(Entite e) {
-        super.attaquer(e);
     }
 
     /**
@@ -61,14 +53,6 @@ public class Rouge extends Monstre {
         this.setX(nouvellePosition[0]);
         this.setY(nouvellePosition[1]);
     }
-
-
-    public void interagir(Position cible) {
-        getInteraction().interagirAvec(this, cible);
-    }
-
-
-
 }
 
 

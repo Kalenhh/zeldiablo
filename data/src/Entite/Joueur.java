@@ -26,30 +26,5 @@ public class Joueur extends Perso {
      */
     public void seDeplacer() {
     }
-
-
-    public void interagir(Position cible) {
-        getInteraction().interagirAvec(this, cible);
-    }
-
-    public boolean estMort() {
-        return pv == 0;
-    }
-
-
-    public void subirDegat(int degat) {
-        pv -= degat;
-        if (pv < 0) {
-            pv = 0;
-        }
-    }
-
-    public int getPv() {
-        return pv;
-    }
-
-    public void setPv(int i) {
-        this.pv = i;
-    }
 }
 
