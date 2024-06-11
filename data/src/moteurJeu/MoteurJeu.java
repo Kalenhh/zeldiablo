@@ -1,6 +1,7 @@
 package moteurJeu;
 
 import Entite.Joueur;
+import Labyrinthe.Score;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.beans.property.LongProperty;
@@ -16,6 +17,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class MoteurJeu extends Application {
 
@@ -56,11 +59,10 @@ public class MoteurJeu extends Application {
         HEIGHT = height;
     }
 
-    @Override
-    public void start(Stage primaryStage) {
-
+    public void start (Stage primaryStage) throws IOException {
         this.primaryStage = primaryStage;
-        Menu menu = new Menu(WIDTH, HEIGHT);
+        Score score = new Score("score.csv");
+        Menu menu = new Menu(WIDTH, HEIGHT, score);
 
         menu.getBoutonJouer().setOnAction(e -> lancerJeu());
 
@@ -71,95 +73,100 @@ public class MoteurJeu extends Application {
         primaryStage.show();
     }
 
-    public static void lancerJeu() {
+        public static void lancerJeu () {
 
-        Pane canvasContainer = new Pane();
-        Canvas canvas = new Canvas();
-        canvas.widthProperty().bind(canvasContainer.widthProperty());
-        canvas.heightProperty().bind(canvasContainer.heightProperty());
-        canvasContainer.getChildren().add(canvas);
+            Pane canvasContainer = new Pane();
+            Canvas canvas = new Canvas();
+            canvas.widthProperty().bind(canvasContainer.widthProperty());
+            canvas.heightProperty().bind(canvasContainer.heightProperty());
+            canvasContainer.getChildren().add(canvas);
 
-        BorderPane root = new BorderPane();
-        root.setCenter(canvasContainer);
-        Label stats = new Label();
-        stats.textProperty().bind(frameStats.textProperty());
-        root.setBottom(stats);
+            BorderPane root = new BorderPane();
+            root.setCenter(canvasContainer);
+            Label stats = new Label();
+            stats.textProperty().bind(frameStats.textProperty());
+            root.setBottom(stats);
 
-        Scene scene = new Scene(root, WIDTH, HEIGHT);
-        primaryStage.setScene(scene);
+            Scene scene = new Scene(root, WIDTH, HEIGHT);
+            primaryStage.setScene(scene);
 
-        scene.setOnKeyPressed(event -> controle.appuyerTouche(event));
-        scene.setOnKeyReleased(event -> controle.relacherTouche(event));
-        canvas.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            if (event.getClickCount() == 2) {
-                jeu.init();
-            }
-        });
-
-        startAnimation(canvas);
-    }
-
-    private static void startAnimation(final Canvas canvas) {
-        final LongProperty lastUpdateTime = new SimpleLongProperty(0);
-
-        timer = new AnimationTimer() {
-            @Override
-            public void handle(long timestamp) {
-                if (lastUpdateTime.get() == 0) {
-                    lastUpdateTime.set(timestamp);
+            scene.setOnKeyPressed(event -> controle.appuyerTouche(event));
+            scene.setOnKeyReleased(event -> controle.relacherTouche(event));
+            canvas.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+                if (event.getClickCount() == 2) {
+                    jeu.init();
                 }
+            });
 
-                long elapsedTime = timestamp - lastUpdateTime.get();
-                double dureeEnMilliSecondes = elapsedTime / 1_000_000.0;
-
-                if (dureeEnMilliSecondes > dureeFPS) {
-                    jeu.update(dureeEnMilliSecondes / 1_000., controle);
-                    dessin.dessinerJeu(jeu, canvas);
-                    frameStats.addFrame(elapsedTime);
-                    lastUpdateTime.set(timestamp);
-                }
-            }
-        };
-
-        timer.start();
-    }
-
-    public static void stopAnimation() {
-        if (timer != null) {
-            timer.stop();
+            startAnimation(canvas);
         }
-    }
 
-    public static void afficherEcranGameOver() {
-        BorderPane root = new BorderPane();
-        Label gameOverLabel = new Label("Game Over");
-        gameOverLabel.setStyle("-fx-font-size: 40px;");
+        private static void startAnimation ( final Canvas canvas){
+            final LongProperty lastUpdateTime = new SimpleLongProperty(0);
 
-        Button menuButton = new Button("Revenir au menu");
-        menuButton.setOnAction(event -> retournerAuMenu());
+            timer = new AnimationTimer() {
+                @Override
+                public void handle(long timestamp) {
+                    if (lastUpdateTime.get() == 0) {
+                        lastUpdateTime.set(timestamp);
+                    }
 
-        VBox vbox = new VBox(gameOverLabel, menuButton);
-        vbox.setSpacing(20);
-        vbox.setAlignment(Pos.CENTER);
-        root.setCenter(vbox);
+                    long elapsedTime = timestamp - lastUpdateTime.get();
+                    double dureeEnMilliSecondes = elapsedTime / 1_000_000.0;
 
-        Scene gameOverScene = new Scene(root, WIDTH, HEIGHT);
-        primaryStage.setScene(gameOverScene);
-    }
+                    if (dureeEnMilliSecondes > dureeFPS) {
+                        jeu.update(dureeEnMilliSecondes / 1_000., controle);
+                        dessin.dessinerJeu(jeu, canvas);
+                        frameStats.addFrame(elapsedTime);
+                        lastUpdateTime.set(timestamp);
+                    }
+                }
+            };
+
+            timer.start();
+        }
+
+        public static void stopAnimation () {
+            if (timer != null) {
+                timer.stop();
+            }
+        }
+
+        public static void afficherEcranGameOver () {
+            BorderPane root = new BorderPane();
+            Label gameOverLabel = new Label("Game Over");
+            gameOverLabel.setStyle("-fx-font-size: 40px;");
+
+            Button menuButton = new Button("Revenir au menu");
+            menuButton.setOnAction(event -> {
+                try {
+                    retournerAuMenu();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+
+            VBox vbox = new VBox(gameOverLabel, menuButton);
+            vbox.setSpacing(20);
+            vbox.setAlignment(Pos.CENTER);
+            root.setCenter(vbox);
+
+            Scene gameOverScene = new Scene(root, WIDTH, HEIGHT);
+            primaryStage.setScene(gameOverScene);
+        }
 
 
-    public static void quitterJeu() {
-        System.exit(0);
-    }
+        public static void quitterJeu () {
+            System.exit(0);
+        }
 
-    private static void retournerAuMenu() {
-        Menu menu = new Menu(WIDTH, HEIGHT);
+        private static void retournerAuMenu () throws IOException {
+            Menu menu = new Menu(WIDTH, HEIGHT, new Score("score.csv"));
 
-        menu.getBoutonJouer().setOnAction(e -> lancerJeu());
-        menu.getBoutonQuitter().setOnAction(e -> quitterJeu());
+            menu.getBoutonJouer().setOnAction(e -> lancerJeu());
+            menu.getBoutonQuitter().setOnAction(e -> quitterJeu());
 
-        Scene menuScene = new Scene(menu, WIDTH, HEIGHT);
-        primaryStage.setScene(menuScene);
-    }
-
+            Scene menuScene = new Scene(menu, WIDTH, HEIGHT);
+            primaryStage.setScene(menuScene);
+        }
 }
