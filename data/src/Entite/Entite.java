@@ -21,7 +21,7 @@ public abstract class Entite extends Position {
     /**
      * Interaction associée à l'entité
      */
-    private Interaction interaction;
+    private final Interaction interaction;
 
     /**
      * Constructeur pour initialiser une entité avec une position et une interaction spécifique

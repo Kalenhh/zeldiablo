@@ -1,6 +1,7 @@
 package moteurJeu;
 
 import Entite.Joueur;
+import Labyrinthe.LabyJeu;
 import Labyrinthe.Score;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -65,7 +66,11 @@ public class MoteurJeu extends Application {
         Menu menu = new Menu(WIDTH, HEIGHT, score);
 
         menu.getBoutonJouer().setOnAction(e -> {
-            jeu.resetPV_joueur(); // Réinitialise pv joueur
+            try {
+                jeu.init(); // Réinitialise pv joueur
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
             lancerJeu();
         });
 
@@ -77,7 +82,12 @@ public class MoteurJeu extends Application {
         primaryStage.show();
     }
 
-        public static void lancerJeu () {
+        public static void lancerJeu ()   {
+            try {
+                jeu.init();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
 
             Pane canvasContainer = new Pane();
             Canvas canvas = new Canvas();
@@ -96,11 +106,7 @@ public class MoteurJeu extends Application {
 
             scene.setOnKeyPressed(event -> controle.appuyerTouche(event));
             scene.setOnKeyReleased(event -> controle.relacherTouche(event));
-            canvas.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-                if (event.getClickCount() == 2) {
-                    jeu.init();
-                }
-            });
+
 
             startAnimation(canvas);
         }

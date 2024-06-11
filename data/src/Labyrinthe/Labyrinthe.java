@@ -10,7 +10,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * Classe Labyrinthe. Représente un labyrinthe avec des entités et des éléments de jeu.
@@ -31,19 +30,18 @@ public class Labyrinthe implements Graphe {
     public static final String GAUCHE = "Gauche";
     public static final String DROITE = "Droite";
 
-    private int NBR_LIGNE;
-    private int NBR_COLONNE;
+    private final int NBR_LIGNE;
+    private final int NBR_COLONNE;
 
     // Variables utilisées
     private Joueur pj;
     private int score;
-    private final Random rand;
 
     // Les éléments du labyrinthe
     private final ArrayList<Position> grid;
 
     // Liste des noeuds pour le calcul des chemins
-    private ArrayList<String> listeNoeud;
+    private final ArrayList<String> listeNoeud;
 
 
 
@@ -67,7 +65,6 @@ public class Labyrinthe implements Graphe {
         // creation labyrinthe vide
         this.grid = new ArrayList<>();
         this.pj = null;
-        this.rand = new Random();
 
         this.listeNoeud = new ArrayList<>();
 
@@ -196,22 +193,6 @@ public class Labyrinthe implements Graphe {
      */
     public void retirerElement(Position position) {
         grid.remove(position);
-    }
-
-    /**
-     * Vérifie si l'emplacement est vide ou non.
-     *
-     * @param px position x
-     * @param py position y
-     * @return true si l'emplacement est vide, false sinon
-     */
-    public boolean estVide(int px, int py) {
-        for (Position p : this.grid) {
-            if (p.etrePresent(px, py)) {
-                return false;
-            }
-        }
-        return true;
     }
 
     /**

@@ -7,7 +7,7 @@ public class Arcs {
     /**
      * Liste d'arc
      */
-    private List<Arc> arcs;
+    private final List<Arc> arcs;
 
     /**
      * Constructeur d'Arcs

@@ -40,14 +40,7 @@ public class Jaune extends Monstre {
         super(dx, dy, pv, degats, new InteractionJaune());
     }
 
-    /**
-     * Attaque une entité cible en lui infligeant des dégâts.
-     *
-     * @param e L'entité cible de l'attaque
-     */
-    public void attaquer(Entite e) {
-        e.subirDegat(this.degats);
-    }
+
 
     /**
      * Déplace le monstre dans une direction aléatoire parmi les positions possibles.
@@ -78,7 +71,6 @@ public class Jaune extends Monstre {
      * @param cible La position cible de l'interaction
      */
     public void interagir(Position cible) {
-        System.out.println(this.getX() + " " + this.getY() + " " + cible.getX() + " " + cible.getY());
         getInteraction().interagirAvec(this, cible);
     }
 }

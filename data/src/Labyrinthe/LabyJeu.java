@@ -18,7 +18,7 @@ public class LabyJeu implements Jeu {
 
     public static final Double VITESSE_JOUEUR = 0.5 ;
 
-    private final Labyrinthe laby;
+    private Labyrinthe laby;
     private double temps;
     private double temps_joueur ;
 
@@ -99,8 +99,12 @@ public class LabyJeu implements Jeu {
      * Initialisation du jeu
      */
     @Override
-    public void init() {
-        System.out.println("init() called");
+    public void init() throws IOException {
+        this.laby = new Labyrinthe("data/laby/laby1.txt");
+        this.temps = 0;
+        this.temps_joueur = 0 ;
+        Joueur joueur = (Joueur)laby.getPerso();
+        joueur.setPv(2);
     }
 
     /**

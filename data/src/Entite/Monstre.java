@@ -1,5 +1,7 @@
 package Entite;
+
 import Interaction.Interaction;
+
 /**
  * Classe représentant un monstre, qui hérite de la classe Perso.
  */
@@ -31,23 +33,6 @@ public abstract class Monstre extends Perso {
     public void attaquer(Entite e) {
         super.attaquer(e);
     }
-
-
-
-
-
-
-
-    /**
-     * Vérifie si le monstre est présent à sa position actuelle.
-     *
-     * @return true si le monstre est présent, sinon false
-     */
-    public boolean etrePresent() {
-        return super.etrePresent(this.getX(), this.getY());
-    }
-
-
 }
 
 

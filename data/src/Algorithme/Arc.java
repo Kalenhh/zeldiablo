@@ -3,12 +3,12 @@ public class Arc {
     /**
      * chaine correspondant au nom du noeud de destination de l'arc
      */
-    private String dest;
+    private final String dest;
 
     /**
      * attribut correspondant au cout de l'arc
      */
-    private double cout;
+    private final double cout;
 
     /**
      * constructeur d'Arc

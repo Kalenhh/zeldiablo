@@ -2,7 +2,6 @@ package Entite;
 
 import Algorithme.Dijkstra;
 import Algorithme.Valeur;
-import Interaction.InteractionJaune;
 import Interaction.InteractionRouge;
 import Labyrinthe.Labyrinthe;
 
@@ -71,14 +70,7 @@ public class Rouge extends Monstre {
         getInteraction().interagirAvec(this, cible);
     }
 
-    /**
-     * Vérifie si le monstre est présent aux coordonnées (x, y).
-     *
-     * @return true si le monstre est présent aux coordonnées (x, y), sinon false
-     */
-    public boolean etrePresent() {
-        return super.etrePresent(this.getX(), this.getY());
-    }
+
 
 }
 

@@ -48,7 +48,7 @@ public class BellmanFord implements Algorithme{
         while (modif) {
             modif = false;
             for (int i = 0; i < s.size(); i++) {
-                for (Arc a : (ArrayList<Arc>) g.suivants(s.get(i))) {
+                for (Arc a : g.suivants(s.get(i))) {
                     if ((v.getValeur(s.get(i)) + a.getCout()) < v.getValeur(a.getDest())) {
                         v.setValeur(a.getDest(), v.getValeur(s.get(i)) + a.getCout());
                         v.setParent(a.getDest(), s.get(i));

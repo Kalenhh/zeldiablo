@@ -26,10 +26,11 @@ public class InteractionJaune implements Interaction {
 
         if (p instanceof Joueur) {
             // Si la position cible est un Joueur, l'entité Jaune attaque le joueur et revient à sa position précédente
-            if (!((Joueur) p).etreMort())
-            e.attaquer((Entite) p);
-            e.setX(e.getAncienX());
-            e.setY(e.getAncienY());
+            if (!((Joueur) p).etreMort()) {
+                    e.attaquer((Entite) p);
+                    e.setX(e.getAncienX());
+                    e.setY(e.getAncienY());
+            }
         }
 
         if (p instanceof Fleur) {

@@ -98,18 +98,7 @@ public abstract class Perso extends Entite {
         return pv;
     }
 
-    /**
-     * Méthode de déplacement. Implémentation vide à redéfinir par les sous-classes.
-     */
-    public abstract void seDeplacer();
 
-    /**
-     * Méthode d'interaction avec une cible. Implémentation vide à redéfinir par les sous-classes.
-     *
-     * @param cible La position cible de l'interaction
-     */
-    @Override
-    public abstract void interagir(Position cible);
 
     public void setPv(int i) {
         this.pv = i;

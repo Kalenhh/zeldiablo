@@ -1,6 +1,8 @@
 package moteurJeu;
 
 
+import java.io.IOException;
+
 /**
  * modele de jeu
  */
@@ -17,7 +19,7 @@ public interface Jeu {
     /**
      * initialisation du jeu
      */
-    void init();
+    void init() throws IOException;
 
     /**
      * verifie si le jeu est fini

@@ -7,5 +7,5 @@ public interface Algorithme {
      * @param depart Sommet de départ
      * @return Valeur des chemins les plus courts
      */
-    public Valeur resoudre(Graphe g, String depart);
+    Valeur resoudre(Graphe g, String depart);
 }

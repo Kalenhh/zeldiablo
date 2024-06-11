@@ -13,5 +13,5 @@ public interface Interaction {
      * @param e L'entité qui interagit
      * @param p La position cible de l'interaction
      */
-    public void interagirAvec(Entite e, Position p);
+    void interagirAvec(Entite e, Position p);
 }

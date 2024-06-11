@@ -21,12 +21,10 @@ public class Joueur extends Perso {
     }
 
 
-
     /**
      * Déplace le joueur. Cette méthode est actuellement vide car le joueur est contrôlé par l'utilisateur.
      */
     public void seDeplacer() {
-        return;
     }
 
 
