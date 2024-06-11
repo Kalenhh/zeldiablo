@@ -3,6 +3,7 @@ package Labyrinthe;
 import Entite.*;
 import Item.Fleur;
 import Item.Mur;
+import Item.Piege;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -44,6 +45,9 @@ public class LabyDessin implements DessinJeu {
             }
             if (pos instanceof Rouge) {
                 gc.drawImage(new Image("file:monstreRouge.png"), pos.getX() * 40, pos.getY() * 40);
+            }
+            if (pos instanceof Piege) {
+                gc.drawImage(new Image("file:trap.png"), pos.getX() * 40, pos.getY() * 40);
             }
         }
 

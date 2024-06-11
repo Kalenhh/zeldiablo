@@ -19,9 +19,8 @@ public abstract class Item extends Position {
      * @param durabilite vie
      * @param x          position abscisse
      * @param y          position ordonnee
-     * @param inter
      */
-    public Item(int resistance, int durabilite, int x, int y, Interaction inter) {
+    public Item(int resistance, int durabilite, int x, int y) {
         super(x,y);
         //Verification du parametre de resistance
         if(resistance > 1){
@@ -32,7 +31,6 @@ public abstract class Item extends Position {
         if(durabilite > 0){
             this.durabilite = durabilite;
         }else this.durabilite = 1;
-        this.interaction = inter;
     }
 
 

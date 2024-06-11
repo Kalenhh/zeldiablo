@@ -14,6 +14,6 @@ public class Mur extends Item{
      * @param y position ordonnee
      */
     public Mur(int resistance, int durabilite, int x, int y){
-        super(resistance, durabilite, x, y, new InteractionMur());
+        super(resistance, durabilite, x, y);
     }
 }

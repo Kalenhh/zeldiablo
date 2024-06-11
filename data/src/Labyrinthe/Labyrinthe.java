@@ -5,6 +5,7 @@ import Algorithme.Graphe;
 import Entite.*;
 import Item.Fleur;
 import Item.Mur;
+import Item.Piege;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -23,6 +24,7 @@ public class Labyrinthe implements Graphe {
     public static final char PLANTE = 'P';
     public static final char JAUNE = 'Y';
     public static final char ROUGE = 'R';
+    public static final char PIEGE = 'T';
 
     // Constantes actions possibles
     public static final String HAUT = "Haut";
@@ -30,7 +32,7 @@ public class Labyrinthe implements Graphe {
     public static final String GAUCHE = "Gauche";
     public static final String DROITE = "Droite";
 
-    public static String path = "data/laby/laby5.txt" ;
+    public static String path = "data/laby/laby0.txt" ;
 
     public static int NBR_LIGNE = 0;
     public static int NBR_COLONNE = 0;
@@ -98,6 +100,9 @@ public class Labyrinthe implements Graphe {
                     case JOUEUR:
                         this.pj = new Joueur(colonne, numeroLigne, 2, 1);
                         this.grid.add(this.pj);
+                        break;
+                    case PIEGE:
+                        this.grid.add(new Piege(0,0,colonne,numeroLigne));
                         break;
                     default:
                         throw new Error("caractère inconnu :" + c);

@@ -4,7 +4,10 @@ import Entite.*;
 import Item.Fleur;
 import Item.Mur;
 import Labyrinthe.LabyDessin;
+import Labyrinthe.Labyrinthe;
 import Labyrinthe.Score;
+
+import java.util.Random;
 
 public class InteractionJoueur implements Interaction {
     @Override
@@ -23,16 +26,18 @@ public class InteractionJoueur implements Interaction {
         }
 
         if (p instanceof Fleur) {
-            // Si la position cible est une Fleur, le personnage gagne un point de vie
-            if (e instanceof Perso) {
-                int pv = ((Perso) e).getPv();
-                ((Perso) e).setPv(pv + 1);
-                Score.score += 1;
-                LabyDessin.dessinerScore();
-                if(Score.bestScore < Score.score){
-                    Score.bestScore = Score.score;
-                }
+            Random rand = new Random();
+            int pv = ((Perso) e).getPv();
+            ((Perso) e).setPv(pv + 1);
+            Score.score += 1;
+            LabyDessin.dessinerScore();
+            if(Score.bestScore < Score.score){
+                Score.bestScore = Score.score;
             }
+            int randomInt = rand.nextInt(Labyrinthe.listeNoeud.size()-1);
+            String randomPos = Labyrinthe.listeNoeud.get(randomInt);
+            p.setX(Integer.parseInt(randomPos.split(":")[0]));
+            p.setY(Integer.parseInt(randomPos.split(":")[1]));
         }
     }
 }
