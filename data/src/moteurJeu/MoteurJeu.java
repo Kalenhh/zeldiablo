@@ -169,6 +169,9 @@ public class MoteurJeu extends Application {
         }
 
         public static void retournerAuMenu () throws IOException {
+            if(Score.bestScore < Score.score){
+                Score.bestScore = Score.score;
+            }
             Menu menu = new Menu(WIDTH, HEIGHT, new Score("score.csv"));
 
             menu.getBoutonJouer().setOnAction(e -> lancerJeu());
