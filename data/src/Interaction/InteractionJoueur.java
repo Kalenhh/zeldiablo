@@ -3,6 +3,7 @@ package Interaction;
 import Entite.*;
 import Item.Fleur;
 import Item.Mur;
+import Item.Piege;
 import Labyrinthe.LabyDessin;
 import Labyrinthe.Labyrinthe;
 import Labyrinthe.Score;
@@ -38,6 +39,13 @@ public class InteractionJoueur implements Interaction {
             String randomPos = Labyrinthe.listeNoeud.get(randomInt);
             p.setX(Integer.parseInt(randomPos.split(":")[0]));
             p.setY(Integer.parseInt(randomPos.split(":")[1]));
+        }
+
+        if (p instanceof Piege){
+            if(((Piege) p).etreOuvert()){
+                ((Perso) e).subirDegat(1);
+                ((Piege) p).fermerPiege();
+            }
         }
     }
 }

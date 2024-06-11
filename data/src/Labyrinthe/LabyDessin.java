@@ -47,7 +47,12 @@ public class LabyDessin implements DessinJeu {
                 gc.drawImage(new Image("file:monstreRouge.png"), pos.getX() * 40, pos.getY() * 40);
             }
             if (pos instanceof Piege) {
-                gc.drawImage(new Image("file:trap.png"), pos.getX() * 40, pos.getY() * 40);
+                if(((Piege) pos).etreOuvert()){
+                    gc.drawImage(new Image("file:trap.png"), pos.getX() * 40, pos.getY() * 40);
+                }else{
+                    gc.drawImage(new Image("file:trapClose.png"), pos.getX() * 40, pos.getY() * 40);
+                }
+
             }
         }
 
