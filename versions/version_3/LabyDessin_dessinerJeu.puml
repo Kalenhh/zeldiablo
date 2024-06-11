@@ -1,0 +1,118 @@
+@startuml
+participant Actor
+Actor -> LabyDessin : dessinerJeu
+activate LabyDessin
+loop laby.getLaby().getGrid()
+alt pos instanceof Joueur
+create Image
+LabyDessin -> Image : new
+activate Image
+Image --> LabyDessin
+deactivate Image
+LabyDessin -> GraphicsContext : drawImage
+activate GraphicsContext
+GraphicsContext --> LabyDessin
+deactivate GraphicsContext
+end
+alt pos instanceof Mur
+create Image
+LabyDessin -> Image : new
+activate Image
+Image --> LabyDessin
+deactivate Image
+LabyDessin -> GraphicsContext : drawImage
+activate GraphicsContext
+GraphicsContext --> LabyDessin
+deactivate GraphicsContext
+end
+alt pos instanceof Fleur
+create Image
+LabyDessin -> Image : new
+activate Image
+Image --> LabyDessin
+deactivate Image
+LabyDessin -> GraphicsContext : drawImage
+activate GraphicsContext
+GraphicsContext --> LabyDessin
+deactivate GraphicsContext
+end
+alt pos instanceof Jaune
+create Image
+LabyDessin -> Image : new
+activate Image
+Image --> LabyDessin
+deactivate Image
+LabyDessin -> GraphicsContext : drawImage
+activate GraphicsContext
+GraphicsContext --> LabyDessin
+deactivate GraphicsContext
+end
+alt pos instanceof Rouge
+create Image
+LabyDessin -> Image : new
+activate Image
+Image --> LabyDessin
+deactivate Image
+LabyDessin -> GraphicsContext : drawImage
+activate GraphicsContext
+GraphicsContext --> LabyDessin
+deactivate GraphicsContext
+end
+alt pos instanceof Piege
+LabyDessin -> Piege : etreOuvert
+activate Piege
+Piege --> LabyDessin
+deactivate Piege
+alt ((Piege) pos).etreOuvert()
+create Image
+LabyDessin -> Image : new
+activate Image
+Image --> LabyDessin
+deactivate Image
+LabyDessin -> GraphicsContext : drawImage
+activate GraphicsContext
+GraphicsContext --> LabyDessin
+deactivate GraphicsContext
+else 
+create Image
+LabyDessin -> Image : new
+activate Image
+Image --> LabyDessin
+deactivate Image
+LabyDessin -> GraphicsContext : drawImage
+activate GraphicsContext
+GraphicsContext --> LabyDessin
+deactivate GraphicsContext
+end
+end
+end
+LabyDessin -> LabyDessin : dessinerScore
+activate LabyDessin
+alt gc != null
+create Font
+LabyDessin -> Font : new
+activate Font
+Font --> LabyDessin
+deactivate Font
+LabyDessin -> GraphicsContext : fillText
+activate GraphicsContext
+GraphicsContext --> LabyDessin
+deactivate GraphicsContext
+end
+deactivate LabyDessin
+LabyDessin -> LabyDessin : dessinerPv
+activate LabyDessin
+alt gc != null
+create Font
+LabyDessin -> Font : new
+activate Font
+Font --> LabyDessin
+deactivate Font
+LabyDessin -> GraphicsContext : fillText
+activate GraphicsContext
+GraphicsContext --> LabyDessin
+deactivate GraphicsContext
+end
+deactivate LabyDessin
+return
+@enduml

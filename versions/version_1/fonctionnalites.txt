@@ -1,12 +1,12 @@
-1ere fonctionnalité : HUGO
+PREMIERE FONCTIONNALITE : Implémentation d'un menu (Hugo)
 --> Plutot que de lancer directement le jeu, le joueur lance un menu qui lui permet de
-lancer le jeu ou de quitter l'application. Ce menu ré-apparait lorsque le joueur gagne ou perd
+lancer le jeu ou de quitter l'application. Ce menu ré-apparait lorsque le joueur gagne ou perd.
 
 Critères de validation :
 • Le menu possède une image spécifique.
-• Le menu propose deux options jouer ou quitter.
+• Le menu propose deux options: jouer ou quitter.
 • Le menu s'affiche dans la même JFrame que le rendu du jeu.
-• Pendant le menu, le jeu n'est pas créé et ne tourne pas
+• Pendant le menu, le jeu n'est pas créé et ne tourne pas.
 
 Difficultés rencontrées :
 --> j'ai rencontré quelques difficultés avec la gestion des boutons dans le menu principal.
@@ -16,33 +16,34 @@ Ensuite, il y avait le fait de gérer la transition entre le menu principal et l
 tout en maintenant une seule racine de scène pour afficher les deux.
 C'était important pour éviter de génerer plusieurs fenêtres.
 j'ai du coup réussi à mettre en place un système où le contenu du jeu et le contenu du menu
-(représenté par une classe qui hérite d'un objet panneau)
-étaient affichés dans la même scène, mais avec des racines différentes, selon l'état de l'application.
+(représenté par une classe qui hérite d'un objet panneau) étaient affichés dans la même
+scène, mais avec des racines différentes, selon l'état de l'application.
 
 
-2nd fonctionnalité : MATHIEU
+DEUXIEME FONCTIONNALITE : Implémentation d'une fleur comestible (Mathieu)
 --> Ajout d'une fleur, cette fleur peut être "mangée" par le joueur.
 Lorsque le joueur mange la fleur, il grossit.
 Cela sera utile pour les futurs mécaniques de jeux car plus le joueur sera gros,
 plus il aura de force et de PV.
 
 Critères de validation
-• La fleur apparait dans le labyrinthe
-• La fleur n'apparait jamais dans un mur
-• Le joueur peut avaler la fleur, dans ce cas elle disparait et réaparait a un autre endroit
-• Le joueur grossit a chaque fois que la fleur est avalé et ses pv augmentes
+• La fleur apparait dans le labyrinthe.
+• La fleur n'apparait jamais dans un mur.
+• Le joueur peut avaler la fleur, dans ce cas elle disparait et réaparait a un autre endroit.
+• Le joueur grossit a chaque fois que la fleur est avalé et ses pv augmentes.
 
 Difficultés rencontrées :
+Aucune difficulté d'implémentation.
 
 
+TROISIEME FONCTIONNALITE : Score (Melody & Nathan)
+--> Ajout d'un score, le score n'était pas une fonctionnalitée proposée,
+mais nous l'avions trouvé intéressante.
 
-3eme fonctionnalité : MELODY & NATHAN
-Ajout d'un score, le score n'était pas une fonctionnalitée proposée, mais nous l'avions trouvé intéressante.
-
-Critère de validation :
-• Le score apparaît avec le pseudo du joueur concerné
-• Le score s'écrit dans un fichier csv
-• Le meilleur score est actualisé à chaque lecture du fichier csv
+Critères de validation :
+• Le score apparaît.
+• Le score s'écrit dans un fichier csv.
+• Le meilleur score est actualisé à chaque lecture du fichier csv.
 
 Difficultés rencontrées :
 --> La plus grande difficulté au début de ce projet était de s'imprégner du programme
