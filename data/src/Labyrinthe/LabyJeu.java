@@ -9,8 +9,11 @@ public class LabyJeu implements Jeu {
 
     public static final Double VITESSE_ENNEMIE = 2.0;
 
+    public static final Double VITESSE_JOUEUR = 0.5 ;
+
     private final Labyrinthe laby;
     private double temps;
+    private double temps_joueur ;
 
     /**
      * Constructeur de la classe LabyJeu
@@ -20,6 +23,7 @@ public class LabyJeu implements Jeu {
     public LabyJeu(Labyrinthe laby) {
         this.laby = laby;
         this.temps = 0;
+        this.temps_joueur = 0 ;
     }
 
     /**
@@ -31,14 +35,20 @@ public class LabyJeu implements Jeu {
      */
     @Override
     public void update(double secondes, Clavier clavier) {
-        if (clavier.droite) {
+        temps_joueur += secondes ;
+
+        if (clavier.droite && temps_joueur > VITESSE_JOUEUR) {
             this.laby.deplacerPerso("Droite");
-        } else if (clavier.gauche) {
+            temps_joueur = 0 ;
+        } else if (clavier.gauche && temps_joueur > VITESSE_JOUEUR) {
             this.laby.deplacerPerso("Gauche");
-        } else if (clavier.haut) {
+            temps_joueur = 0 ;
+        } else if (clavier.haut && temps_joueur > VITESSE_JOUEUR) {
             this.laby.deplacerPerso("Haut");
-        } else if (clavier.bas) {
+            temps_joueur = 0 ;
+        } else if (clavier.bas && temps_joueur > VITESSE_JOUEUR) {
             this.laby.deplacerPerso("Bas");
+            temps_joueur = 0 ;
         }
 
         temps = temps + secondes;
