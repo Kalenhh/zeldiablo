@@ -66,7 +66,7 @@ public class Menu extends StackPane {
         this.boutonQuitter.setStyle("-fx-text-fill: " + "RED" + ";");
 
         // Image du menu
-        ImageView fondMenu = new ImageView(new Image("file:blob_fond_menu.png"));
+        ImageView fondMenu = new ImageView(new Image("file:img/blob_fond_menu.png"));
         fondMenu.setFitWidth(largueur_image * 0.7);
         fondMenu.setFitHeight(hauteur_image * 0.7);
         fondMenu.setPreserveRatio(true);

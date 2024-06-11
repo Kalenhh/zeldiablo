@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -141,15 +142,19 @@ public class MoteurJeu extends Application {
         }
 
         public static void afficherEcranGameOver () {
-            BorderPane root = new BorderPane();
+            VBox root = new VBox();
+            root.setAlignment(Pos.CENTER);
+
+            //Image
+            Image blob = new Image("file:img/blob_gameover.png");
+            ImageView vIm = new ImageView(blob);
+            vIm.setFitWidth(600);
+            vIm.setFitHeight(300);
+
             Label gameOverLabel = new Label("GAME OVER");
             gameOverLabel.setStyle("-fx-font-size: 100px;");
-            gameOverLabel.setTextFill(Color.WHITE);
-            root.setStyle("-fx-background-color: red");
-            gameOverLabel.setBackground(new Background(new BackgroundFill(Color.BLACK, null, null)));
 
             Button menuButton = new Button("Revenir au menu");
-            menuButton.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
             menuButton.setOnAction(event -> {
                 try {
                     retournerAuMenu();
@@ -158,20 +163,7 @@ public class MoteurJeu extends Application {
                 }
             });
 
-            VBox vbox = new VBox(gameOverLabel, menuButton);
-            vbox.setSpacing(20);
-            vbox.setAlignment(Pos.CENTER);
-            root.setCenter(vbox);
-
-//            // Ajouter une image en arrière-plan
-//            String imagePath = "img/blob_gameOver.jpg"; // Remplacez par le chemin d'accès à votre image
-//            BackgroundImage backgroundImage = new BackgroundImage(new Image(imagePath),
-//                    BackgroundRepeat.NO_REPEAT, // Ne pas répéter l'image
-//                    BackgroundRepeat.NO_REPEAT, // Ne pas répéter l'image
-//                    BackgroundPosition.DEFAULT, // Position par défaut
-//                    new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, true, true, true, true) // Taille de l'image
-//            );
-//            root.setBackground(new Background(backgroundImage));
+            root.getChildren().addAll(vIm, gameOverLabel, menuButton);
 
             Scene gameOverScene = new Scene(root, WIDTH, HEIGHT);
             primaryStage.setScene(gameOverScene);

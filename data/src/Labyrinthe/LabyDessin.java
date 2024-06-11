@@ -32,25 +32,25 @@ public class LabyDessin implements DessinJeu {
         // Dessine les autres éléments du labyrinthe
         for (Position pos : laby.getLaby().getGrid()) {
             if (pos instanceof Joueur) {
-                gc.drawImage(new Image("file:blob_jeu.png"), pos.getX() * 40, pos.getY() * 40);
+                gc.drawImage(new Image("file:img/blob_jeu.png"), pos.getX() * 40, pos.getY() * 40);
             }
             if (pos instanceof Mur) {
-                gc.drawImage(new Image("file:mur_jeu.png"), pos.getX() * 40, pos.getY() * 40);
+                gc.drawImage(new Image("file:img/mur_jeu.png"), pos.getX() * 40, pos.getY() * 40);
             }
             if (pos instanceof Fleur) {
-                gc.drawImage(new Image("file:fleur.png"), pos.getX() * 40, pos.getY() * 40);
+                gc.drawImage(new Image("file:img/fleur.png"), pos.getX() * 40, pos.getY() * 40);
             }
             if (pos instanceof Jaune) {
-                gc.drawImage(new Image("file:monstreJaune.png"), pos.getX() * 40, pos.getY() * 40);
+                gc.drawImage(new Image("file:img/monstreJaune.png"), pos.getX() * 40, pos.getY() * 40);
             }
             if (pos instanceof Rouge) {
-                gc.drawImage(new Image("file:monstreRouge.png"), pos.getX() * 40, pos.getY() * 40);
+                gc.drawImage(new Image("file:img/monstreRouge.png"), pos.getX() * 40, pos.getY() * 40);
             }
             if (pos instanceof Piege) {
                 if(((Piege) pos).etreOuvert()){
-                    gc.drawImage(new Image("file:trap.png"), pos.getX() * 40, pos.getY() * 40);
+                    gc.drawImage(new Image("file:img/trap.png"), pos.getX() * 40, pos.getY() * 40);
                 }else{
-                    gc.drawImage(new Image("file:trapClose.png"), pos.getX() * 40, pos.getY() * 40);
+                    gc.drawImage(new Image("file:img/trapClose.png"), pos.getX() * 40, pos.getY() * 40);
                 }
 
             }
