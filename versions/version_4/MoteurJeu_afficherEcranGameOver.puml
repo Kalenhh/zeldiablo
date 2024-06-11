@@ -1,0 +1,11 @@
+@startuml
+participant Actor
+Actor -> MoteurJeu : afficherEcranGameOver
+activate MoteurJeu
+MoteurJeu -> MoteurJeu : retournerAuMenu
+MoteurJeu -> MoteurJeu : stopAnimation
+alt Score.bestScore < Score.score
+MoteurJeu -> MoteurJeu : quitterJeu
+end
+return
+@enduml

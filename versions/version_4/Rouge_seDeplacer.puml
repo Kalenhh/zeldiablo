@@ -1,0 +1,15 @@
+@startuml
+participant Actor
+Actor -> Rouge : seDeplacer
+activate Rouge
+Rouge -> Dijkstra : resoudre
+activate Dijkstra
+Dijkstra --> Rouge
+deactivate Dijkstra
+Rouge -> Valeur : calculerChemin
+activate Valeur
+Valeur --> Rouge
+deactivate Valeur
+Rouge -> Rouge : setX(),setY()
+return
+@enduml
