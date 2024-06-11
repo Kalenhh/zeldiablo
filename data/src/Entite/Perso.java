@@ -18,8 +18,6 @@ public abstract class Perso extends Entite {
      */
     int degats;
 
-    private Labyrinthe laby;
-
 
     /**
      * Constructeur pour initialiser un personnage avec une position, des points de vie, des dégâts, et une interaction.
@@ -36,16 +34,6 @@ public abstract class Perso extends Entite {
         this.degats = degats;
     }
 
-    /**
-     * Permet de savoir si le personnage est en (dx, dy).
-     *
-     * @param dx Position X testée
-     * @param dy Position Y testée
-     * @return true si le personnage est bien en (dx, dy), sinon false
-     */
-    public boolean etrePresent(int dx, int dy) {
-        return (this.getX() == dx && this.getY() == dy);
-    }
 
     /**
      * Méthode d'attaque. Implémentation vide à redéfinir par les sous-classes.
@@ -72,7 +60,6 @@ public abstract class Perso extends Entite {
      *
      * @return false par défaut
      */
-    @Override
     public boolean etreMort() {
         return pv<=0;
     }
@@ -96,7 +83,11 @@ public abstract class Perso extends Entite {
     }
 
 
-
+    /**
+     * Setter de l'attribut pv
+     *
+     * @param i nombre de pv
+     */
     public void setPv(int i) {
         this.pv = i;
     }

@@ -19,19 +19,6 @@ public abstract class Monstre extends Perso {
     public Monstre(int dx, int dy, int pv, int degats, Interaction inter) {
         super(dx, dy, pv, degats, inter);
     }
-
-    public void interagir(Position cible) {
-        getInteraction().interagirAvec(this, cible);
-    }
-
-    /**
-     * Attaque une entité cible en lui infligeant des dégâts.
-     *
-     * @param e L'entité cible de l'attaque
-     */
-    public void attaquer(Entite e) {
-        super.attaquer(e);
-    }
 }
 
 

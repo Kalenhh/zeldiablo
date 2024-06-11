@@ -42,7 +42,6 @@ public class Jaune extends Monstre {
     }
 
 
-
     /**
      * Déplace le monstre dans une direction aléatoire parmi les positions possibles.
      */
@@ -66,14 +65,5 @@ public class Jaune extends Monstre {
             this.setX(nouvellePosition[0]);
             this.setY(nouvellePosition[1]);
         }
-    }
-
-    /**
-     * Interagit avec une position cible en utilisant l'interaction définie pour ce type de monstre.
-     *
-     * @param cible La position cible de l'interaction
-     */
-    public void interagir(Position cible) {
-        getInteraction().interagirAvec(this, cible);
     }
 }
