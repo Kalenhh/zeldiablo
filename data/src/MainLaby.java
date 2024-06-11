@@ -12,7 +12,7 @@ public class MainLaby {
     public static void main(String[] args) throws IOException {
         MoteurJeu.setFPS(30);
 
-        Labyrinthe laby = new Labyrinthe("data/laby/laby3.txt");
+        Labyrinthe laby = new Labyrinthe("data/laby/laby0.txt");
 
         // charge le labyrinthe
         LabyJeu labyjeu = new LabyJeu(laby);

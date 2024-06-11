@@ -1,6 +1,7 @@
 package Labyrinthe;
 
 import Algorithme.Arc;
+import Algorithme.Graphe;
 import Entite.*;
 import Item.Fleur;
 import Item.Mur;
@@ -14,7 +15,7 @@ import java.util.Random;
 /**
  * Classe Labyrinthe. Représente un labyrinthe avec des entités et des éléments de jeu.
  */
-public class Labyrinthe {
+public class Labyrinthe implements Graphe {
 
     // Constantes char
     public static final char MUR = 'X';
@@ -96,7 +97,7 @@ public class Labyrinthe {
                         this.grid.add(new Jaune(colonne, numeroLigne, 2, 1));
                         break;
                     case ROUGE:
-                        this.grid.add(new Rouge(colonne, numeroLigne, 2, 1));
+                        this.grid.add(new Rouge(colonne, numeroLigne, 2, 1, this));
                         break;
                     case JOUEUR:
                         this.pj = new Joueur(colonne, numeroLigne, 2, 1);
@@ -227,7 +228,7 @@ public class Labyrinthe {
      *
      * @return liste des noeuds
      */
-    public ArrayList<String> getListeNoeud() {
+    public ArrayList<String> listeNoeuds() {
         return this.listeNoeud;
     }
 
@@ -237,18 +238,21 @@ public class Labyrinthe {
      * @param d noeud de départ
      * @return liste des noeuds adjacents
      */
-    public ArrayList<Arc> getSuivants(String d) {
+    public ArrayList<Arc> suivants(String d){
+        if(!this.listeNoeud.contains(d)){
+            return null;
+        }
         ArrayList<Arc> ret = new ArrayList<>();
         int x = Integer.parseInt(d.split(":")[0]);
         int y = Integer.parseInt(d.split(":")[1]);
-        if (x + 1 < NBR_COLONNE && this.listeNoeud.contains(x + 1 + ":" + y))
-            ret.add(new Arc(x + 1 + ":" + y, 1));
-        if (x - 1 >= 0 && this.listeNoeud.contains(x - 1 + ":" + y))
-            ret.add(new Arc(x - 1 + ":" + y, 1));
-        if (y + 1 < NBR_LIGNE && this.listeNoeud.contains(x + ":" + (y + 1)))
-            ret.add(new Arc(x + ":" + (y + 1), 1));
-        if (y - 1 >= 0 && this.listeNoeud.contains(x + ":" + (y - 1)))
-            ret.add(new Arc(x + ":" + (y - 1), 1));
+        if(x+1 < NBR_COLONNE && this.listeNoeud.contains(x+1 + ":" + y))
+            ret.add(new Arc(x + 1 +":"+ y,1));
+        if(x-1 >= 0 && this.listeNoeud.contains(x-1 + ":" + y))
+            ret.add(new Arc(x-1 + ":" + y, 1));
+        if(y+1 < NBR_LIGNE && this.listeNoeud.contains(x + ":" + y+1))
+            ret.add(new Arc(x + ":" + y+1,1));
+        if(y-1 >= 0 && this.listeNoeud.contains(x + ":" + (y-1)))
+            ret.add(new Arc(x + ":" + (y-1),1));
 
         return ret;
     }
