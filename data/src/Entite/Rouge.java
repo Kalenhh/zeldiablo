@@ -2,6 +2,8 @@ package Entite;
 
 import Algorithme.Dijkstra;
 import Algorithme.Valeur;
+import Interaction.InteractionJaune;
+import Interaction.InteractionRouge;
 import Labyrinthe.Labyrinthe;
 
 import java.util.ArrayList;
@@ -23,7 +25,7 @@ public class Rouge extends Monstre {
      * @param degats Dégâts infligés par le monstre
      */
     public Rouge(int dx, int dy, int pv, int degats, Labyrinthe l) {
-        super(dx, dy, pv, degats, null);
+        super(dx, dy, pv, degats, new InteractionRouge());
         this.l = l;
     }
 
@@ -59,13 +61,9 @@ public class Rouge extends Monstre {
         }
     }
 
-    /**
-     * Subit des dégâts et les soustrait aux points de vie du monstre.
-     *
-     * @param degats Les dégâts subis
-     */
-    public void subirDegat(int degats) {
-        super.pv = super.pv - degats;
+    @Override
+    public void interagir(Position cible) {
+        getInteraction().interagirAvec(this, cible);
     }
 
     /**
@@ -77,14 +75,6 @@ public class Rouge extends Monstre {
         return super.etrePresent(this.getX(), this.getY());
     }
 
-    /**
-     * Vérifie si le monstre est mort (points de vie égaux à 0).
-     *
-     * @return true si les points de vie sont égaux à 0, sinon false
-     */
-    public boolean etreMort() {
-        return super.etreMort();
-    }
 }
 
 

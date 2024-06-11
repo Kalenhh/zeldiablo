@@ -6,7 +6,7 @@ import Labyrinthe.Labyrinthe;
 /**
  * Gère un personnage situé en (x, y).
  */
-public class Perso extends Entite {
+public abstract class Perso extends Entite {
 
     /**
      * Points de vie du personnage.
@@ -58,8 +58,7 @@ public class Perso extends Entite {
         if (victime.etreMort()) {
             laby.retirerElement(victime);
         }
-
-        }
+    }
 
     /**
      * Méthode pour subir des dégâts. Implémentation vide à redéfinir par les sous-classes.
@@ -68,7 +67,7 @@ public class Perso extends Entite {
      */
     @Override
     public void subirDegat(int degat) {
-        return;
+        this.pv -= degat ;
     }
 
     /**
@@ -102,8 +101,7 @@ public class Perso extends Entite {
     /**
      * Méthode de déplacement. Implémentation vide à redéfinir par les sous-classes.
      */
-    public void seDeplacer() {
-    }
+    public abstract void seDeplacer();
 
     /**
      * Méthode d'interaction avec une cible. Implémentation vide à redéfinir par les sous-classes.
@@ -111,15 +109,7 @@ public class Perso extends Entite {
      * @param cible La position cible de l'interaction
      */
     @Override
-    public void interagir(Position cible) {
-        return;
-    }
-
-    /**
-     * Méthode d'interaction générique. Implémentation vide à redéfinir par les sous-classes.
-     */
-    public void interagir() {
-    }
+    public abstract void interagir(Position cible);
 
     public void setPv(int i) {
         this.pv = i;

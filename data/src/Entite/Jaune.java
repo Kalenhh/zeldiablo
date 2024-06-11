@@ -81,31 +81,4 @@ public class Jaune extends Monstre {
         System.out.println(this.getX() + " " + this.getY() + " " + cible.getX() + " " + cible.getY());
         getInteraction().interagirAvec(this, cible);
     }
-
-    /**
-     * Subit des dégâts infligés par une autre entité.
-     *
-     * @param degats Les dégâts subis
-     */
-    public void subirDegat(int degats) {
-        super.subirDegat(degats);
-    }
-
-    /**
-     * Vérifie si le monstre est présent à sa position actuelle.
-     *
-     * @return true si le monstre est présent, sinon false
-     */
-    public boolean etrePresent() {
-        return super.etrePresent(this.getX(), this.getY());
-    }
-
-    /**
-     * Vérifie si le monstre est mort (points de vie = 0).
-     *
-     * @return true si le monstre est mort, sinon false
-     */
-    public boolean etreMort() {
-        return super.etreMort();
-    }
 }

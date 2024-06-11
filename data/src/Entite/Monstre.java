@@ -6,7 +6,7 @@ import Labyrinthe.Labyrinthe;
 /**
  * Classe représentant un monstre, qui hérite de la classe Perso.
  */
-public class Monstre extends Perso {
+public abstract class Monstre extends Perso {
 
     /**
      * Constructeur pour initialiser un monstre avec une position, des points de vie, des dégâts, et une interaction.
@@ -30,24 +30,11 @@ public class Monstre extends Perso {
         e.subirDegat(degats);
     }
 
-    /**
-     * Déplace le monstre. Cette méthode doit être implémentée par les sous-classes pour définir des comportements spécifiques.
-     */
-    public void seDeplacer() {
-    }
 
-    /**
-     * Subit des dégâts infligés par une autre entité.
-     *
-     * @param degats Les dégâts subis
-     */
-    public void subirDegat(int degats) {
-        pv = pv - degats;
-        if (pv <= 0) {
-            pv = 0;
-            //retirer le monstre de la liste des positions
-        }
-    }
+
+
+
+
 
     /**
      * Vérifie si le monstre est présent à sa position actuelle.
@@ -58,14 +45,7 @@ public class Monstre extends Perso {
         return super.etrePresent(this.getX(), this.getY());
     }
 
-    /**
-     * Vérifie si le monstre est mort (points de vie = 0).
-     *
-     * @return true si le monstre est mort, sinon false
-     */
-    public boolean etreMort() {
-        return pv <= 0;
-    }
+
 }
 
 
