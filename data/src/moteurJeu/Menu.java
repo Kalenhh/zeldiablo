@@ -39,11 +39,7 @@ public class Menu extends StackPane {
         //Recuperation des scores
         Label scoreLabel = new Label("SCORE: " + score.getScore());
         Label meilleurScoreLabel;
-        try {
-            meilleurScoreLabel = new Label("MEILLEUR SCORE: " + score.getMeilleurScore());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        meilleurScoreLabel = new Label("MEILLEUR SCORE: " + Score.bestScore);
 
         //Redesign des labels
         scoreLabel.setFont(Font.font(25));

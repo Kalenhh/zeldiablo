@@ -81,6 +81,10 @@ public class LabyJeu implements Jeu {
         };
 
         LabyDessin.dessinerScore();
+        if(Score.bestScore < Score.score){
+            Score.bestScore = Score.score;
+        }
+        System.out.println("Score : " + Score.bestScore + Score.score);
     }
 
 

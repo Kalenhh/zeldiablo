@@ -12,6 +12,7 @@ public class Score implements Jeu {
     private final String nomFichier;
     private final FileWriter fw;
     public static int score = 0;
+    public static int bestScore = 0;
 
     /**
      * Constructeur du score du jeu, sauvegardé sur un fichier.

@@ -29,6 +29,9 @@ public class InteractionJoueur implements Interaction {
                 ((Perso) e).setPv(pv + 1);
                 Score.score += 1;
                 LabyDessin.dessinerScore();
+                if(Score.bestScore < Score.score){
+                    Score.bestScore = Score.score;
+                }
             }
         }
     }
