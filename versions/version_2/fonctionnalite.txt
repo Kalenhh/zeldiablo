@@ -53,5 +53,5 @@ vie négatifs.
 temps de répliquer et disparait avant.
 
 Difficultés rencontrées :
-J'ai pris du temps à comprendre que je pouvais utiliser l'attribut Grid. A partir de ça,
-j'ai pu directement retirer l'élément monstre du labyrinthe sur la position.
+Nous avons pris du temps à comprendre que je pouvais utiliser l'attribut Grid. A partir de ça,
+nous avons pu directement retirer l'élément monstre du labyrinthe sur la position.

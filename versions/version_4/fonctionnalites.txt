@@ -1,19 +1,55 @@
-1) Fin du jeu : mort du héros
-Lorsque le héros n'a plus de points de vie, le jeu s'arrête et la partie est perdue.
+PREMIERE FONCTIONNALITE : Fin du jeu et mort du héros (Hugo)
+--> Lorsque le héros n'a plus de points de vie, le jeu s'arrête et la partie est perdue.
+
 Critères de validation
 • Le héros par défaut dispose de 5 points de vie.
 • Chaque monstre fait 1 point de dégât lorsque le héros se fait attaquer.
 • Quand le héros meurt, un message de fin est affiché sur la console et le jeu s'arrête.
 
-2) Monstres au comportement intelligent
-  A chaque fois que les monstres se déplacent, ils se rapprochent dans la direction du
-  héros en prenant en compte la présence des murs.
-  Critères de validation
-  • Avant son déplacement, le monstre détermine le meilleur chemin pour atteindre
-  le héros.
-  • Le monstre prend en compte les obstacles qui le concernent pour trouver le meilleur
-  chemin.
-  • lorsqu'il se déplace, le monstre suit effectivement le meilleur chemin et parvient
-  jusqu'au héros même s'il y a des obstacles.
-  • vous pourrez vous inspirer (a) des transparents "IA dans le jeu vidéo" (transparents 112-130) ou (b) (c) du site redblob (avec de nombreuses démonstrations
-  autour du jeu vidéo)
+Difficultés rencontrées :
+Je devais faire un lien entre MoteurJeu et la mort du joueur, donc je suis passé par estFini() dans Labyrinthe,
+et seulement si le labyrinthe était fini, une méthode se lance dans moteurJeu qui arrête l'animation et redirige
+vers le menu.
+
+
+TROISIEME FONCTIONNALITE : Cases Piégées (Melody)
+--> Lorsque une entité (héros ou monstre) arrive sur une case piégée, il subit des dégâts.
+
+Critères de validation
+• Les dégâts ne se déclenchent que lorsque le joueur arrive sur la case, il peut ensuite
+rester sur cette case aussi longtemps qu'il le souhaite sans subir d'autres dégâts.
+• Lorsque le piège est activé, l'image change et le piège reste fermé.
+• Lorsqu'une case a été détectée comme un piège, elle s'affiche différemment dans le labyrinthe (en brun),
+  ce qui permet au joueur d'en tenir compte ensuite.
+
+Difficultés rencontrées :
+La difficulté était de trouver un sprite adapté pour ce que je voulais faire (piège ouvert et fermé).
+Pour l'implémentation je n'ai pas eu de grande difficulté car tout était déjà préparé grâce aux interfaces
+Item et Interaction.
+
+
+QUATRIEME FONCTIONNALITE : Fin du jeu : victoire du héros (Hugo)
+--> Une fois que le héros a tué tous les monstres présents, il gagne la partie et son score est enregistré
+
+Critères de validation
+• Lorsque le héros tue tous les monstres, le jeu s'arrête et l'utilisateur est redirigé vers le menu
+• Lorsque le héros n'a pas encore tué tous les monstres, le jeu ne s'arrête pas sauf si il meurt.
+
+Difficultés rencontrées :
+La difficulté était de finir le jeu pour créer un nouveau menu qui permet de quitter ou relancer la partie.
+
+
+CINQUIEME FONCTIONNALITE : Incrémentation du score et des PV (Nathan)
+--> Le score augmente quand une fleur est mangé ou quand un monstre est tué. Les PV augmente quand une fleur
+est mangée ou baissent quand un monstre attaque.
+
+Critères de validation
+• Le score et les PV augmentent à chaque fleur mangé.
+• Le score augmente doublement à chaque monstre tué.
+• Les PV diminuent à chaque attaque.
+• Le score, le meilleur score et les PV s'actualisent constamment.
+
+Difficultés rencontrées :
+La plus grand difficulté était d'actualiser les valeurs pour les afficher correctement au fur et à mesure de la partie.
+J'ai donc créé des variables static pour y accéder facilement.
+
