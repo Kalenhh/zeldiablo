@@ -10,9 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -142,10 +141,14 @@ public class MoteurJeu extends Application {
 
         public static void afficherEcranGameOver () {
             BorderPane root = new BorderPane();
-            Label gameOverLabel = new Label("Game Over");
-            gameOverLabel.setStyle("-fx-font-size: 40px;");
+            Label gameOverLabel = new Label("GAME OVER");
+            gameOverLabel.setStyle("-fx-font-size: 100px;");
+            gameOverLabel.setTextFill(Color.WHITE);
+            root.setStyle("-fx-background-color: red");
+            gameOverLabel.setBackground(new Background(new BackgroundFill(Color.BLACK, null, null)));
 
             Button menuButton = new Button("Revenir au menu");
+            menuButton.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
             menuButton.setOnAction(event -> {
                 try {
                     retournerAuMenu();
