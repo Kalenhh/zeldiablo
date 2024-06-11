@@ -15,7 +15,7 @@ public class LabyJeu implements Jeu {
 
     public static final Double VITESSE_ENNEMIE = 2.0;
 
-    public static final Double VITESSE_JOUEUR = 0.5 ;
+    public static final Double VITESSE_JOUEUR = 0.3 ;
 
     private Labyrinthe laby;
     private double temps;
@@ -95,6 +95,7 @@ public class LabyJeu implements Jeu {
             if(pos instanceof Monstre){
                 if(((Monstre) pos).etreMort()){
                     laby.getGrid().remove(pos);
+                    Score.score += 2;
                 }
             }
         }
