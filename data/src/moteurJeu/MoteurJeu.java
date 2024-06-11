@@ -173,7 +173,7 @@ public class MoteurJeu extends Application {
                 Score.bestScore = Score.score;
             }
             Menu menu = new Menu(WIDTH, HEIGHT, new Score("score.csv"));
-
+            Score.score = 0;
             menu.getBoutonJouer().setOnAction(e -> lancerJeu());
             menu.getBoutonQuitter().setOnAction(e -> quitterJeu());
 

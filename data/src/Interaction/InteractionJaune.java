@@ -3,6 +3,7 @@ package Interaction;
 import Entite.*;
 import Item.Fleur;
 import Item.Mur;
+import Labyrinthe.Score;
 
 /**
  * Classe représentant les interactions spécifiques pour le monstre Jaune.
@@ -31,6 +32,7 @@ public class InteractionJaune implements Interaction {
                     e.setX(e.getAncienX());
                     e.setY(e.getAncienY());
             }
+            Score.score++;
         }
 
         if (p instanceof Fleur) {
