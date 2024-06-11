@@ -11,5 +11,12 @@ public class InteractionJoueur implements Interaction{
             e.setX(e.getAncienX());
             e.setY(e.getAncienY());
         }
+
+        if (p instanceof Monstre) {
+            e.attaquer((Entite) p);
+            e.setX(e.getAncienX());
+            e.setY(e.getAncienY());
+            ((Monstre) p).attaquer(e);
+        }
     }
 }

@@ -220,7 +220,9 @@ public class Labyrinthe implements Graphe {
      * @return false (le jeu n'est jamais terminé)
      */
     public boolean etreFini() {
-        return false;
+        if (pj.etreMort()){
+            return true;
+        } else {return false;}
     }
 
     /**

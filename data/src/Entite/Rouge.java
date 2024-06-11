@@ -35,7 +35,7 @@ public class Rouge extends Monstre {
      * @param e L'entité victime de l'attaque
      */
     public void attaquer(Entite e) {
-        e.subirDegat(super.degats);
+        super.attaquer(e);
     }
 
     /**
@@ -69,6 +69,8 @@ public class Rouge extends Monstre {
     public void interagir(Position cible) {
         getInteraction().interagirAvec(this, cible);
     }
+
+
 
     /**
      * Vérifie si le monstre est présent aux coordonnées (x, y).

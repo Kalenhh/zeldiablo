@@ -1,8 +1,5 @@
 package Entite;
-
 import Interaction.Interaction;
-import Labyrinthe.Labyrinthe;
-
 /**
  * Classe représentant un monstre, qui hérite de la classe Perso.
  */
@@ -21,13 +18,18 @@ public abstract class Monstre extends Perso {
         super(dx, dy, pv, degats, inter);
     }
 
+    public void interagir(Position cible) {
+        System.out.println(this.getX() + " " + this.getY() + " " + cible.getX() + " " + cible.getY());
+        getInteraction().interagirAvec(this, cible);
+    }
+
     /**
      * Attaque une entité cible en lui infligeant des dégâts.
      *
      * @param e L'entité cible de l'attaque
      */
     public void attaquer(Entite e) {
-        e.subirDegat(degats);
+        super.attaquer(e);
     }
 
 
