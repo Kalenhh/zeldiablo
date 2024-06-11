@@ -47,3 +47,4 @@ build/
 *.class
 *.xml
 >>>>>>> 1cb7901 (gitignore)
+/score.csv
