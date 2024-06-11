@@ -3,6 +3,8 @@ package Interaction;
 import Entite.*;
 import Item.Fleur;
 import Item.Mur;
+import Labyrinthe.LabyDessin;
+import Labyrinthe.Score;
 
 public class InteractionJoueur implements Interaction {
     @Override
@@ -25,6 +27,8 @@ public class InteractionJoueur implements Interaction {
             if (e instanceof Perso) {
                 int pv = ((Perso) e).getPv();
                 ((Perso) e).setPv(pv + 1);
+                Score.score += 1;
+                LabyDessin.dessinerScore();
             }
         }
     }

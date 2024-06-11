@@ -55,9 +55,6 @@ public abstract class Perso extends Entite {
     @Override
     public void attaquer(Entite victime) {
         victime.subirDegat(degats);
-        if (victime.etreMort()) {
-            laby.retirerElement(victime);
-        }
     }
 
     /**

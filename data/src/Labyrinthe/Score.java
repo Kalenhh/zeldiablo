@@ -11,6 +11,7 @@ import java.io.*;
 public class Score implements Jeu {
     private final String nomFichier;
     private final FileWriter fw;
+    public static int score = 0;
 
     /**
      * Constructeur du score du jeu, sauvegardé sur un fichier.
@@ -80,7 +81,7 @@ public class Score implements Jeu {
      * @return 0 (cette méthode n'est pas implémentée).
      */
     public int getScore() {
-        return 0;
+        return score;
     }
 
     @Override
@@ -102,7 +103,5 @@ public class Score implements Jeu {
     public boolean tousMonstresElimines() {
         return false;
     }
-
-
 }
 
