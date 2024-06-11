@@ -5,6 +5,7 @@ import Entite.Position;
 import moteurJeu.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 /**
  * Classe LabyJeu qui implémente l'interface Jeu.
@@ -89,7 +90,8 @@ public class LabyJeu implements Jeu {
 
 
     protected void verifierMonstresMorts(Labyrinthe laby) {
-        for (Position pos : laby.getGrid()){
+        ArrayList<Position> al = laby.getGrid();
+        for (Position pos : al){
             if(pos instanceof Monstre){
                 if(((Monstre) pos).etreMort()){
                     laby.getGrid().remove(pos);
