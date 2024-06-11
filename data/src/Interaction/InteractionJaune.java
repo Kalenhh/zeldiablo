@@ -42,6 +42,11 @@ public class InteractionJaune implements Interaction {
                 ((Perso) e).setPv(pv + 1);
             }
         }
+
+        if(p instanceof Monstre){
+            e.setX(e.getAncienX());
+            e.setY(e.getAncienY());
+        }
     }
 }
 

@@ -183,7 +183,7 @@ public class Labyrinthe implements Graphe {
         for (Position p : grid) {
             if (p instanceof Entite) {
                 for (Position cible : grid) {
-                    if (p.etrePresent(cible.getX(), cible.getY())) {
+                    if (p.etrePresent(cible.getX(), cible.getY()) && (p!=cible)) {
                         ((Entite) p).interagir(cible);
                     }
                 }
