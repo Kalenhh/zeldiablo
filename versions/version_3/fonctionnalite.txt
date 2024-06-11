@@ -1,22 +1,33 @@
-1) Intégration du système de score (bonus)
-    Affichage du score dans LabyDessin avec la methode getScore() de LabyJeu
-    Ecriture du score dans un fichier lorsque le jeu est fini   ; Nathan, Lucas
+PREMIERE FONCTIONNALITE : Intégration du système de score (Nathan)
+--> Affichage du score dans LabyDessin avec la methode getScore() de LabyJeu
+Ecriture du score dans un fichier lorsque le jeu est fini   ;
+
+Critères de validation:
+• Affichage du score pendant la partie.
+• Possibilité d'incrémenter le score au fur et à mesure.
+• Réinitialisation du score en fin de partie.
+• Ecriture et lecture depuis un fichier csv.
 
 Difficultés rencontrées :
+La difficulté était de correctement afficher le score et l'actualiser en fonction du programme.
 
 
-2) Implémentation d'un système d'interaction (paradigme Strategie)
-    Les interactions sont géré par des classes différentes.     ; Mathieu
+DEUXIEME FONCTIONNALITE : Implémentation d'un système d'interaction (Mathieu)
+--> Les interactions sont géré par des classes différentes.
+
+Critères de validation :
+• La collision fonctionne dans les 4 directions.
+• Si la case est vide, le personnage avance.
+• S'il y a un monstre, le joueur attaque
 
 Difficultés rencontrées :
+Aucune difficulté.
 
 
-
-
-3) Déplacement aléatoire des monstres
-
-Régulièrement, le jeu demande aux monstres de se déplacer dans une direction
+TROISIEME FONCTIONNALITE : Déplacement aléatoire des monstres (Hugo)
+--> Régulièrement, le jeu demande aux monstres de se déplacer dans une direction
 aléatoire.
+
 Critères de validation
 • A chaque évolution du jeu, que le joueur se déplace ou non, les monstres se déplacent.
 • Les monstres sont bloqués par les obstacles. S'ils ont choisi de se diriger vers un
@@ -27,34 +38,35 @@ case (Si la tache Collision entre monstre est fonctionnelle).
 • A chaque évolution, tous les monstres tentent de se déplacer.
 • L'interface graphique se met à jour en fonction des déplacements des Monstres.
 
+Difficultés rencontrées :
+La difficulté était de trouver une case disponible où déplacer le monstre autour de lui.
 
-4. Monstres au comportement intelligent
-Diculté : 88889
-A chaque fois que les monstres se déplacent, ils se rapprochent dans la direction du
-héros en prenant en compte la présence des murs.
+
+QUATRIEME FONCTIONNALITE : Monstres au comportement intelligent (Melody)
+--> A chaque fois que les monstres se déplacent, ils se rapprochent dans la direction du
+héros en prenant en compte la présence des murs et en utilisant l'algorithme de Dijkstra.
+
 Critères de validation
 • Avant son déplacement, le monstre détermine le meilleur chemin pour atteindre
 le héros.
 • Le monstre prend en compte les obstacles qui le concernent pour trouver le meilleur
 chemin.
-• lorsqu'il se déplace, le monstre suit eectivement le meilleur chemin et parvient
+• lorsqu'il se déplace, le monstre suit effectivement le meilleur chemin et parvient
 jusqu'au héros même s'il y a des obstacles.
-• vous pourrez vous inspirer (a) des transparents "IA dans le jeu vidéo" (transparents 112-130) ou (b) (c) du site redblob (avec de nombreuses démonstrations
-autour du jeu vidéo)
-(a) https://members.loria.fr/VThomas/mediation/JV_IUT_2016/#ia
-(b) http://www.redblobgames.com/pathfinding/a-star/introduction.html
-(c) http://www.redblobgames.com/pathfinding/tower-defense/
 
 Difficultés rencontrées :
+J'ai passé beaucoup de temps à réussir à bien implémenter l'algorithme de Dijkstra. En premier lieu
+il a fallu adapter le labyrinthe pour implémenter l'interface Graphe, ce qui m'a pris un peu de temps.
+J'ai eu quelques soucis sur la méthode suivant().
 
 
+CINQUIEME FONCTIONNALITE : Considérer le monstre dans les déplacements du personnage (Mathieu & Hugo)
+--> Lorsque le jeu évolue, le personnage ne peut pas se déplacer sur la case du monstre.
 
-5. Considérer le monstre dans les déplacements du personnage
-- Descriptif :
-- lorsque le jeu évolue, le personnage ne peut pas se déplacer sur la case du monstre.
 - Critères de validation :
 - le monstre constitue un obstacle pour le personnage.
 - le monstre et le personnage ne peuvent pas se trouver sur la même case.
 - le personnage ne peut pas traverser la case du monstre
 
 Difficultés rencontrées :
+Aucune difficulté.
