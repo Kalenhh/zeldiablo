@@ -48,6 +48,7 @@ public class LabyDessin implements DessinJeu {
         }
 
         dessinerScore();
+        dessinerPv();
     }
 
     public static void dessinerScore(){
@@ -56,7 +57,16 @@ public class LabyDessin implements DessinJeu {
         if(gc != null){
             gc.setFill(Color.WHITE);
             gc.setFont(new Font("Arial", 30));
-            gc.fillText("Score: " + sc, 10, 35);
+            gc.fillText("Score: " + sc, 5, 30);
+        }
+    }
+
+    public static void dessinerPv(){
+        int pv = laby.getLaby().getPerso().getPv();
+        if(gc != null){
+            gc.setFill(Color.WHITE);
+            gc.setFont(new Font("Arial", 30));
+            gc.fillText("Pv: " + pv, 200, 30);
         }
     }
 }
