@@ -6,6 +6,9 @@ Critères de validation :
 - le monstre sera représenté sous la forme d'un personnage violet de la taille du personnage.
 (Nous avons 2 types de monstres, l'un rouge et l'autre jaune)
 
+Difficultés rencontrées :
+La principale difficulté était de générer des monstres à la bonne taille.
+
 
 DEUXIEME FONCTIONNALITE : Génération de monstres immobiles (Melody)
 --> Au lancement du jeu, le jeu ajoute différents monstres immobiles dans l'environnement.
