@@ -1,0 +1,298 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+interface Algorithme << interface >> {
+  + resoudre(Graphe, String): Valeur
+}
+class Arc {
+  - cout: double
+  - dest: String
+  + getDest(): String
+  + getCout(): double
+}
+class Clavier {
+  + bas: boolean
+  + droite: boolean
+  + gauche: boolean
+  + haut: boolean
+  + appuyerTouche(KeyEvent): void
+  + relacherTouche(KeyEvent): void
+}
+interface DessinJeu << interface >> {
+  + dessinerJeu(Jeu, Canvas): void
+}
+class Dijkstra {
+  + resoudre(Graphe, String): Valeur
+}
+class Entite {
+  - ancienY: int
+  - ancienX: int
+  - interaction: Interaction
+  + attaquer(Entite): void
+  + getInteraction(): Interaction
+  + seDeplacer(): void
+  + etreMort(): boolean
+  + getAncienY(): int
+  + setAncienX(int): void
+  + getAncienX(): int
+  + subirDegat(int): void
+  + setAncienY(int): void
+  + interagir(Position): void
+}
+class Fleur {
+  + getDurabilite(): int
+  + etrePresent(int, int): boolean
+}
+class FrameStats {
+  - meanFrameInterval: double
+  - frameCount: long
+  - text: ReadOnlyStringWrapper
+  + getFrameCount(): long
+  + textProperty(): ReadOnlyStringProperty
+  + toString(): String
+  + addFrame(long): void
+  + getMeanFrameInterval(): double
+}
+interface Graphe << interface >> {
+  + listeNoeuds(): List<String>
+  + suivants(String): List<Arc>
+}
+interface Interaction << interface >> {
+  + interagirAvec(Entite, Position): void
+}
+class InteractionJaune {
+  + interagirAvec(Entite, Position): void
+}
+class InteractionJoueur {
+  + interagirAvec(Entite, Position): void
+}
+class InteractionRouge {
+  + interagirAvec(Entite, Position): void
+}
+class Item {
+  - resistance: int
+  - durabilite: int
+  - interaction: Interaction
+  + getDurabilite(): int
+  + getResistance(): int
+  + getInteraction(): Object
+  + attaquer(int): void
+}
+class Jaune {
+  ~ positionsPossibles: List<int[]>
+  - labyrinthe: Labyrinthe
+  ~ directions: int[][]
+  + attaquer(Entite): void
+  + subirDegat(int): void
+  + etreMort(): boolean
+  + seDeplacer(): void
+  + etrePresent(): boolean
+}
+interface Jeu << interface >> {
+  + update(double, Clavier): void
+  + init(): void
+  + etreFini(): boolean
+  + tousMonstresElimines(): boolean
+}
+class Joueur {
+  + sedeplacer(): void
+  + etreMort(): boolean
+  + attaquer(Entite): void
+  + subirDegat(int): void
+  + etrePresent(): boolean
+}
+class LabyDessin {
+  + dessinerJeu(Jeu, Canvas): void
+}
+class LabyJeu {
+  + VITESSE_ENNEMIE: Double
+  - temps_joueur: double
+  + VITESSE_JOUEUR: Double
+  - laby: Labyrinthe
+  - temps: double
+  + update(double, Clavier): void
+  # verifierMonstresMorts(Labyrinthe): void
+  + etreFini(): boolean
+  + getLaby(): Labyrinthe
+  + tousMonstresElimines(): boolean
+  + init(): void
+}
+class Labyrinthe {
+  + ROUGE: char
+  - grid: ArrayList<Position>
+  + DROITE: String
+  + BAS: String
+  + JAUNE: char
+  - rand: Random
+  + VIDE: char
+  + NBR_COLONNE: int
+  - score: int
+  + JOUEUR: char
+  + NBR_LIGNE: int
+  + PLANTE: char
+  + HAUT: String
+  + GAUCHE: String
+  - pj: Perso
+  + MUR: char
+  + getPerso(): Perso
+  + deplacerPerso(String): void
+  + estVide(int, int): boolean
+  + getScore(): int
+  ~ getSuivant(int, int, String): int[]
+  + getGrid(): ArrayList<Position>
+  + etreFini(): boolean
+}
+class MainLaby {
+  + main(String[]): void
+}
+class Menu {
+  - boutonQuitter: Button
+  - boutonJouer: Button
+  + getBoutonQuitter(): Button
+  + getBoutonJouer(): Button
+}
+class Monstre {
+  + etreMort(): boolean
+  + seDeplacer(): void
+  + etrePresent(): boolean
+  + subirDegat(int): void
+  + attaquer(Entite): void
+}
+class MoteurJeu {
+  - WIDTH: double
+  - jeu: Jeu
+  - dessin: DessinJeu
+  - HEIGHT: double
+  - FPS: double
+  - timer: AnimationTimer
+  - frameStats: FrameStats
+  - dureeFPS: double
+  - primaryStage: Stage
+  - controle: Clavier
+  + setTaille(double, double): void
+  - startAnimation(Canvas): void
+  + stopAnimation(): void
+  + start(Stage): void
+  + retournerAuMenu(): void
+  + launch(Jeu, DessinJeu): void
+  + setFPS(int): void
+  + quitterJeu(): void
+  + lancerJeu(): void
+  + afficherEcranGameOver(): void
+}
+class Mur
+class Perso {
+  ~ pv: int
+  ~ degats: int
+  + etrePresent(int, int): boolean
+  + subirDegat(int): void
+  + etreMort(): boolean
+  + attaquer(Entite): void
+  + seDeplacer(): void
+}
+class Piege {
+  ~ piegeOuvert: boolean
+  + etreOuvert(): boolean
+  + fermerPiege(): void
+}
+class Position {
+  - x: int
+  - y: int
+  + setX(int): void
+  + getX(): int
+  + getY(): int
+  + setY(int): void
+  + etrePresent(int, int): boolean
+}
+class Rouge {
+  ~ dj: Dijkstra
+  ~ l: Labyrinthe
+  + seDeplacer(): void
+}
+class Score {
+  + score: int
+  + bestScore: int
+  + getScore(): int
+  + update(double, Clavier): void
+  + init(): void
+  + tousMonstresElimines(): boolean
+}
+class ScoreDessin {
+  + dessinerJeu(Jeu, Canvas): void
+}
+class Test_Fleur {
+  - fleur: Fleur
+  + testConstructeur(): void
+  + testEtrePresent(): void
+  + setUp(): void
+}
+class Test_Jaune {
+  - jaune: Jaune
+  + testGetXGetY(): void
+  + setUp(): void
+  + testPositionsPossibles(): void
+  + testSeDeplacer(): void
+  + testAncienXEtAncienY(): void
+}
+class Test_Joueur {
+  - joueur: Joueur
+  + testConstructeur(): void
+  + testSeDeplacer(): void
+  + setUp(): void
+}
+class Test_MoteurJeu {
+  - moteurJeu: MoteurJeu
+  + testAfficherEcranGameOver(): void
+  + testQuitterJeu(): void
+  + setUp(): void
+  + testStopAnimation(): void
+  + testRetournerAuMenu(): void
+}
+class Test_Piege {
+  - piege: Piege
+  + setUp(): void
+  + testConstructeur(): void
+  + testEtreOuvert(): void
+  + testFermerPiege(): void
+}
+class Test_Rouge {
+  - labyrinthe: Labyrinthe
+  - rouge: Rouge
+  + testSeDeplacerSansChemin(): void
+  + setUp(): void
+  + testConstructeur(): void
+  + testGetAncienXEtAncienY(): void
+}
+class Valeur {
+  ~ valeur: Map<String, Double>
+  ~ parent: Map<String, String>
+  + calculerChemin(String): List<String>
+  + toString(): String
+  + getValeur(String): double
+  + setValeur(String, double): void
+  + getParent(String): String
+  + setParent(String, String): void
+}
+
+Dijkstra           -[#008200,dashed]-^  Algorithme        
+Entite             -[#000082,plain]-^  Position          
+Fleur              -[#000082,plain]-^  Item              
+InteractionJaune   -[#008200,dashed]-^  Interaction       
+InteractionJoueur  -[#008200,dashed]-^  Interaction       
+InteractionRouge   -[#008200,dashed]-^  Interaction       
+Item               -[#000082,plain]-^  Position          
+Jaune              -[#000082,plain]-^  Monstre           
+Joueur             -[#000082,plain]-^  Perso             
+LabyDessin         -[#008200,dashed]-^  DessinJeu         
+LabyJeu            -[#008200,dashed]-^  Jeu               
+Monstre            -[#000082,plain]-^  Perso             
+Mur                -[#000082,plain]-^  Item              
+Perso              -[#000082,plain]-^  Entite            
+Piege              -[#000082,plain]-^  Item              
+Rouge              -[#000082,plain]-^  Monstre           
+Score              -[#008200,dashed]-^  Jeu               
+ScoreDessin        -[#008200,dashed]-^  DessinJeu         
+@enduml
