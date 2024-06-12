@@ -55,7 +55,7 @@ public class InteractionJoueur implements Interaction {
 
         if (p instanceof Piege){
             if(((Piege) p).etreOuvert()){
-                e.subirDegat(1);
+                e.subirDegat(5);
                 ((Piege) p).fermerPiege();
             }
         }
