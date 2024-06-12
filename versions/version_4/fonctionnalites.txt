@@ -12,7 +12,7 @@ et seulement si le labyrinthe était fini, une méthode se lance dans moteurJeu 
 vers le menu.
 
 
-TROISIEME FONCTIONNALITE : Cases Piégées (Melody)
+DEUXIEME FONCTIONNALITE : Cases Piégées (Melody)
 --> Lorsque une entité (héros ou monstre) arrive sur une case piégée, il subit des dégâts.
 
 Critères de validation
@@ -28,7 +28,7 @@ Pour l'implémentation je n'ai pas eu de grande difficulté car tout était déj
 Item et Interaction.
 
 
-QUATRIEME FONCTIONNALITE : Fin du jeu : victoire du héros (Hugo)
+TROISIEME FONCTIONNALITE : Fin du jeu : victoire du héros (Hugo)
 --> Une fois que le héros a tué tous les monstres présents, il gagne la partie et son score est enregistré
 
 Critères de validation
@@ -39,7 +39,7 @@ Difficultés rencontrées :
 La difficulté était de finir le jeu pour créer un nouveau menu qui permet de quitter ou relancer la partie.
 
 
-CINQUIEME FONCTIONNALITE : Incrémentation du score et des PV (Nathan)
+QUATRIEME FONCTIONNALITE : Incrémentation du score et des PV (Nathan)
 --> Le score augmente quand une fleur est mangé ou quand un monstre est tué. Les PV augmente quand une fleur
 est mangée ou baissent quand un monstre attaque.
 
