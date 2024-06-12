@@ -33,7 +33,11 @@ public class InteractionJaune implements Interaction {
                     e.setX(e.getAncienX());
                     e.setY(e.getAncienY());
             }
-            Score.score++;
+            if(e instanceof Monstre){
+                if(((Monstre) e).etreMort()){
+                    Score.score++;
+                }
+            }
         }
 
         if(p instanceof Monstre){

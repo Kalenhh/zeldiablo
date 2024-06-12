@@ -32,7 +32,11 @@ public class InteractionRouge implements Interaction {
                 e.attaquer((Entite) p);
             e.setX(e.getAncienX());
             e.setY(e.getAncienY());
-            Score.score += 1;
+            if(e instanceof Monstre){
+                if(((Monstre) e).etreMort()){
+                    Score.score++;
+                }
+            }
         }
 
         if(p instanceof Monstre){
