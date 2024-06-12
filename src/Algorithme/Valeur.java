@@ -72,20 +72,20 @@ public class Valeur {
 
     /**
      * methode qui donne les noms des noeuds du chemin le plus court de depart a destination
-     * @param destination
+     * @param destination noeud de destination
      * @return la liste des noeuds du chemin le plus court jusqu'à destination
      */
     public List<String> calculerChemin(String destination) {
         String parent = destination;
-        ArrayList<String> lp = new ArrayList<String>();
+        ArrayList<String> lp = new ArrayList<>();
         while (parent!=null) {
             lp.add(parent);
             parent = this.getParent(parent);
         }
         // inverse la liste pour avoir le chemin partant du depart
-        ArrayList<String> inv = new ArrayList<String>();
-        for (int i=0;i<lp.size();i++) {
-            inv.add(0, lp.get(i));
+        ArrayList<String> inv = new ArrayList<>();
+        for (String s : lp) {
+            inv.addFirst(s);
         }
         return inv;
     }
@@ -104,7 +104,7 @@ public class Valeur {
             // ajoute la valeur et le noeud parent
             Double valeurNoeud = valeur.get(s);
             String noeudParent = parent.get(s);
-            res += s + " ->  V:" + valeurNoeud + " p:" + noeudParent + "\n";
+            res = s + " ->  V:" + valeurNoeud + " p:" + noeudParent + "\n";
         }
         return res;
 

@@ -6,7 +6,6 @@ import moteurJeu.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 /**
  * Classe LabyJeu qui implémente l'interface Jeu.
  * Elle est responsable de la gestion du jeu, des mises à jour et des interactions.
@@ -76,7 +75,7 @@ public class LabyJeu implements Jeu {
 
         if(tousMonstresElimines()){
             MoteurJeu.retournerAuMenu();
-        };
+        }
 
         LabyDessin.dessinerScore();
         if(Score.bestScore < Score.score){
@@ -121,16 +120,6 @@ public class LabyJeu implements Jeu {
         this.temps_joueur = 0 ;
         Joueur joueur = (Joueur)laby.getPerso();
         joueur.setPv(2);
-    }
-
-    /**
-     * Indique si le jeu est fini ou non
-     *
-     * @return boolean true si le jeu est fini, false sinon
-     */
-    @Override
-    public boolean etreFini() {
-        return true;
     }
 
     /**

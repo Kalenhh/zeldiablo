@@ -1,5 +1,3 @@
-import Labyrinthe.Score;
-import moteurJeu.Menu;
 import moteurJeu.MoteurJeu;
 import org.junit.Before;
 import org.junit.Test;
@@ -34,7 +32,6 @@ public class Test_MoteurJeu{
 
     @Test
     public void testRetournerAuMenu() throws IOException {
-        Menu menu = new Menu(800, 600, new Score("score.csv"));
         MoteurJeu.retournerAuMenu();
 
         // vérifier que le menu estaffiché

@@ -1,7 +1,5 @@
 package Item;
 
-import Interaction.InteractionMur;
-
 /**
  * Obstacle mur pouvant etre casse
  */

@@ -24,10 +24,6 @@ public class LabyDessin implements DessinJeu {
         gc.setFill(Color.LIGHTGREEN);
         gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
-        int sc = laby.getLaby().getScore();
-        if (sc > 40) {
-            sc = 40;
-        }
 
         // Dessine les autres éléments du labyrinthe
         for (Position pos : laby.getLaby().getGrid()) {

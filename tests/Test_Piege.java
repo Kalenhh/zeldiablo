@@ -1,5 +1,4 @@
 import Item.Piege;
-import Interaction.InteractionPiege;
 import org.junit.Before;
 import org.junit.Test;
 

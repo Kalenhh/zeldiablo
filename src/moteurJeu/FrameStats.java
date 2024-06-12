@@ -23,10 +23,6 @@ public class FrameStats {
         text.set(toString());
     }
 
-    public String getText() {
-        return text.get();
-    }
-
     public ReadOnlyStringProperty textProperty() {
         return text.getReadOnlyProperty();
     }

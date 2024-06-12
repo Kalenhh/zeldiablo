@@ -27,7 +27,9 @@ public class InteractionJoueur implements Interaction {
         }
 
         if (p instanceof Fleur) {
+            //hasard pour la fleur
             Random rand = new Random();
+            //gain de pv et score
             int pv = ((Perso) e).getPv();
             ((Perso) e).setPv(pv + 1);
             Score.score += 1;
@@ -35,15 +37,25 @@ public class InteractionJoueur implements Interaction {
             if(Score.bestScore < Score.score){
                 Score.bestScore = Score.score;
             }
-            int randomInt = rand.nextInt(Labyrinthe.listeNoeud.size()-1);
-            String randomPos = Labyrinthe.listeNoeud.get(randomInt);
-            p.setX(Integer.parseInt(randomPos.split(":")[0]));
-            p.setY(Integer.parseInt(randomPos.split(":")[1]));
+            //Recherche d'une nouvelle position
+            int newX, newY;
+            Position newPosition;
+            //Tant que la nouvelle position est un piege, on
+            do {
+                int randomInt = rand.nextInt(Labyrinthe.listeNoeud.size()-1);
+                String randomPos = Labyrinthe.listeNoeud.get(randomInt);
+                newX = Integer.parseInt(randomPos.split(":")[0]);
+                newY = Integer.parseInt(randomPos.split(":")[1]);
+                newPosition = new Position(newX, newY);
+            } while (newPosition instanceof Piege);
+            p.setX(newPosition.getX());
+            p.setY(newPosition.getY());
         }
+
 
         if (p instanceof Piege){
             if(((Piege) p).etreOuvert()){
-                ((Perso) e).subirDegat(1);
+                e.subirDegat(1);
                 ((Piege) p).fermerPiege();
             }
         }

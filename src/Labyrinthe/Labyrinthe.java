@@ -67,7 +67,7 @@ public class Labyrinthe implements Graphe {
         this.grid = new ArrayList<>();
         this.pj = null;
 
-        this.listeNoeud = new ArrayList<>();
+        listeNoeud = new ArrayList<>();
 
         // lecture des cases
         String ligne = bfRead.readLine();
@@ -80,11 +80,11 @@ public class Labyrinthe implements Graphe {
             // parcours de la ligne
             for (int colonne = 0; colonne < ligne.length(); colonne++) {
                 char c = ligne.charAt(colonne);
-                this.listeNoeud.add(colonne + ":" + numeroLigne);
+                listeNoeud.add(colonne + ":" + numeroLigne);
                 switch (c) {
                     case MUR:
                         this.grid.add(new Mur(0, 0, colonne, numeroLigne));
-                        this.listeNoeud.remove(colonne + ":" + numeroLigne);
+                        listeNoeud.remove(colonne + ":" + numeroLigne);
                         break;
                     case VIDE:
                         break;
@@ -160,7 +160,7 @@ public class Labyrinthe implements Graphe {
 
         for (Position cible : grid) {
             if (pj.etrePresent(cible.getX(), cible.getY())) {
-                ((Entite) pj).interagir(cible);
+                pj.interagir(cible);
             }
         }
     }
@@ -191,13 +191,7 @@ public class Labyrinthe implements Graphe {
         }
     }
 
-    /**
-     * Retire la position d'un element
-     * @param position La position de l'element.
-     */
-    public void retirerElement(Position position) {
-        grid.remove(position);
-    }
+
 
     /**
      * Indique si le jeu est terminé.
@@ -205,9 +199,7 @@ public class Labyrinthe implements Graphe {
      * @return false (le jeu n'est jamais terminé)
      */
     public boolean etreFini() {
-        if (pj.etreMort()){
-            return true;
-        } else {return false;}
+        return pj.etreMort();
     }
 
     /**
@@ -216,7 +208,7 @@ public class Labyrinthe implements Graphe {
      * @return liste des noeuds
      */
     public ArrayList<String> listeNoeuds() {
-        return this.listeNoeud;
+        return listeNoeud;
     }
 
     /**
@@ -236,14 +228,14 @@ public class Labyrinthe implements Graphe {
         int x = Integer.parseInt(d.split(":")[0]);
         int y = Integer.parseInt(d.split(":")[1]);
 
-        if(x+1 < NBR_COLONNE && this.listeNoeud.contains(x+1 + ":" + y))
+        if(x+1 < NBR_COLONNE && listeNoeud.contains(x+1 + ":" + y))
             ret.add(new Arc(x + 1 +":"+ y,1));
-        if(x-1 >= 0 && this.listeNoeud.contains(x-1 + ":" + y))
+        if(x-1 >= 0 && listeNoeud.contains(x-1 + ":" + y))
             ret.add(new Arc(x-1 + ":" + y, 1));
-        if(y+1 < NBR_LIGNE && this.listeNoeud.contains(x + ":" + (y+1)))
+        if(y+1 < NBR_LIGNE && listeNoeud.contains(x + ":" + (y+1)))
             ret.add(new Arc(x + ":" + (y+1),1));
 
-        if(y-1 >= 0 && this.listeNoeud.contains(x + ":" + (y-1)))
+        if(y-1 >= 0 && listeNoeud.contains(x + ":" + (y-1)))
             ret.add(new Arc(x + ":" + (y-1),1));
         return ret;
     }
@@ -275,24 +267,5 @@ public class Labyrinthe implements Graphe {
      */
     public ArrayList<Position> getGrid() {
         return this.grid;
-    }
-
-    public void setPersoX(int i) {
-        int Y = this.getPerso().getY() ;
-        Y = i;
-    }
-
-    public void setPersoY(int i) {
-      int X = this.getPerso().getY() ;
-      X = i;
-
-    }
-
-    public int getPersoX() {
-        return this.getPerso().getX();
-    }
-
-    public int getPersoY() {
-        return this.getPerso().getY();
     }
 }

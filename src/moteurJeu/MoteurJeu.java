@@ -12,10 +12,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
-
 import java.io.IOException;
 
 public class MoteurJeu extends Application {
@@ -23,8 +21,8 @@ public class MoteurJeu extends Application {
     private static double FPS = 100;
     private static double dureeFPS = 1000 / (FPS + 1);
 
-    private static double WIDTH = 800;
-    private static double HEIGHT = 600;
+    private final static double WIDTH = 800;
+    private final static double HEIGHT = 600;
 
     private static final FrameStats frameStats = new FrameStats();
 
@@ -32,10 +30,6 @@ public class MoteurJeu extends Application {
     private static DessinJeu dessin = null;
 
     private static Stage primaryStage;
-
-    public static AnimationTimer getTimer() {
-        return timer;
-    }
 
     private static final Clavier controle = new Clavier();
 
@@ -54,15 +48,9 @@ public class MoteurJeu extends Application {
         dureeFPS = 1000 / (FPS + 1);
     }
 
-    public static void setTaille(double width, double height) {
-        WIDTH = width;
-        HEIGHT = height;
-    }
-
-    public void start (Stage primaryStage) throws IOException {
+    public void start (Stage primaryStage) {
         MoteurJeu.primaryStage = primaryStage;
-        Score score = new Score("score.csv");
-        Menu menu = new Menu(WIDTH, HEIGHT, score);
+        Menu menu = new Menu(WIDTH, HEIGHT);
 
         menu.getBoutonJouer().setOnAction(e -> {
             try {
@@ -103,8 +91,8 @@ public class MoteurJeu extends Application {
             Scene scene = new Scene(root, WIDTH, HEIGHT);
             primaryStage.setScene(scene);
 
-            scene.setOnKeyPressed(event -> controle.appuyerTouche(event));
-            scene.setOnKeyReleased(event -> controle.relacherTouche(event));
+            scene.setOnKeyPressed(controle::appuyerTouche);
+            scene.setOnKeyReleased(controle::relacherTouche);
 
 
             startAnimation(canvas);
@@ -183,7 +171,7 @@ public class MoteurJeu extends Application {
             if(Score.bestScore < Score.score){
                 Score.bestScore = Score.score;
             }
-            Menu menu = new Menu(WIDTH, HEIGHT, new Score("score.csv"));
+            Menu menu = new Menu(WIDTH, HEIGHT);
             Score.score = 0;
             menu.getBoutonJouer().setOnAction(e -> lancerJeu());
             menu.getBoutonQuitter().setOnAction(e -> quitterJeu());

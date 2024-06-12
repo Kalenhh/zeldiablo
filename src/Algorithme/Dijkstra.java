@@ -28,7 +28,6 @@ public class Dijkstra implements Algorithme{
      * Fin Si
      * Fin Pour
      * Fin Tant que
-     *
      * G graphe
      * A sommet de G
      * Q liste de noeuds
@@ -42,7 +41,7 @@ public class Dijkstra implements Algorithme{
         Valeur v = new Valeur();
         ArrayList<String> listeSommet = (ArrayList<String>) g.listeNoeuds();
 
-        ArrayList<String> Q = new ArrayList<String>();
+        ArrayList<String> Q = new ArrayList<>();
         for(String sommet : listeSommet){
             v.setValeur(sommet,Double.MAX_VALUE);
             v.setParent(sommet,null);

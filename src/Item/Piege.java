@@ -1,7 +1,5 @@
 package Item;
 
-import Interaction.InteractionPiege;
-
 /**
  * Obstacle piege empechant le joueur d'avancer
  */

@@ -1,7 +1,6 @@
 package Interaction;
 
 import Entite.*;
-import Item.Fleur;
 import Item.Mur;
 import Item.Piege;
 import Labyrinthe.Score;
@@ -46,7 +45,7 @@ public class InteractionRouge implements Interaction {
 
         if (p instanceof Piege){
             if(((Piege) p).etreOuvert()){
-                ((Perso) e).subirDegat(1);
+                e.subirDegat(1);
                 ((Piege) p).fermerPiege();
             }
         }

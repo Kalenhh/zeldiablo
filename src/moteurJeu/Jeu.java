@@ -26,8 +26,8 @@ public interface Jeu {
      *
      * @return booleen true si le jeu est fini
      */
-    boolean etreFini();
 
-    public abstract boolean tousMonstresElimines();
+
+    boolean tousMonstresElimines();
 
 }

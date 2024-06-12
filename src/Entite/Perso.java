@@ -1,7 +1,6 @@
 package Entite;
 
 import Interaction.Interaction;
-import Labyrinthe.Labyrinthe;
 
 /**
  * Gère un personnage situé en (x, y).

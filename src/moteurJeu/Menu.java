@@ -1,6 +1,5 @@
 package moteurJeu;
 
-import Labyrinthe.LabyJeu;
 import Labyrinthe.Score;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -13,8 +12,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
-
-import java.io.IOException;
 
 /**
  * Classe Menu. Représente le menu d'accueil du jeu.
@@ -31,7 +28,7 @@ public class Menu extends StackPane {
      * @param hauteur_image  Hauteur de l'image de fond.
      *
      */
-    public Menu(double largueur_image, double hauteur_image, Score score) {
+    public Menu(double largueur_image, double hauteur_image) {
         //Creation du pane de score
         VBox scores = new VBox();
         scores.setAlignment(Pos.CENTER);

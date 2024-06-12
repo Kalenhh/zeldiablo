@@ -1,7 +1,6 @@
 package Interaction;
 
 import Entite.*;
-import Item.Fleur;
 import Item.Mur;
 import Item.Piege;
 import Labyrinthe.Score;
@@ -19,7 +18,7 @@ public class InteractionJaune implements Interaction {
      */
     @Override
     public void interagirAvec(Entite e, Position p) {
-        if (p instanceof Mur) {
+        if (p instanceof Mur ) {
             // Si la position cible est un Mur, l'entité Jaune revient à sa position précédente
             e.setX(e.getAncienX());
             e.setY(e.getAncienY());
@@ -34,20 +33,17 @@ public class InteractionJaune implements Interaction {
                     e.setY(e.getAncienY());
             }
             if(e instanceof Monstre){
+                e.setX(e.getAncienX());
+                e.setY(e.getAncienY());
                 if(((Monstre) e).etreMort()){
                     Score.score++;
                 }
             }
         }
 
-        if(p instanceof Monstre){
-            e.setX(e.getAncienX());
-            e.setY(e.getAncienY());
-        }
-
         if (p instanceof Piege){
             if(((Piege) p).etreOuvert()){
-                ((Perso) e).subirDegat(1);
+                e.subirDegat(1);
                 ((Piege) p).fermerPiege();
             }
         }

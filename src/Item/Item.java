@@ -7,7 +7,7 @@ import Interaction.Interaction;
  */
 public abstract class Item extends Position {
     //resistance qui correspond a la solidite de l'item
-    private int resistance;
+    private final int resistance;
     //pointVie nombre de points de vie restant
     private int durabilite;
     private Interaction interaction;
@@ -31,9 +31,7 @@ public abstract class Item extends Position {
     public Item(int resistance, int durabilite, int x, int y) {
         super(x,y);
         //Verification du parametre de resistance
-        if(resistance > 1){
-            this.resistance = resistance;
-        }else this.resistance = 1;
+        this.resistance = Math.max(resistance, 1);
 
         //Verification du parametre de pv
         if(durabilite > 0){
@@ -52,21 +50,6 @@ public abstract class Item extends Position {
         return resistance;
     }
 
-    /**
-     * Changer l'etat de la resistance
-     * @param resistance de l'item
-     */
-    public void briser(int resistance) {
-        this.resistance -= resistance;
-    }
-
-    /**
-     * Accesseur des points de vie
-     * @return pv de l'item
-     */
-    public int getPointVie() {
-        return durabilite;
-    }
 
     /**
      * Changer le nombre de pv
