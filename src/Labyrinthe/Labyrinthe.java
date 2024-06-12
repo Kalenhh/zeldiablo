@@ -276,4 +276,23 @@ public class Labyrinthe implements Graphe {
     public ArrayList<Position> getGrid() {
         return this.grid;
     }
+
+    public void setPersoX(int i) {
+        int Y = this.getPerso().getY() ;
+        Y = i;
+    }
+
+    public void setPersoY(int i) {
+      int X = this.getPerso().getY() ;
+      X = i;
+
+    }
+
+    public int getPersoX() {
+        return this.getPerso().getX();
+    }
+
+    public int getPersoY() {
+        return this.getPerso().getY();
+    }
 }

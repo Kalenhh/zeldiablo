@@ -12,6 +12,14 @@ public abstract class Item extends Position {
     private int durabilite;
     private Interaction interaction;
 
+    public int getDurabilite() {
+        return durabilite;
+    }
+
+    public Object getInteraction() {
+        return interaction;
+    }
+
     /**
      * Construit une Item.Item
      *

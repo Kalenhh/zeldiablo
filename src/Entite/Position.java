@@ -3,7 +3,7 @@ package Entite;
 /**
  * Classe représentant une position avec des coordonnées (x, y).
  */
-public abstract class Position {
+public class Position {
 
     /**
      * Coordonnée X de la position.

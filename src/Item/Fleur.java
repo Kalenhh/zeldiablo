@@ -26,4 +26,8 @@ public class Fleur extends Item{
 
         return (this.getX() == dx && this.getY() == dy);
     }
+
+    public int getDurabilite() {
+        return super.getDurabilite();
+    }
 }

@@ -19,6 +19,10 @@ public class Jaune extends Monstre {
      */
     List<int[]> positionsPossibles = new ArrayList<>();
 
+    public List<int[]> getPositionsPossibles() {
+        return positionsPossibles;
+    }
+
     /**
      * Directions possibles pour le déplacement.
      */

@@ -33,9 +33,13 @@ public class MoteurJeu extends Application {
 
     private static Stage primaryStage;
 
+    public static AnimationTimer getTimer() {
+        return timer;
+    }
+
     private static final Clavier controle = new Clavier();
 
-    private static AnimationTimer timer;
+    public static AnimationTimer timer;
 
     public static void launch(Jeu jeu, DessinJeu dessin) {
         MoteurJeu.jeu = jeu;
