@@ -1,0 +1,92 @@
+@startuml
+participant Actor
+Actor -> InteractionJoueur : interagirAvec
+activate InteractionJoueur
+alt p instanceof Mur
+InteractionJoueur -> Entite : getAncienX
+activate Entite
+Entite --> InteractionJoueur
+deactivate Entite
+InteractionJoueur -> Position : setX
+activate Position
+Position --> InteractionJoueur
+deactivate Position
+InteractionJoueur -> Entite : getAncienY
+activate Entite
+Entite --> InteractionJoueur
+deactivate Entite
+InteractionJoueur -> Position : setY
+activate Position
+Position --> InteractionJoueur
+deactivate Position
+end
+alt p instanceof Monstre
+InteractionJoueur -> Entite : attaquer
+activate Entite
+Entite --> InteractionJoueur
+deactivate Entite
+InteractionJoueur -> Entite : getAncienX
+activate Entite
+Entite --> InteractionJoueur
+deactivate Entite
+InteractionJoueur -> Position : setX
+activate Position
+Position --> InteractionJoueur
+deactivate Position
+InteractionJoueur -> Entite : getAncienY
+activate Entite
+Entite --> InteractionJoueur
+deactivate Entite
+InteractionJoueur -> Position : setY
+activate Position
+Position --> InteractionJoueur
+deactivate Position
+InteractionJoueur -> Perso : attaquer
+activate Perso
+Perso -> Entite : subirDegat
+activate Entite
+Entite --> Perso
+deactivate Entite
+Perso --> InteractionJoueur
+deactivate Perso
+end
+alt p instanceof Fleur
+InteractionJoueur -> Perso : getPv
+activate Perso
+Perso --> InteractionJoueur
+deactivate Perso
+InteractionJoueur -> Perso : setPv
+activate Perso
+Perso --> InteractionJoueur
+deactivate Perso
+InteractionJoueur -> LabyDessin : dessinerScore
+activate LabyDessin
+LabyDessin --> InteractionJoueur
+deactivate LabyDessin
+InteractionJoueur -> Position : setX
+activate Position
+Position --> InteractionJoueur
+deactivate Position
+InteractionJoueur -> Position : setY
+activate Position
+Position --> InteractionJoueur
+deactivate Position
+end
+alt p instanceof Piege
+InteractionJoueur -> Piege : etreOuvert
+activate Piege
+Piege --> InteractionJoueur
+deactivate Piege
+alt ((Piege) p).etreOuvert()
+InteractionJoueur -> Perso : subirDegat
+activate Perso
+Perso --> InteractionJoueur
+deactivate Perso
+InteractionJoueur -> Piege : fermerPiege
+activate Piege
+Piege --> InteractionJoueur
+deactivate Piege
+end
+end
+return
+@enduml

@@ -1,0 +1,26 @@
+@startuml
+participant Main
+create Labyrinthe
+Main -> Labyrinthe : new
+activate Labyrinthe
+loop colonne < ligne.length()
+alt c
+else MUR
+create Mur
+Labyrinthe -> Mur : new
+activate Mur
+create Item
+Mur -> Item : new
+activate Item
+create Position
+Item -> Position : new
+activate Position
+Position --> Item
+deactivate Position
+return
+deactivate Mur
+Labyrinthe -> listeNoeud : remove(x,y)
+listeNoeud --> Labyrinthe
+deactivate Labyrinthe
+
+@enduml

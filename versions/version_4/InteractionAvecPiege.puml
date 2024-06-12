@@ -1,0 +1,22 @@
+@startuml
+participant Actor
+Actor -> InteractionJaune : interagirAvec
+activate InteractionJaune
+alt p instanceof Piege
+InteractionJaune -> Piege : etreOuvert
+activate Piege
+Piege --> InteractionJaune
+deactivate Piege
+alt ((Piege) p).etreOuvert()
+InteractionJaune -> Perso : subirDegat
+activate Perso
+Perso --> InteractionJaune
+deactivate Perso
+InteractionJaune -> Piege : fermerPiege
+activate Piege
+Piege --> InteractionJaune
+deactivate Piege
+end
+end
+return
+@enduml
